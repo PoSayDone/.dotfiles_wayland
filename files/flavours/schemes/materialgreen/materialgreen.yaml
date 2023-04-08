@@ -1,0 +1,18 @@
+scheme: "Material you"
+author: "Arsi"
+base00: "#181e14" # base
+base01: "#252d20" # secondary base
+base02: "#43493d" # surface 0
+base03: "#586352" # surface 1
+base04: "#8d9199" # outline
+base05: "#dce7d2" # text
+base06: "#edf5e6" # light
+base07: "#f9fff5" # super light
+base08: "#ffb4ab"
+base09: "#ffdf96"
+base0A: "#ffdd93"
+base0B: "#ceffac"
+base0C: "#c5fff3"
+base0D: "#9dcaff"
+base0E: "#cfbcff"
+base0F: "#fab387"

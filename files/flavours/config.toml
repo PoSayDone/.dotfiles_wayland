@@ -1,0 +1,41 @@
+shell = "bash -c '{}'"
+
+[[item]]
+file = "~/.config/waybar/colors.css"
+template = "waybar"
+hook = "killall -SIGUSR2 waybar"
+rewrite = true
+
+[[item]]
+file = "~/.config/kitty/colors.conf"
+template = "kitty"
+hook = "kill -SIGUSR1 $(pgrep kitty)"
+rewrite = true
+
+[[item]]
+file = "~/.config/wofi/colors.css"
+template = "wofi"
+rewrite = true
+
+[[item]]
+file = "~/.mozilla/firefox/p107qgqr.default-release/chrome/firefox-gnome-theme/theme/colors/dark.css"
+template = "firefox"
+rewrite = true
+
+[[item]]
+file = "~/.themes/FlatColor/colors3"
+template = "gtk-flatcolor"
+subtemplate = "gtk-3"
+rewrite = true
+hook = "gsettings set org.gnome.desktop.interface gtk-theme dummy && gsettings set org.gnome.desktop.interface gtk-theme FlatColor"
+
+[[item]]
+file = "~/.themes/FlatColor/colors2"
+template = "gtk-flatcolor"
+subtemplate = "gtk-2"
+rewrite = true
+
+[[items]]
+file = "~/.vscode/extensions/golf1052.base16-generator-1.19.1/themes/base16-materialyou-dark.json"
+rewrite = true
+template = "vscode"

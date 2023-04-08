@@ -1,0 +1,24 @@
+/*
+*
+* Base16 Material you
+* Author: Arsi
+*
+*/
+
+@define-color base00 #181e14;
+@define-color base01 #252d20;
+@define-color base02 #43493d;
+@define-color base03 #586352;
+@define-color base04 #8d9199;
+@define-color base05 #dce7d2;
+@define-color base06 #edf5e6;
+@define-color base07 #f9fff5;
+@define-color base08 #ffb4ab;
+@define-color base09 #ffdf96;
+@define-color base0A #ffdd93;
+@define-color base0B #ceffac;
+@define-color base0C #c5fff3;
+@define-color base0D #9dcaff;
+@define-color base0E #cfbcff;
+@define-color base0F #fab387;
+@define-color background rgba(24, 30, 20, 0.7);

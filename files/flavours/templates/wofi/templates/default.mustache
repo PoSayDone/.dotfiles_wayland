@@ -1,0 +1,31 @@
+/* base16-wofi (https://sr.ht/~knezi/base16-wofi)
+ * Base16 wofi template by knezi
+ * {{scheme-name}} scheme by {{scheme-author}} */
+
+window {
+	background-color: rgba({{base00-rgb-r}}, {{base00-rgb-g}}, {{base00-rgb-b}}, 0.7);
+	color: #{{base01-hex}};
+}
+
+#entry {
+	color: #{{base05-hex}};
+	background-color: transprent;
+}
+
+#entry:selected {
+	background-color: #{{base0D-hex}};
+}
+
+#entry:selected #text {
+	color: #{{base01-hex}};
+}
+
+#input {
+	background-color: #{{base01-hex}};
+	color: #{{base05-hex}};
+	border-color: #{{base0D-hex}}; 
+}
+
+#input:focus {
+	border-color: #{{base0A-hex}}; 
+

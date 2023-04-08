@@ -1,0 +1,73 @@
+@import url('file:///home/posaydone/.cache/wal/colors.css');
+
+window {
+    margin: 0px;
+    border: 5px solid var(--background);
+    background: rgba (30,30,46,0.7);
+    border-radius: 15px;
+}
+
+#input {
+    margin: 0px;
+    padding: 0;
+    height: 0;
+    display: none;
+}
+
+#input:focus {
+    margin: 0px;
+    padding: 0;
+    height: 0;
+}
+
+#inner-box {
+    margin: 4px;
+    color: #89b4fa;
+    font-weight: 500;
+    background: transparent;
+    border-radius: 15px;
+}
+
+#outer-box {
+    margin: 0px;
+    border: none;
+    border-radius: 15px;
+    background: transparent;
+}
+
+#scroll {
+    margin-top: 5px;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    /* background: rgb(255,255,255); */
+}
+
+#text {
+    color: var(--foreground);
+}
+
+#text:selected {
+    color: #1e1e2e;
+    margin: 0px 0px;
+    border: none;
+    border-radius: 15px;
+}
+
+#img {
+    margin-right: 14px;
+}
+
+#entry {
+    color: var(--foreground);
+    padding: 10px;
+    margin: 0px 8px;
+    border: none;
+    border-radius: 15px;
+}
+
+#entry:selected {
+    border: none;
+    border-radius: 15px;
+    background: #89b4fa;
+}

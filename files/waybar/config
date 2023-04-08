@@ -1,0 +1,170 @@
+// KED'S WAYBAR CONFIG
+// MAIN CONFIG FILE [CONFIG]
+// (C) 2023 Kedislav - File under GNU GPL v3.0
+/////////////////////////////////////////////////////////////////////
+// Scripts and custom modules are saved in the "scripts" directory.
+/////////////////////////////////////////////////////////////////////
+
+{
+    "layer": "top",
+    "position": "top",
+    "height": 48,
+    "margin": "0, 0, 0, 0",
+
+    "modules-left": ["custom/launcher", "wlr/workspaces", "custom/weather"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "backlight", "battery",  "custom/powermenu"],
+
+    // MODULE CONFIG
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["","","","", "", "", ""],
+        "min-length": 7
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "bluetooth": {
+        "format-disabled": "",
+        "format-off": "",
+        "format-on": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias}  {device_battery_percentage}%",
+        "on-click": "connman-gtk",
+        "tooltip": false
+    },
+
+    "clock": {
+        "tooltip": false,
+        "format": "{:%d %b %I:%M}"
+    },
+
+    "clock#calendar": {
+        "tooltip": false,
+        "format": "{:%d %b}"
+    },
+
+    "cpu": {
+        "interval": 30,
+        "format": " {usage}%",
+        "min-length": 7
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": " {percentage_used}%",
+        "path": "/"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "keyboard-state": {
+        //"numlock": true,
+        "capslock": true,
+        "format": "{name} {icon} ",
+        "format-icons": {
+            "locked": " ",
+            "unlocked": ""
+        },
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "min-length": 7
+    },
+
+    "network": {
+        "tooltip": true,
+        "interval": 30,
+	"format": "",
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "tooltip-format": "LINK: {ifname}\nIP: {ipaddr}/{cidr}\nSPEED: {bandwidthTotalBytes}",
+        "on-click": "connman-gtk"
+    },
+    "network#vpn": {
+        "interface": "tun0",
+        "format": ""
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+    "format-bluetooth": " {volume}%",
+    "format-muted": "",
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "",  ""]
+        },
+    "scroll-step": 1,
+    "on-scroll-up": "amixer -q sset Master 1%-",
+    "on-scroll-down": "amixer -q sset Master 1%+"
+    },
+
+    "wlr/workspaces": {
+        "on-click" : "activate",
+        "all-outputs" : true,
+        "disable-scroll" : true,
+        "active-only" : false,
+        "format": "{icon}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": "",
+        },
+    },
+
+    "temperature": {
+	    "tooltip": false,
+	    "interval": 30,
+	    "critical-threshold": 70,
+	    "format": "{icon} {temperatureC}",
+	    "format-icons": ["", "", "", "", ""]
+    },
+
+    // CUSTOM MODULES
+
+     "custom/launcher": {
+        "format": "",
+        "on-click": "wofi",
+        "tooltip": false
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/wttr.py",
+        "return-type": "json"
+    },
+
+    "custom/powermenu": {
+        "format": "",
+        "on-click": "~/.config/wofi/scripts/powermenu.sh &",
+        "on-click-right": "~/.config/wofi/scripts/powermenu.sh &",
+        "tooltip": false
+    },
+}
