@@ -11,9 +11,9 @@
     "height": 48,
     "margin": "0, 0, 0, 0",
 
-    "modules-left": ["custom/launcher", "wlr/workspaces", "custom/weather"],
+    "modules-left": ["custom/launcher", "wlr/workspaces", "custom/weather", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "backlight", "battery",  "custom/powermenu"],
+    "modules-right": ["tray", "pulseaudio", "backlight", "network", "idle_inhibitor", "hyprland/language", "battery", "custom/powermenu"],
 
     // MODULE CONFIG
 
@@ -33,6 +33,19 @@
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "hyprland/window": {
+        "max-length": 50,
+        "format": "{}",
+        "separate-outputs": true
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-ru": "ru",
+        "format-en": "en",
+        "keyboard-name": "logitech-logig-mkeyboard"
     },
 
     "bluetooth": {

@@ -14,14 +14,25 @@
     border: none;
 }
 
-#workspaces {
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
+#workspaces, #window {
     border-radius: 13px;
     margin: 6px 0;
-    margin-left: 8px;
+    margin-left: 6px;
     padding: 0 10px;
-    color: transparent;
+    font-weight: 500;
     background: @base01;
+    transition: all 0.3s ease-out;
+}
+
+#window {
+    padding: 0 12px;
+}
+
+window#waybar.empty #window {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  background: transparent;
 }
 
 #workspaces button {
@@ -30,13 +41,14 @@
     color: @base02;
     background: none;
     border:none;
+    transition: all 0.3s ease-out;
 }
 
 #workspaces button.visible {
 }
 
 #workspaces button.active {
-    color: @base0B;
+    color: @base07;
 }
 
 #workspaces button.urgent * {
@@ -44,19 +56,23 @@
 }
 
 
-#mode, #battery, #bluetooth, #cpu, #disk, #memory, #temperature, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #clock, #temperature {
+#mode, #battery, #bluetooth, #cpu, #disk, #memory, #temperature, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #clock, #temperature, #language {
     margin: 6px 0px;
-    padding: 0 12px;
-    margin-right: 8px;
+    padding: 0 11px;
+    margin-right: 6px;
     border-radius: 13px;
     min-width: 8px;
     background-color: @base01;
     color: @base05;
 }
 
-#backlight {
-    padding: 0 8px;
-  }
+#language {
+    min-width: 16px;
+}
+
+#pulseaudio, #backlight {
+    min-width: 64px;
+}
 
 #clock {
     margin: 6px 0;
@@ -67,7 +83,7 @@
 
 #clock.calendar  {
     margin: 6px 0;
-    margin-left: 8px;
+    margin-left: 6px;
     background-color: @base00;
     color: @base05;
     padding: 0 18px;
@@ -75,9 +91,9 @@
   }
 
 #tray {
-    padding: 0 8px;
+    padding: 0 7px;
     margin: 6px 0;
-    margin-right: 8px;
+    margin-right: 6px;
     border-radius: 13px;
     background-color: @base01;
 }
@@ -85,8 +101,8 @@
 #custom-weather {
     margin: 6px 0;
     border-radius: 13px;
-    margin-left: 8px;
-    padding: 0 10px;
+    margin-left: 6px;
+    padding: 0 20px;
     background-color: @base01;
     color: @base05;
 }
@@ -109,7 +125,7 @@
     font-size: 14px;
     font-weight: 400;
     margin: 6px 12px 6px 0;
-    padding: 0 14px;
+    padding: 0 12px;
     color: @base01;
     background-color: @base08;
     border-radius: 13px;
@@ -123,18 +139,18 @@
     border-radius: 13px;
     min-width: 15px;
     color: @base00;
-    background-color: @base0B;
+    background-color: @base07;
 }
 
 #battery {
     padding: 0 16px;
-    background: @base0B; 
+    background: @base07; 
     color: @base01;
 }
 
 #battery.charging {
     padding: 0 16px;
-    background: @base0B;
+    background: @base07;
     background-size: 400% 400%;
 }
 

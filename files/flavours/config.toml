@@ -18,7 +18,7 @@ template = "wofi"
 rewrite = true
 
 [[item]]
-file = "~/.mozilla/firefox/p107qgqr.default-release/chrome/firefox-gnome-theme/theme/colors/dark.css"
+file = "~/.mozilla/firefox/5tlpb8nt.default-release/chrome/firefox-gnome-theme/theme/colors/dark.css"
 template = "firefox"
 rewrite = true
 
@@ -39,3 +39,32 @@ rewrite = true
 file = "~/.vscode/extensions/golf1052.base16-generator-1.19.1/themes/base16-materialyou-dark.json"
 rewrite = true
 template = "vscode"
+
+[[items]]
+file = "~/.config/JetBrains/Rider2023.1/colors/base16-custom.icls"
+rewrite = true
+template = "jetbrains"
+
+[[item]]
+file = "~/.config/discord-screenaudio/userstyles.css"
+template = "styles"
+subtemplate = "css-variables"
+rewrite = false
+start= "/* Start flavours */"
+end = "/* End flavours */"
+
+[[item]]
+file = "~/.config/swaync/colors.css"
+template = "swaync"
+rewrite = true
+
+[[item]]
+file = "~/.config/rofi/themes/colors.rasi"
+template = "rofi"
+subtemplate = "colors"
+rewrite = true
+
+[[item]]
+file = "~/.local/bin/lockscreen"
+template = "waylock"
+rewrite = true

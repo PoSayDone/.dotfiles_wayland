@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## Author : Aditya Shakya (adi1090x)
+## Github : @adi1090x
+
+DIR="$HOME/.config"
+
+## Run
+rofi \
+    -show drun \
+    -theme $DIR/rofi/themes/default.rasi

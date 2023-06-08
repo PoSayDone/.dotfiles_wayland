@@ -1,0 +1,41 @@
+/* Confirm Dialog */
+
+@import "colors.rasi"
+
+* {
+    background-color: #00000000;
+    text-color: @foreground;
+    font: "Product Sans Medium 11";
+}
+
+window {
+    background-color: @background;
+    width: 225px;
+    padding: 25px;
+    border: 0px;
+    border-radius: 0px;
+    border-color: none;
+    location: center;
+    y-offset: -20px;
+}
+
+entry {
+    expand: true;
+    text-color: @foreground;
+}
+
+element {
+    background-color: #00000000;
+    text-color: @foreground;
+    orientation: vertical;
+    border-radius: 10px;
+}
+
+element-text {
+    background-color: #00000000;
+    expand: true;
+    horizontal-align: 0.5;
+    vertical-align: 0;
+    margin: 17px 10px 26px 10px;
+}
+

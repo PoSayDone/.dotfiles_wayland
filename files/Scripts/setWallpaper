@@ -1,0 +1,5 @@
+DIR="$(cd "$(dirname -- "$1")" >/dev/null; pwd -P)/$(basename -- "$1")"
+echo -ne "preload=$DIR\nwallpaper=,$DIR" > ~/.config/hypr/hyprpaper.conf
+killall hyprpaper
+sleep 0.1
+hyprpaper & disown
