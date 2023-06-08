@@ -1,0 +1,39 @@
+xdg_open = false
+use_trash = false
+
+[display]
+# default, hsplit
+mode = "default"
+
+automatically_count_files = false
+collapse_preview = false
+# ratios for parent view, current view and preview
+column_ratio = [2, 4, 4]
+scroll_offset = 8
+show_borders = true
+show_hidden = false
+show_icons = true
+show_preview = true
+tilde_in_titlebar = true
+# none, absolute, relative
+line_number_style = "absolute"
+
+[display.sort]
+# lexical, mtime, natural
+method = "natural"
+case_sensitive = false
+directories_first = true
+reverse = false
+
+[preview]
+max_preview_size = 50000097152
+preview_script = "~/.config/joshuto/preview.sh"
+#preview_script = "~/sandbox/joshuto/config/preview_file.sh"
+# preview_shown_hook_script = "~/.config/joshuto/on_preview_shown_thumb"
+# preview_removed_hook_script = "~/.config/joshuto/on_preview_removed"
+preview_shown_hook_script = "~/.config/joshuto/icat_show"
+preview_removed_hook_script = "~/.config/joshuto/icat_remove"
+
+[tab]
+# inherit, home, root
+home_page = "home"
