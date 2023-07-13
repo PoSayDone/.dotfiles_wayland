@@ -1,3 +1,0 @@
-#!/bin/zsh
-randomwp=$(find $HOME/.config/hypr/wallpapers | shuf -n 1)
-setThemeAndWallpaper $randomwp

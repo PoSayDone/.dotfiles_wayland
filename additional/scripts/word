@@ -1,0 +1,12 @@
+#!/bin/bash
+Filename="z:${1//\//\\}"
+# Filename='"'$Filename'"'
+# you can just leave this line, the triple quoting is unnecessary anyway
+if [ "$Filename" = "z:" ]
+then
+    /usr/share/playonlinux4/playonlinux --run "Microsoft Word 2010"  # it's better to quote variables containing strings
+else
+    /usr/share/playonlinux4/playonlinux --run "Microsoft Word 2010" "$Filename" # it's better to quote variables containing strings
+fi
+
+echo "$Filename" # the same here

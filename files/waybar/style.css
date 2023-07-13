@@ -21,6 +21,7 @@
     padding: 0 10px;
     font-weight: 500;
     background: @base01;
+    color: @base05;
     transition: all 0.3s ease-out;
 }
 
@@ -56,7 +57,7 @@ window#waybar.empty #window {
 }
 
 
-#mode, #battery, #bluetooth, #cpu, #disk, #memory, #temperature, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #clock, #temperature, #language {
+#mode, #battery, #bluetooth, #cpu, #disk, #memory, #temperature, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #clock, #temperature, #language, #custom-notification {
     margin: 6px 0px;
     padding: 0 11px;
     margin-right: 6px;
@@ -154,7 +155,6 @@ window#waybar.empty #window {
     background-size: 400% 400%;
 }
 
-
 #battery.warning {
     background-color: @base09;
 } 
@@ -165,4 +165,15 @@ window#waybar.empty #window {
 
 #temperature.critical {
     color: @base08;
+}
+
+tooltip {
+     border-radius: 20px;
+     background-color: @base00;
+}
+
+tooltip * {
+    color: @base05;
+    font-size: 16px;
+    padding: 12px;
 }

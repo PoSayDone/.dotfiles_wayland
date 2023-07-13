@@ -1,5 +1,5 @@
-xdg_open = false
-use_trash = false
+xdg_open = true
+use_trash = true
 
 [display]
 # default, hsplit
@@ -10,7 +10,7 @@ collapse_preview = false
 # ratios for parent view, current view and preview
 column_ratio = [2, 4, 4]
 scroll_offset = 8
-show_borders = true
+show_borders = false
 show_hidden = false
 show_icons = true
 show_preview = true

@@ -1,0 +1,36 @@
+.notification-popup {
+    min-width: 340px;
+}
+
+.notification {
+    
+    color: $fg_color;
+    background-color: $bg2_color;
+    border-radius: 22px;
+    margin-bottom: 4px;
+    padding: 20px;
+
+    .icon {
+        margin-right: 16px;
+    }
+
+    .title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .time {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .description {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .action-button {
+        margin-top: 14px;
+    }
+}

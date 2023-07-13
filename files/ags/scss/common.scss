@@ -1,0 +1,74 @@
+@mixin bar_block($colorful: false) {
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 100px;
+
+    @if $colorful {
+        color: $bg2_color;
+        background-color: $accent;
+        &:hover {
+            background-color: transparentize($accent, 0.34);
+        };
+    }
+
+    @if not($colorful) {
+        color: $fg_color;
+        background-color: $bg2_color;
+        &:hover {
+            background-color: $bg_color;
+        };
+    }
+}
+
+@mixin slider($width: .4em, $slider_width: 0, $color: $accent, $slider: true, $focusable: true) {
+    
+    trough {
+        transition: $transition;
+        border-radius: 100px;
+        background-color: $bg2_color;
+        min-height: 42px;
+        min-width: 42px;
+
+        highlight,
+        progress {
+            border-radius: 100px;
+            background-color: $color;
+            min-height: $width;
+            min-width: 42px;
+
+            @if $slider {
+                border-radius: 100px;
+            }
+        }
+
+        slider {
+            @if $slider {
+                background-color: transparent;
+                border-radius: 100px;
+                min-height: 42px;
+                min-width: 42px;
+            }
+        }
+    }
+
+    &:hover {
+        trough {
+            background-color: transparentize($bg2_color, 0.4);
+        }
+    }
+
+    &:disabled {
+        highlight,
+        progress {
+            background: transparentize($color, 0.5);
+        }
+
+        slider {
+            background-color: transparentize($fg_color, 0.5);
+        }
+    }
+}
+
+.separator {
+    min-width: 8px;
+    min-height: 8px;
+}

@@ -13,7 +13,7 @@
 
     "modules-left": ["custom/launcher", "wlr/workspaces", "custom/weather", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "backlight", "network", "idle_inhibitor", "hyprland/language", "battery", "custom/powermenu"],
+    "modules-right": ["tray", "pulseaudio", "backlight", "custom/notification", "network", "idle_inhibitor", "hyprland/language", "battery", "custom/powermenu"],
 
     // MODULE CONFIG
 
@@ -21,6 +21,27 @@
         "format": "{icon} {percent}%",
         "format-icons": ["","","","", "", "", ""],
         "min-length": 7
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
 
     "battery": {
@@ -36,7 +57,7 @@
     },
 
     "hyprland/window": {
-        "max-length": 50,
+        "max-length": 40,
         "format": "{}",
         "separate-outputs": true
     },
@@ -130,9 +151,9 @@
         "phone": "",
         "portable": "",
         "car": "",
-        "default": ["", "",  ""]
+        "default": ["", "", ""]
         },
-    "scroll-step": 1,
+    "scroll-step": 3,
     "on-scroll-up": "amixer -q sset Master 1%-",
     "on-scroll-down": "amixer -q sset Master 1%+"
     },
@@ -162,7 +183,7 @@
 
      "custom/launcher": {
         "format": "",
-        "on-click": "wofi",
+        "on-click": "~/.config/rofi/bin/launcher &",
         "tooltip": false
     },
 
@@ -176,8 +197,8 @@
 
     "custom/powermenu": {
         "format": "",
-        "on-click": "~/.config/wofi/scripts/powermenu.sh &",
-        "on-click-right": "~/.config/wofi/scripts/powermenu.sh &",
+        "on-click": "~/.config/rofi/bin/powermenu &",
+        "on-click-right": "~/.config/rofi/bin/powermenu &",
         "tooltip": false
     },
 }

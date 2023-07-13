@@ -1,0 +1,65 @@
+.quicksettings__container {
+    background-color: transparentize($bg_color, 0.4);
+    padding: 20px;
+    border-radius: 40px;
+}
+
+.quicksettings__button {
+    background-color: $bg2_color;
+    color: $fg_color;
+    padding: 0px;
+    border-radius: 30px;
+    min-width: 225px;
+    min-height: 75px;
+    transition: background-color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+
+    &.on {
+        background-color: $accent;
+        color: $bg2_color;
+    }
+
+    button {
+        background-color: transparentize($fg_color, 0.5);
+        border-radius: 100px;
+        padding: 0px;
+        margin: 0px;
+        margin-right: 16px;
+        min-height: 36px;
+        min-width: 36px;
+
+        icon {
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+}
+
+.quicksettings__button_icon {
+    margin-left: 24px;
+    margin-right: 18px;
+}
+
+@mixin sliders() {
+    image {
+        color: $fg_color;
+        background-color: $bg2_color;
+        padding: 0;
+        border-radius: 100px;
+        min-height: 42px;
+        min-width: 42px;
+    }
+
+    scale {
+        margin: 0 8px;
+        @include slider($width: .3em, $slider_width: .5em);
+    }
+
+    .percent {
+        min-width: 2.8em;
+    }
+}
+
+.sliders {
+    @include sliders;
+}

@@ -1,0 +1,120 @@
+.bar {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.bar__container {
+    background-color: transparentize($bg_color, 0.4);
+    margin: 0;
+    padding: 8px 12px;
+}
+
+.workspaces,
+.clock,
+.keyboardlayout,
+.bar__quicksettings,
+.notifications-indicator {
+    @include bar_block(false);
+}
+
+.battery,
+.launcher {
+    @include bar_block(true);
+
+}
+
+.launcher {
+    padding: 0;
+    margin: 0;
+    min-width: 42px;
+    min-height: 42px;
+
+    .launcher__icon {
+        background-color: $bg2_color;
+        min-width: 14px;
+        min-height: 14px;
+        border-radius: 100%;
+    }
+}
+
+.workspaces button {
+    .indicator {
+        min-width: 14px;
+        min-height: 14px;
+        border-radius: 100%;
+        margin: 0 5px;
+        padding: 0;
+        transition: background-color 0.3s ease-out;
+    }
+
+    &:last-child .indicator {
+        margin-right: 14px
+    }
+
+    &:first-child .indicator {
+        margin-left: 14px
+    }
+
+    &.empty .indicator {
+        background-color: $bg3_color;
+    }
+
+    &.occupied .indicator {
+        background-color: $bg3_color;
+    }
+
+    &:hover .indicator {
+        background-color: transparentize($accent, 0.4);
+    }
+
+    &.active .indicator,
+    &:active .indicator {
+        background-color: $accent;
+    }
+}
+
+.clock {
+    padding: 0 18px;
+}
+
+.keyboardlayout {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    min-width: 42px;
+    min-height: 42px;
+}
+
+.bar__quicksettings {
+    padding: 0 18px;
+    min-width: 0;
+    border-radius: 100px;
+
+    * {
+        .device {
+            margin-right: 8px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+    }
+}
+
+.battery {
+    padding: 0 12px;
+    min-width: 0;
+
+    label {
+        font-weight: 700;
+    }
+}
+
+.notifications-indicator {
+    padding: 0px 12px;
+    label {
+        margin-left: 5px;
+    }
+}

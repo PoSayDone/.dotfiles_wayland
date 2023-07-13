@@ -1,0 +1,3 @@
+#!/bin/zsh
+randomwp=$(find $HOME/.config/hypr/wallpapers | shuf -n 1)
+python $HOME/Scripts/setThemeAndWallpaper $randomwp

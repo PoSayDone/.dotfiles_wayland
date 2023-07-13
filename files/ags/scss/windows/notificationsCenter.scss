@@ -1,0 +1,33 @@
+.notifications-center {
+    background-color: transparentize($bg_color, 0.4);
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.notifications-center__list {
+    border-radius: 30px;
+    min-width: 340px;
+    min-height: 374px;
+}
+
+.notifications-center__header {
+    margin-bottom: 10px;
+}
+
+.notifications-center__header_clear-button {
+    padding: 10px 14px;
+    border-radius: 100px;
+    background-color: $bg2_color;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.notifications-center__header_dnd-button {
+    padding: 0;
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 100px;
+    background-color: $bg2_color;
+    margin-top: 5px;
+    margin-left: 5px;
+}

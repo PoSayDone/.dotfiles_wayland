@@ -5,15 +5,15 @@
 * {
     background-color: #00000000;
     text-color: @foreground;
-    font: "Product Sans Medium 11";
+    font: "Product Sans Medium 12";
 }
 
 window {
     background-color: @background;
-    width: 225px;
-    padding: 25px;
+    width: 300px;
+    padding: 30px;
     border: 0px;
-    border-radius: 0px;
+    border-radius: 20px;
     border-color: none;
     location: center;
     y-offset: -20px;
