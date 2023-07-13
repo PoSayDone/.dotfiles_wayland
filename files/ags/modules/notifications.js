@@ -84,7 +84,7 @@ const createNotification = ({ id, summary, body, actions, urgency, ...icon }) =>
                                         xalign: 0,
                                         justify: 'left',
                                         type: 'label',
-                                        label: body.replace(/(.{24})/g, '$1 ').trim(),
+                                        label: body.length > 140 ? body.substring(0, 140) + "..." : body,
                                         wrap: true,
                                     },
                                 ],

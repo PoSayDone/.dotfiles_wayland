@@ -48,7 +48,7 @@ const layouts = {
                 type: 'box',
                 orientation: 'vertical',
                 children: [
-                    revealer(windowName, 'slide_down', child),
+                    revealer(windowName, 'crossfade', child),
                     padding(windowName),
                 ],
             },

@@ -38,12 +38,15 @@ var quicksettingsWindow = {
 }
 
 var notificationsCenter = {
-    name: `notificationsCenter`,
-    anchor: ['top'],
-    margin: [12, 0],
-    layer: 'overlay',
+    name: 'notificationsCenter',
     popup: true,
-    child: imports.widgets.notificationsCenter.notificationsCenterContainer,
+    anchor: ['top', 'right', 'bottom', 'left'],
+    child: {
+        type: 'layout',
+        layout: 'top',
+        window: 'notificationsCenter',
+        child: imports.widgets.notificationsCenter.notificationsCenterContainer,
+    },
 }
 
 monitors.forEach(element => {
