@@ -191,6 +191,18 @@ var quicksettingsContainer = {
             separator,
             {
                 type: 'box',
+                children: [
+                    {
+                        type: 'media/popup-content',
+                        className: 'media',
+                        orientation: 'vertical',
+                        hexpand: true,
+                    },
+                ]
+            },
+            separator,
+            {
+                type: 'box',
                 orientation: 'vertical',
                 className: 'sliders',
                 children: [

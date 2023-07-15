@@ -16,7 +16,7 @@
   padding: 0; }
 
 .bar__container {
-  background-color: rgba(31, 27, 22, 0.6);
+  background-color: rgba(26, 28, 30, 0.6);
   margin: 0;
   padding: 8px 12px; }
 
@@ -27,24 +27,24 @@
 .notifications-indicator {
   transition: background-color 0.3s ease-in-out;
   border-radius: 100px;
-  color: #ebe1d9;
-  background-color: #17130e; }
+  color: #e2e2e5;
+  background-color: #111416; }
   .workspaces:hover,
   .clock:hover,
   .keyboardlayout:hover,
   .bar__quicksettings:hover,
   .notifications-indicator:hover {
-    background-color: #1f1b16; }
+    background-color: #1a1c1e; }
 
 .battery,
 .launcher {
   transition: background-color 0.3s ease-in-out;
   border-radius: 100px;
-  color: #17130e;
-  background-color: #ffb85d; }
+  color: #111416;
+  background-color: #86ceff; }
   .battery:hover,
   .launcher:hover {
-    background-color: rgba(255, 184, 93, 0.66); }
+    background-color: rgba(134, 206, 255, 0.66); }
 
 .launcher {
   padding: 0;
@@ -52,7 +52,7 @@
   min-width: 42px;
   min-height: 42px; }
   .launcher .launcher__icon {
-    background-color: #17130e;
+    background-color: #111416;
     min-width: 14px;
     min-height: 14px;
     border-radius: 100%; }
@@ -72,16 +72,16 @@
   margin-left: 14px; }
 
 .workspaces button.empty .indicator {
-  background-color: #50453a; }
+  background-color: #41484e; }
 
 .workspaces button.occupied .indicator {
-  background-color: #50453a; }
+  background-color: #41484e; }
 
 .workspaces button:hover .indicator {
-  background-color: rgba(255, 184, 93, 0.6); }
+  background-color: rgba(134, 206, 255, 0.6); }
 
 .workspaces button.active .indicator, .workspaces button:active .indicator {
-  background-color: #ffb85d; }
+  background-color: #86ceff; }
 
 .clock {
   padding: 0 18px; }
@@ -115,13 +115,13 @@
     margin-left: 5px; }
 
 .quicksettings__container {
-  background-color: rgba(31, 27, 22, 0.6);
+  background-color: rgba(26, 28, 30, 0.6);
   padding: 20px;
   border-radius: 40px; }
 
 .quicksettings__button {
-  background-color: #17130e;
-  color: #ebe1d9;
+  background-color: #111416;
+  color: #e2e2e5;
   padding: 0px;
   border-radius: 30px;
   min-width: 225px;
@@ -129,10 +129,10 @@
   transition: background-color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out; }
   .quicksettings__button.on {
-    background-color: #ffb85d;
-    color: #17130e; }
+    background-color: #86ceff;
+    color: #111416; }
   .quicksettings__button button {
-    background-color: rgba(235, 225, 217, 0.5);
+    background-color: rgba(226, 226, 229, 0.5);
     border-radius: 100px;
     padding: 0px;
     margin: 0px;
@@ -148,8 +148,8 @@
   margin-right: 18px; }
 
 .sliders image {
-  color: #ebe1d9;
-  background-color: #17130e;
+  color: #e2e2e5;
+  background-color: #111416;
   padding: 0;
   border-radius: 100px;
   min-height: 42px;
@@ -160,13 +160,13 @@
   .sliders scale trough {
     transition: 250ms;
     border-radius: 100px;
-    background-color: #17130e;
+    background-color: #111416;
     min-height: 42px;
     min-width: 42px; }
     .sliders scale trough highlight,
     .sliders scale trough progress {
       border-radius: 100px;
-      background-color: #ffb85d;
+      background-color: #86ceff;
       min-height: 0.3em;
       min-width: 42px;
       border-radius: 100px; }
@@ -176,22 +176,67 @@
       min-height: 42px;
       min-width: 42px; }
   .sliders scale:hover trough {
-    background-color: rgba(23, 19, 14, 0.6); }
+    background-color: rgba(17, 20, 22, 0.6); }
   .sliders scale:disabled highlight,
   .sliders scale:disabled progress {
-    background: rgba(255, 184, 93, 0.5); }
+    background: rgba(134, 206, 255, 0.5); }
   .sliders scale:disabled slider {
-    background-color: rgba(235, 225, 217, 0.5); }
+    background-color: rgba(226, 226, 229, 0.5); }
 
 .sliders .percent {
   min-width: 2.8em; }
+
+.cover-art {
+  margin: 10px 0;
+  min-height: 205px;
+  border-radius: 30px;
+  background-size: cover;
+  transition: all 0.3s; }
+  .cover-art .footerbox image {
+    margin: 0px 8px; }
+
+.shader {
+  padding: 20px; }
+
+.title-box .title {
+  font-weight: 600;
+  font-size: 19px; }
+
+.title-box .artist {
+  font-weight: 400;
+  font-size: 17px; }
+
+.play-pause {
+  min-width: 60px;
+  min-height: 60px;
+  border-radius: 20px;
+  padding: 0;
+  transition: all 0.3s; }
+
+.position-slider {
+  margin: 0 18px; }
+  .position-slider trough {
+    transition: 250ms;
+    border-radius: 100px;
+    background-color: rgba(226, 226, 229, 0.5);
+    min-height: 6px; }
+    .position-slider trough highlight,
+    .position-slider trough progress {
+      border-radius: 100px;
+      background-color: #e2e2e5;
+      border-radius: 100px; }
+    .position-slider trough slider {
+      border-radius: 100px;
+      min-height: 6px;
+      min-width: 6px;
+      background-color: #e2e2e5; }
 
 .notification-popup {
   min-width: 340px; }
 
 .notification {
-  color: #ebe1d9;
-  background-color: #17130e;
+  color: #e2e2e5;
+  background-color: #111416;
   border-radius: 22px;
   margin-bottom: 4px;
   padding: 20px; }
@@ -211,7 +256,7 @@
     margin-top: 14px; }
 
 .notifications-center {
-  background-color: rgba(31, 27, 22, 0.6);
+  background-color: rgba(26, 28, 30, 0.6);
   border-radius: 30px;
   padding: 10px; }
 
@@ -226,7 +271,7 @@
 .notifications-center__header_clear-button {
   padding: 10px 14px;
   border-radius: 100px;
-  background-color: #17130e;
+  background-color: #111416;
   margin-top: 5px;
   margin-right: 5px; }
 
@@ -235,6 +280,24 @@
   min-width: 38px;
   min-height: 38px;
   border-radius: 100px;
-  background-color: #17130e;
+  background-color: #111416;
   margin-top: 5px;
   margin-left: 5px; }
+
+window.indicator .indicator {
+  padding: 0px;
+  border-radius: 100px;
+  background-color: rgba(26, 28, 30, 0.6);
+  min-width: 70px;
+  margin-right: 12px; }
+  window.indicator .indicator .fill {
+    border-radius: 100px;
+    background-color: #86ceff;
+    color: #1a1c1e;
+    min-width: 60px; }
+    window.indicator .indicator .fill image {
+      margin-top: 20px;
+      -gtk-icon-transform: scale(1); }
+    window.indicator .indicator .fill label {
+      margin: 3px;
+      font-size: 12px; }

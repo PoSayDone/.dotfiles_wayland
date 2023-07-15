@@ -3,6 +3,15 @@ const { Hyprland } = ags.Service;
 var windows = [];
 const monitors = Hyprland.HyprctlGet('monitors')
 
+const indicator = monitor => ({
+    monitor,
+    name: `indicator${monitor}`,
+    className: 'indicator',
+    layer: 'overlay',
+    anchor: ['right'],
+    child: { type: 'on-screen-indicator/vertical' },
+});
+
 const createBar = (id) => {
     return {
         name: `bar${id}`,
@@ -49,9 +58,11 @@ var notificationsCenter = {
     },
 }
 
+
 monitors.forEach(element => {
     windows.push(createBar(element.id))
     windows.push(createNotifications(element.id))
+    windows.push(indicator(element.id))
 });
 
 windows.push(quicksettingsWindow)

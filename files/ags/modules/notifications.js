@@ -73,7 +73,7 @@ const createNotification = ({ id, summary, body, actions, urgency, ...icon }) =>
                                                 type: 'label',
                                                 maxWidth: 24,
                                                 wrap: true,
-                                                label: summary,
+                                                label: summary.length > 55 ? summary.substring(0, 55) + "..." : summary,
                                             },
                                         ],
                                     },
