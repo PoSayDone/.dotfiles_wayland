@@ -11,7 +11,7 @@
 
 <h2>Used stuff</h2>
 
-<img src="https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/d4e66b8a-cc0e-4700-8e7a-f8a0bfd024d3" width=450 align="right">
+<img src="https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/d4e66b8a-cc0e-4700-8e7a-f8a0bfd024d3" width=350 align="right">
 
 
 | task              | name                   |
