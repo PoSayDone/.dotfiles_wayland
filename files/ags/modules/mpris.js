@@ -1,6 +1,7 @@
 const { Widget, Utils } = ags;
 const { CONFIG_DIR, exec, execAsync, timeout } = ags.Utils;
 const { Mpris } = ags.Service;
+const { CoverColors } = imports.services.colorsService;
 
 Widget.widgets['mpris/box'] = ({ player, ...props }) => {
     const box = Widget({
@@ -48,7 +49,8 @@ Widget.widgets['mpris/artist-label'] = ({ player, ...props }) => Widget({
     ...props,
     type: 'label',
     connections: [[Mpris, label => {
-        label.label = Mpris.getPlayer(player)?.trackArtists.join(', ') || '';
+        body = Mpris.getPlayer(player)?.trackArtists.join(', ') || '';
+        label.label = body.length > 40 ? body.substring(0, 40) + "..." : body;
     }]],
 });
 
@@ -64,7 +66,7 @@ Widget.widgets['mpris/player-icon'] = ({ symbolic = false, player, ...props }) =
     ...props,
     type: 'icon',
     connections: [[Mpris, icon => {
-        const name = `${Mpris.getPlayer(player)?.entry}`;
+        const name = `${Mpris.getPlayer(player)?.entry}${symbolic ? '-symbolic' : ''}`;
         Utils.lookUpIcon(name)
             ? icon.icon_name = name
             : icon.icon_name = 'audio-x-generic-symbolic';

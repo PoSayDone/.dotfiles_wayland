@@ -28,7 +28,7 @@
   transition: background-color 0.3s ease-in-out;
   border-radius: 100px;
   color: #e2e2e5;
-  background-color: #111416; }
+  background-color: #111316; }
   .workspaces:hover,
   .clock:hover,
   .keyboardlayout:hover,
@@ -40,11 +40,11 @@
 .launcher {
   transition: background-color 0.3s ease-in-out;
   border-radius: 100px;
-  color: #111416;
-  background-color: #86ceff; }
+  color: #111316;
+  background-color: #96ccff; }
   .battery:hover,
   .launcher:hover {
-    background-color: rgba(134, 206, 255, 0.66); }
+    background-color: rgba(150, 204, 255, 0.66); }
 
 .launcher {
   padding: 0;
@@ -52,7 +52,7 @@
   min-width: 42px;
   min-height: 42px; }
   .launcher .launcher__icon {
-    background-color: #111416;
+    background-color: #111316;
     min-width: 14px;
     min-height: 14px;
     border-radius: 100%; }
@@ -72,16 +72,16 @@
   margin-left: 14px; }
 
 .workspaces button.empty .indicator {
-  background-color: #41484e; }
+  background-color: #42474d; }
 
 .workspaces button.occupied .indicator {
-  background-color: #41484e; }
+  background-color: #42474d; }
 
 .workspaces button:hover .indicator {
-  background-color: rgba(134, 206, 255, 0.6); }
+  background-color: rgba(150, 204, 255, 0.6); }
 
 .workspaces button.active .indicator, .workspaces button:active .indicator {
-  background-color: #86ceff; }
+  background-color: #96ccff; }
 
 .clock {
   padding: 0 18px; }
@@ -120,7 +120,7 @@
   border-radius: 40px; }
 
 .quicksettings__button {
-  background-color: #111416;
+  background-color: #111316;
   color: #e2e2e5;
   padding: 0px;
   border-radius: 30px;
@@ -129,8 +129,8 @@
   transition: background-color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out; }
   .quicksettings__button.on {
-    background-color: #86ceff;
-    color: #111416; }
+    background-color: #96ccff;
+    color: #111316; }
   .quicksettings__button button {
     background-color: rgba(226, 226, 229, 0.5);
     border-radius: 100px;
@@ -149,7 +149,7 @@
 
 .sliders image {
   color: #e2e2e5;
-  background-color: #111416;
+  background-color: #111316;
   padding: 0;
   border-radius: 100px;
   min-height: 42px;
@@ -160,13 +160,13 @@
   .sliders scale trough {
     transition: 250ms;
     border-radius: 100px;
-    background-color: #111416;
+    background-color: #111316;
     min-height: 42px;
     min-width: 42px; }
     .sliders scale trough highlight,
     .sliders scale trough progress {
       border-radius: 100px;
-      background-color: #86ceff;
+      background-color: #96ccff;
       min-height: 0.3em;
       min-width: 42px;
       border-radius: 100px; }
@@ -176,10 +176,10 @@
       min-height: 42px;
       min-width: 42px; }
   .sliders scale:hover trough {
-    background-color: rgba(17, 20, 22, 0.6); }
+    background-color: rgba(17, 19, 22, 0.6); }
   .sliders scale:disabled highlight,
   .sliders scale:disabled progress {
-    background: rgba(134, 206, 255, 0.5); }
+    background: rgba(150, 204, 255, 0.5); }
   .sliders scale:disabled slider {
     background-color: rgba(226, 226, 229, 0.5); }
 
@@ -191,9 +191,11 @@
   min-height: 205px;
   border-radius: 30px;
   background-size: cover;
-  transition: all 0.3s; }
-  .cover-art .footerbox image {
-    margin: 0px 8px; }
+  transition: all 0.2s; }
+  .cover-art .footerbox .previous {
+    margin-right: 16px; }
+  .cover-art .footerbox .next, .cover-art .footerbox .shuffle, .cover-art .footerbox .loop {
+    margin-left: 16px; }
 
 .shader {
   padding: 20px; }
@@ -213,30 +215,28 @@
   padding: 0;
   transition: all 0.3s; }
 
-.position-slider {
-  margin: 0 18px; }
-  .position-slider trough {
-    transition: 250ms;
+.position-slider trough {
+  transition: 250ms;
+  border-radius: 100px;
+  background-color: rgba(226, 226, 229, 0.5);
+  min-height: 4px; }
+  .position-slider trough highlight,
+  .position-slider trough progress {
     border-radius: 100px;
-    background-color: rgba(226, 226, 229, 0.5);
-    min-height: 6px; }
-    .position-slider trough highlight,
-    .position-slider trough progress {
-      border-radius: 100px;
-      background-color: #e2e2e5;
-      border-radius: 100px; }
-    .position-slider trough slider {
-      border-radius: 100px;
-      min-height: 6px;
-      min-width: 6px;
-      background-color: #e2e2e5; }
+    background-color: #e2e2e5;
+    border-radius: 100px; }
+  .position-slider trough slider {
+    border-radius: 100px;
+    min-height: 4px;
+    min-width: 4px;
+    background-color: #e2e2e5; }
 
 .notification-popup {
   min-width: 340px; }
 
 .notification {
   color: #e2e2e5;
-  background-color: #111416;
+  background-color: #111316;
   border-radius: 22px;
   margin-bottom: 4px;
   padding: 20px; }
@@ -271,7 +271,7 @@
 .notifications-center__header_clear-button {
   padding: 10px 14px;
   border-radius: 100px;
-  background-color: #111416;
+  background-color: #111316;
   margin-top: 5px;
   margin-right: 5px; }
 
@@ -280,7 +280,7 @@
   min-width: 38px;
   min-height: 38px;
   border-radius: 100px;
-  background-color: #111416;
+  background-color: #111316;
   margin-top: 5px;
   margin-left: 5px; }
 
@@ -292,7 +292,7 @@ window.indicator .indicator {
   margin-right: 12px; }
   window.indicator .indicator .fill {
     border-radius: 100px;
-    background-color: #86ceff;
+    background-color: #96ccff;
     color: #1a1c1e;
     min-width: 60px; }
     window.indicator .indicator .fill image {

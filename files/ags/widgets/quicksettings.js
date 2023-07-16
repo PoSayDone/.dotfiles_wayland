@@ -1,6 +1,7 @@
 const { Widget } = ags;
 const { Network, Bluetooth, Battery, Audio, System } = ags.Service;
 const { runCmd, execAsync } = ags.Utils;
+const { getColors } = imports.modules.mpris;
 const { separator } = imports.modules.separator;
 
 const slider = ({ icon, slider, arrowCmd }) => ({

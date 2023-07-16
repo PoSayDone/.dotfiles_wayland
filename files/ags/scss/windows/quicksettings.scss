@@ -69,11 +69,14 @@
     min-height: 205px;
     border-radius: 30px;
     background-size: cover;
-    transition: all 0.3s;
+    transition: all 0.2s;
 
     .footerbox {
-        image {
-            margin: 0px 8px;
+        .previous {
+            margin-right: 16px;
+        }
+        .next, .shuffle, .loop {
+            margin-left: 16px;
         }
     }
 }
@@ -104,13 +107,13 @@
 }
 
 .position-slider {
-    margin: 0 18px;
+    // margin: 0 18px;
 
     trough {
         transition: $transition;
         border-radius: 100px;
         background-color: transparentize($fg_color, 0.5);
-        min-height: 6px;
+        min-height: 4px;
 
         highlight,
         progress {
@@ -121,8 +124,8 @@
 
         slider {
             border-radius: 100px;
-            min-height: 6px;
-            min-width: 6px;
+            min-height: 4px;
+            min-width: 4px;
             background-color: $fg_color;
         }
     }
