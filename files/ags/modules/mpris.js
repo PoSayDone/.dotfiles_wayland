@@ -1,7 +1,6 @@
 const { Widget, Utils } = ags;
 const { CONFIG_DIR, exec, execAsync, timeout } = ags.Utils;
 const { Mpris } = ags.Service;
-const { CoverColors } = imports.services.colorsService;
 
 Widget.widgets['mpris/box'] = ({ player, ...props }) => {
     const box = Widget({

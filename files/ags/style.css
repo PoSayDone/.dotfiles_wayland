@@ -16,7 +16,7 @@
   padding: 0; }
 
 .bar__container {
-  background-color: rgba(26, 28, 30, 0.6);
+  background-color: rgba(27, 27, 27, 0.6);
   margin: 0;
   padding: 8px 12px; }
 
@@ -27,24 +27,24 @@
 .notifications-indicator {
   transition: background-color 0.3s ease-in-out;
   border-radius: 100px;
-  color: #e2e2e5;
+  color: #e2e2e6;
   background-color: #111316; }
   .workspaces:hover,
   .clock:hover,
   .keyboardlayout:hover,
   .bar__quicksettings:hover,
   .notifications-indicator:hover {
-    background-color: #1a1c1e; }
+    background-color: #1b1b1b; }
 
 .battery,
 .launcher {
   transition: background-color 0.3s ease-in-out;
   border-radius: 100px;
   color: #111316;
-  background-color: #96ccff; }
+  background-color: #9bcaff; }
   .battery:hover,
   .launcher:hover {
-    background-color: rgba(150, 204, 255, 0.66); }
+    background-color: rgba(155, 202, 255, 0.66); }
 
 .launcher {
   padding: 0;
@@ -72,16 +72,16 @@
   margin-left: 14px; }
 
 .workspaces button.empty .indicator {
-  background-color: #42474d; }
+  background-color: #42474e; }
 
 .workspaces button.occupied .indicator {
-  background-color: #42474d; }
+  background-color: #42474e; }
 
 .workspaces button:hover .indicator {
-  background-color: rgba(150, 204, 255, 0.6); }
+  background-color: rgba(155, 202, 255, 0.6); }
 
 .workspaces button.active .indicator, .workspaces button:active .indicator {
-  background-color: #96ccff; }
+  background-color: #9bcaff; }
 
 .clock {
   padding: 0 18px; }
@@ -115,13 +115,13 @@
     margin-left: 5px; }
 
 .quicksettings__container {
-  background-color: rgba(26, 28, 30, 0.6);
+  background-color: rgba(27, 27, 27, 0.6);
   padding: 20px;
   border-radius: 40px; }
 
 .quicksettings__button {
   background-color: #111316;
-  color: #e2e2e5;
+  color: #e2e2e6;
   padding: 0px;
   border-radius: 30px;
   min-width: 225px;
@@ -129,10 +129,10 @@
   transition: background-color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out; }
   .quicksettings__button.on {
-    background-color: #96ccff;
+    background-color: #9bcaff;
     color: #111316; }
   .quicksettings__button button {
-    background-color: rgba(226, 226, 229, 0.5);
+    background-color: rgba(226, 226, 230, 0.5);
     border-radius: 100px;
     padding: 0px;
     margin: 0px;
@@ -148,7 +148,7 @@
   margin-right: 18px; }
 
 .sliders image {
-  color: #e2e2e5;
+  color: #e2e2e6;
   background-color: #111316;
   padding: 0;
   border-radius: 100px;
@@ -166,7 +166,7 @@
     .sliders scale trough highlight,
     .sliders scale trough progress {
       border-radius: 100px;
-      background-color: #96ccff;
+      background-color: #9bcaff;
       min-height: 0.3em;
       min-width: 42px;
       border-radius: 100px; }
@@ -179,9 +179,9 @@
     background-color: rgba(17, 19, 22, 0.6); }
   .sliders scale:disabled highlight,
   .sliders scale:disabled progress {
-    background: rgba(150, 204, 255, 0.5); }
+    background: rgba(155, 202, 255, 0.5); }
   .sliders scale:disabled slider {
-    background-color: rgba(226, 226, 229, 0.5); }
+    background-color: rgba(226, 226, 230, 0.5); }
 
 .sliders .percent {
   min-width: 2.8em; }
@@ -218,24 +218,24 @@
 .position-slider trough {
   transition: 250ms;
   border-radius: 100px;
-  background-color: rgba(226, 226, 229, 0.5);
+  background-color: rgba(226, 226, 230, 0.5);
   min-height: 4px; }
   .position-slider trough highlight,
   .position-slider trough progress {
     border-radius: 100px;
-    background-color: #e2e2e5;
+    background-color: #e2e2e6;
     border-radius: 100px; }
   .position-slider trough slider {
     border-radius: 100px;
     min-height: 4px;
     min-width: 4px;
-    background-color: #e2e2e5; }
+    background-color: #e2e2e6; }
 
 .notification-popup {
   min-width: 340px; }
 
 .notification {
-  color: #e2e2e5;
+  color: #e2e2e6;
   background-color: #111316;
   border-radius: 22px;
   margin-bottom: 4px;
@@ -256,7 +256,7 @@
     margin-top: 14px; }
 
 .notifications-center {
-  background-color: rgba(26, 28, 30, 0.6);
+  background-color: rgba(27, 27, 27, 0.6);
   border-radius: 30px;
   padding: 10px; }
 
@@ -287,13 +287,13 @@
 window.indicator .indicator {
   padding: 0px;
   border-radius: 100px;
-  background-color: rgba(26, 28, 30, 0.6);
+  background-color: rgba(27, 27, 27, 0.6);
   min-width: 70px;
-  margin-right: 12px; }
+  margin-left: 24px; }
   window.indicator .indicator .fill {
     border-radius: 100px;
-    background-color: #96ccff;
-    color: #1a1c1e;
+    background-color: #9bcaff;
+    color: #1b1b1b;
     min-width: 60px; }
     window.indicator .indicator .fill image {
       margin-top: 20px;

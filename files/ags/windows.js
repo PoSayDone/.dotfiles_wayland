@@ -8,7 +8,7 @@ const indicator = monitor => ({
     name: `indicator${monitor}`,
     className: 'indicator',
     layer: 'overlay',
-    anchor: ['right'],
+    anchor: ['left'],
     child: { type: 'on-screen-indicator/vertical' },
 });
 
@@ -25,12 +25,12 @@ const createBar = (id) => {
 
 const createNotifications = (id) => {
     return {
-    name: `notifications${id}`,
-    monitor: id,
-    anchor: ['top'],
-    margin: [12, 0],
-    layer: 'overlay',
-    child: { type: 'notifications/popups', transition: 'slide_down' },
+        name: `notifications${id}`,
+        monitor: id,
+        anchor: ['top'],
+        margin: [12, 0],
+        layer: 'overlay',
+        child: { type: 'notifications/popups', transition: 'slide_down' },
     }
 }
 
