@@ -1,11 +1,16 @@
+.quicksettings {
+    min-width: 340px;
+}
+
 .quicksettings__container {
-    background-color: transparentize($bg_color, 0.4);
+    min-width: 340px;
+    background-color: transparentize($surface3, 0.4);
     padding: 20px;
     border-radius: 40px;
 }
 
 .quicksettings__button {
-    background-color: $bg2_color;
+    background-color: $surface1;
     color: $fg_color;
     padding: 0px;
     border-radius: 30px;
@@ -15,8 +20,8 @@
     transition: color 0.3s ease-in-out;
 
     &.on {
-        background-color: $accent;
-        color: $bg2_color;
+        background-color: $primary;
+        color: $onPrimary;
     }
 
     button {
@@ -42,8 +47,8 @@
 
 @mixin sliders() {
     image {
-        color: $fg_color;
-        background-color: $bg2_color;
+        color: $onSurface;
+        background-color: $surface1;
         padding: 0;
         border-radius: 100px;
         min-height: 42px;
@@ -55,9 +60,9 @@
         @include slider($width: .3em, $slider_width: .5em);
     }
 
-    .percent {
-        min-width: 2.8em;
-    }
+    // .percent {
+    //     min-width: 2.8em;
+    // }
 }
 
 .sliders {
@@ -72,10 +77,14 @@
     transition: all 0.2s;
 
     .footerbox {
+		.controls {
+		}
         .previous {
+			font-size: 20px;
             margin-right: 16px;
         }
         .next, .shuffle, .loop {
+			font-size: 20px;
             margin-left: 16px;
         }
     }
@@ -112,13 +121,13 @@
     trough {
         transition: $transition;
         border-radius: 100px;
-        background-color: transparentize($fg_color, 0.5);
+        background-color: transparentize(#fff, 0.5);
         min-height: 4px;
 
         highlight,
         progress {
             border-radius: 100px;
-            background-color: $fg_color;
+            background-color: #fff;
             border-radius: 100px;
         }
 
@@ -126,7 +135,7 @@
             border-radius: 100px;
             min-height: 4px;
             min-width: 4px;
-            background-color: $fg_color;
+            background-color: #fff;
         }
     }
 }

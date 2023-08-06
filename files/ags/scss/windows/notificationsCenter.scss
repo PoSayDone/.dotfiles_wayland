@@ -1,5 +1,5 @@
 .notifications-center {
-    background-color: transparentize($bg_color, 0.4);
+    background-color: transparentize($surface3, 0.4);
     border-radius: 30px;
     padding: 10px;
 }
@@ -15,19 +15,21 @@
 }
 
 .notifications-center__header_clear-button {
+    color: $onSurface;
     padding: 10px 14px;
     border-radius: 100px;
-    background-color: $bg2_color;
+    background-color: $surface1;
     margin-top: 5px;
     margin-right: 5px;
 }
 
 .notifications-center__header_dnd-button {
+    color: $onSurface;
     padding: 0;
     min-width: 38px;
     min-height: 38px;
     border-radius: 100px;
-    background-color: $bg2_color;
+    background-color: $surface1;
     margin-top: 5px;
     margin-left: 5px;
 }

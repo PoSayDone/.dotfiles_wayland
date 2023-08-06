@@ -40,10 +40,11 @@ var quicksettingsWifi = {
             {
                 type: 'box',
                 orientation: 'vertical',
-                hexpand: true,
+                hexpand: false,
                 children: [
                     {
                         type: 'network/ssid-label',
+                        className: 'text__bold',
                         halign: 'start',
                     },
                     {
@@ -76,10 +77,11 @@ var quicksettingsBluetooth = {
             {
                 type: 'box',
                 orientation: 'vertical',
-                hexpand: true,
+                hexpand: false,
                 children: [
                     {
                         type: 'label',
+                        className: 'text__bold',
                         label: 'Bluetooth',
                         halign: 'start',
                     },
@@ -112,10 +114,11 @@ var quicksettingsNotifications = {
             {
                 type: 'box',
                 orientation: 'vertical',
-                hexpand: true,
+                hexpand: false,
                 children: [
                     {
                         type: 'label',
+                        className: 'text__bold',
                         label: 'Notifications',
                         halign: 'start',
                     },
@@ -149,12 +152,13 @@ var quicksettingsMic = {
             {
                 type: 'box',
                 orientation: 'vertical',
-                hexpand: true,
+                hexpand: false,
                 children: [
                     {
                         type: 'label',
                         label: 'Microphone',
                         halign: 'start',
+                        className: 'text__bold',
                     },
                     {
                         type: 'audio/microphone-mute-status',
@@ -169,6 +173,7 @@ var quicksettingsMic = {
 var quicksettingsContainer = {
     type: 'box',
     orientation: 'vertical',
+    hexpand:false,
     className: 'quicksettings__container',
     children:
         [

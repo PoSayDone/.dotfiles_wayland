@@ -3,13 +3,13 @@ const { Hyprland } = ags.Service;
 var windows = [];
 const monitors = Hyprland.HyprctlGet('monitors')
 
-const indicator = monitor => ({
+var indicator = monitor => ({
     monitor,
     name: `indicator${monitor}`,
     className: 'indicator',
     layer: 'overlay',
     anchor: ['left'],
-    child: { type: 'on-screen-indicator/vertical' },
+    child: { type: 'on-screen-indicator' },
 });
 
 const createBar = (id) => {

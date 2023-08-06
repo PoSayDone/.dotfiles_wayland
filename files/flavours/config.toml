@@ -47,12 +47,6 @@ rewrite = false
 start= "/* Start flavours */"
 end = "/* End flavours */"
 
-# [[item]]
-# file = "~/.config/swaync/colors.css"
-# template = "swaync"
-# rewrite = true
-# hook = "swaync-client -R; swaync-client -rs"
-
 [[item]]
 file = "~/.local/bin/lockscreen"
 template = "waylock"

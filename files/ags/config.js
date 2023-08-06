@@ -12,7 +12,5 @@ var config = {
     notificationPopupTimeout: 5000, // milliseconds
     stackTraceOnError: false,
     style: `${CONFIG_DIR}/style.css`,
-    windows: [
-        ...windows,
-    ],
+    windows: [...windows],
 };

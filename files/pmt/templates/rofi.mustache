@@ -1,0 +1,39 @@
+/**
+ * Base16 {{scheme-name}} ROFI Color theme
+ *
+ * Authors
+ *  Scheme: {{scheme-author}}
+ *  Template: Jordi Pakey-Rodriguez (https://github.com/0xdec), Andrea Scarpino (https://github.com/ilpianista)
+ */
+
+* {
+    accent:                      #{{primary}};
+    accentfg:                    #{{onPrimary}};
+    red:                         #{{red}};
+    blue:                        #{{blue}};
+    lightfg:                     #{{onSurface}};
+    lightbg:                     #{{surface3}};
+    foreground:                  #{{onSurface}};
+    background:                  rgba ( {{surface4-r}}, {{surface4-g}}, {{surface4-b}}, 60 % );
+    background-color:            rgba ( {{surface3-r}}, {{surface3-g}}, {{surface3-b}}, 0 % );
+    separatorcolor:              @foreground;
+    border-color:                @foreground;
+    selected-normal-foreground:  @lightbg;
+    selected-normal-background:  @lightfg;
+    selected-active-foreground:  @background;
+    selected-active-background:  @accent;
+    selected-urgent-foreground:  @background;
+    selected-urgent-background:  @red;
+    normal-foreground:           @foreground;
+    normal-background:           @background;
+    active-foreground:           @accentfg;
+    active-background:           @background;
+    urgent-foreground:           @red;
+    urgent-background:           @background;
+    alternate-normal-foreground: @foreground;
+    alternate-normal-background: @lightbg;
+    alternate-active-foreground: @accent;
+    alternate-active-background: @lightbg;
+    alternate-urgent-foreground: @red;
+    alternate-urgent-background: @lightbg;
+}

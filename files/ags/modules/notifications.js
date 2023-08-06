@@ -36,8 +36,8 @@ const createIconWidget = ({ appEntry, appIcon, image }) => {
         `,
         children: [{
             type: 'icon', icon, size: 30,
-            halign: 'center', hexpand: true,
-            valign: 'center', vexpand: true,
+            halign: 'center', hexpand: false,
+            valign: 'center', vexpand: false,
         }],
     };
 };

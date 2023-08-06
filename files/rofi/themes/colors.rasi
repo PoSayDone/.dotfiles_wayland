@@ -1,36 +1,38 @@
 /**
- * Base16 Material you ROFI Color theme
+ * Base16  ROFI Color theme
  *
  * Authors
- *  Scheme: Arsi
+ *  Scheme: 
  *  Template: Jordi Pakey-Rodriguez (https://github.com/0xdec), Andrea Scarpino (https://github.com/ilpianista)
  */
 
 * {
-    red:                         rgba ( 255, 174, 219, 100 % );
-    blue:                        rgba ( 155, 202, 255, 100 % );
-    lightfg:                     rgba ( 226, 226, 230, 100 % );
-    lightbg:                     rgba ( 17, 19, 22, 100 % );
-    foreground:                  rgba ( 226, 226, 230, 100 % );
-    background:                  rgba ( 27, 27, 27, 60 % );
-    background-color:            rgba ( 27, 27, 27, 0 % );
+    accent:                      #8bcdff;
+    accentfg:                    #003450;
+    red:                         #ffaedb;
+    blue:                        #9acaff;
+    lightfg:                     #e2e2e5;
+    lightbg:                     #1e2022;
+    foreground:                  #e2e2e5;
+    background:                  rgba ( 40, 42, 44, 60 % );
+    background-color:            rgba ( 30, 32, 34, 0 % );
     separatorcolor:              @foreground;
     border-color:                @foreground;
     selected-normal-foreground:  @lightbg;
     selected-normal-background:  @lightfg;
     selected-active-foreground:  @background;
-    selected-active-background:  @blue;
+    selected-active-background:  @accent;
     selected-urgent-foreground:  @background;
     selected-urgent-background:  @red;
     normal-foreground:           @foreground;
     normal-background:           @background;
-    active-foreground:           @blue;
+    active-foreground:           @accentfg;
     active-background:           @background;
     urgent-foreground:           @red;
     urgent-background:           @background;
     alternate-normal-foreground: @foreground;
     alternate-normal-background: @lightbg;
-    alternate-active-foreground: @blue;
+    alternate-active-foreground: @accent;
     alternate-active-background: @lightbg;
     alternate-urgent-foreground: @red;
     alternate-urgent-background: @lightbg;

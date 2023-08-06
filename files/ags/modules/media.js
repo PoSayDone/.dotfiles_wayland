@@ -27,13 +27,12 @@ const mediabox = (player, className) => ({
     type: 'mpris/box', player,
     className: `mediabox ${className}`,
     hexpand: true,
-    vexpand: true,
     children: [
         {
-            type: 'mpris/cover-art', player,
+            type: 'materialcolors/cover-art', player,
             className: 'cover-art',
             hexpand: true,
-            vexpand: true,
+            vexpand: false,
             children: [{
                 type: 'centerbox',
                 className: 'shader',
@@ -42,7 +41,7 @@ const mediabox = (player, className) => ({
                 children: [
                     {
                         className: 'header-box',
-                        type: 'box',
+						type: 'materialcolors/box',
                         orientation: 'vertical',
                         vexpand: true,
                         children: [
@@ -65,7 +64,7 @@ const mediabox = (player, className) => ({
                         children: [
                             {
                                 className: 'title-box',
-                                type: 'box',
+								type: 'materialcolors/box',
                                 orientation: 'vertical',
                                 valign: 'center',
                                 hexpand: true,
@@ -73,10 +72,10 @@ const mediabox = (player, className) => ({
                                     {
                                         type: 'mpris/title-label', player,
                                         className: 'title',
-                                        maxWidth: 1,
+                                        maxWidth: 0,
                                         xalign: 0,
                                         justify: 'left',
-                                        wrap: true,
+                                        wrap: false,
                                     },
                                     separator,
                                     {
@@ -93,20 +92,7 @@ const mediabox = (player, className) => ({
                                     {
                                         vexpand: false,
                                         halign: 'end',
-                                        type: 'mpris/play-pause-button',
-                                        connections: [[Mpris, icon => {
-                                            const url = Mpris.getPlayer(player)?.coverPath;
-                                            if (!url)
-                                                return;
-                                            const commandString = ['python', `${CONFIG_DIR}/bin/getCoverColors`, url]
-                                            execAsync(commandString, colors => {
-                                                colors = JSON.parse(colors)
-                                                icon.setStyle(`
-                                                    background: ${colors.primary}; \
-                                                    color: ${colors.onPrimary};
-                                                `);
-                                            });
-                                        }]],
+                                        type: 'materialcolors/play-pause',
                                         player,
                                     },
                                 ],
@@ -115,7 +101,7 @@ const mediabox = (player, className) => ({
                     },
                     {
                         className: 'footerbox',
-                        type: 'box',
+                        type: 'materialcolors/box',
                         valign: 'end',
                         children: [
                             {
@@ -232,3 +218,5 @@ Widget.widgets['media/indicator'] = ({
         },
     }],
 });
+
+

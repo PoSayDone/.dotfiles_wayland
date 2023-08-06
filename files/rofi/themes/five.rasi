@@ -132,9 +132,9 @@ element {
     padding:                     38px 0px;
     border:                      0px solid;
     border-radius:               100%;
-    border-color:                @selected;
+    border-color:                @accent;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @accentfg;
     cursor:                      pointer;
 }
 element-text {
@@ -160,8 +160,8 @@ element selected.active {
 element normal.active,
 element alternate.active,
 element selected.urgent {
-    background-color:            var(active);
-    text-color:                  var(background);
+    background-color:            var(accent);
+    text-color:                  var(accentfg);
 }
 element selected.normal {
     background-color:            var(selected);

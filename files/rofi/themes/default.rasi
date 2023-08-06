@@ -182,7 +182,7 @@ element normal.active {
     text-color:                  var(active-foreground);
 }
 element selected.normal {
-    background-color:            var(blue);
+    background-color:            var(accent);
     text-color:                  var(selected-normal-foreground);
 }
 element selected.urgent {

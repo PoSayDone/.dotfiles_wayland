@@ -8,7 +8,7 @@ import sys
 import hashlib
 import urllib.request
 
-CACHE_DIR = "./.cache/ags/tempcolors"
+CACHE_DIR = os.path.expanduser("~/.cache/ags/tempcolors")
 
 def cache_and_get_colors(file_path):
     file_hash = hashlib.sha256(file_path.encode('utf-8')).hexdigest()

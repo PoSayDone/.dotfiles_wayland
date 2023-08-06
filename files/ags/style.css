@@ -10,13 +10,16 @@
   min-width: 8px;
   min-height: 8px; }
 
+.text__bold {
+  font-weight: 600; }
+
 .bar {
   background-color: transparent;
   margin: 0;
   padding: 0; }
 
 .bar__container {
-  background-color: rgba(27, 27, 27, 0.6);
+  background-color: rgba(30, 32, 34, 0.6);
   margin: 0;
   padding: 8px 12px; }
 
@@ -25,26 +28,26 @@
 .keyboardlayout,
 .bar__quicksettings,
 .notifications-indicator {
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 1s ease-in-out;
   border-radius: 100px;
-  color: #e2e2e6;
-  background-color: #111316; }
+  color: #e2e2e5;
+  background-color: #111416; }
   .workspaces:hover,
   .clock:hover,
   .keyboardlayout:hover,
   .bar__quicksettings:hover,
   .notifications-indicator:hover {
-    background-color: #1b1b1b; }
+    background-color: #1a1c1e; }
 
 .battery,
 .launcher {
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 1s ease-in-out;
   border-radius: 100px;
-  color: #111316;
-  background-color: #9bcaff; }
+  color: #003450;
+  background-color: #8bcdff; }
   .battery:hover,
   .launcher:hover {
-    background-color: rgba(155, 202, 255, 0.66); }
+    background-color: rgba(139, 205, 255, 0.66); }
 
 .launcher {
   padding: 0;
@@ -52,7 +55,7 @@
   min-width: 42px;
   min-height: 42px; }
   .launcher .launcher__icon {
-    background-color: #111316;
+    background-color: #1e2022;
     min-width: 14px;
     min-height: 14px;
     border-radius: 100%; }
@@ -63,7 +66,7 @@
   border-radius: 100%;
   margin: 0 5px;
   padding: 0;
-  transition: background-color 0.3s ease-out; }
+  transition: background-color 1s ease-out; }
 
 .workspaces button:last-child .indicator {
   margin-right: 14px; }
@@ -72,16 +75,16 @@
   margin-left: 14px; }
 
 .workspaces button.empty .indicator {
-  background-color: #42474e; }
+  background-color: #333537; }
 
 .workspaces button.occupied .indicator {
-  background-color: #42474e; }
+  background-color: #333537; }
 
 .workspaces button:hover .indicator {
-  background-color: rgba(155, 202, 255, 0.6); }
+  background-color: rgba(139, 205, 255, 0.6); }
 
 .workspaces button.active .indicator, .workspaces button:active .indicator {
-  background-color: #9bcaff; }
+  background-color: #8bcdff; }
 
 .clock {
   padding: 0 18px; }
@@ -114,14 +117,18 @@
   .notifications-indicator label {
     margin-left: 5px; }
 
+.quicksettings {
+  min-width: 340px; }
+
 .quicksettings__container {
-  background-color: rgba(27, 27, 27, 0.6);
+  min-width: 340px;
+  background-color: rgba(30, 32, 34, 0.6);
   padding: 20px;
   border-radius: 40px; }
 
 .quicksettings__button {
-  background-color: #111316;
-  color: #e2e2e6;
+  background-color: #0c0e10;
+  color: #e2e2e5;
   padding: 0px;
   border-radius: 30px;
   min-width: 225px;
@@ -129,10 +136,10 @@
   transition: background-color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out; }
   .quicksettings__button.on {
-    background-color: #9bcaff;
-    color: #111316; }
+    background-color: #8bcdff;
+    color: #003450; }
   .quicksettings__button button {
-    background-color: rgba(226, 226, 230, 0.5);
+    background-color: rgba(226, 226, 229, 0.5);
     border-radius: 100px;
     padding: 0px;
     margin: 0px;
@@ -148,8 +155,8 @@
   margin-right: 18px; }
 
 .sliders image {
-  color: #e2e2e6;
-  background-color: #111316;
+  color: #e2e2e5;
+  background-color: #0c0e10;
   padding: 0;
   border-radius: 100px;
   min-height: 42px;
@@ -160,13 +167,13 @@
   .sliders scale trough {
     transition: 250ms;
     border-radius: 100px;
-    background-color: #111316;
+    background-color: #0c0e10;
     min-height: 42px;
     min-width: 42px; }
     .sliders scale trough highlight,
     .sliders scale trough progress {
       border-radius: 100px;
-      background-color: #9bcaff;
+      background-color: #8bcdff;
       min-height: 0.3em;
       min-width: 42px;
       border-radius: 100px; }
@@ -176,15 +183,12 @@
       min-height: 42px;
       min-width: 42px; }
   .sliders scale:hover trough {
-    background-color: rgba(17, 19, 22, 0.6); }
+    background-color: #1a1c1e; }
   .sliders scale:disabled highlight,
   .sliders scale:disabled progress {
-    background: rgba(155, 202, 255, 0.5); }
+    background: rgba(139, 205, 255, 0.5); }
   .sliders scale:disabled slider {
-    background-color: rgba(226, 226, 230, 0.5); }
-
-.sliders .percent {
-  min-width: 2.8em; }
+    background-color: #1e2022; }
 
 .cover-art {
   margin: 10px 0;
@@ -193,8 +197,10 @@
   background-size: cover;
   transition: all 0.2s; }
   .cover-art .footerbox .previous {
+    font-size: 20px;
     margin-right: 16px; }
   .cover-art .footerbox .next, .cover-art .footerbox .shuffle, .cover-art .footerbox .loop {
+    font-size: 20px;
     margin-left: 16px; }
 
 .shader {
@@ -218,25 +224,25 @@
 .position-slider trough {
   transition: 250ms;
   border-radius: 100px;
-  background-color: rgba(226, 226, 230, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   min-height: 4px; }
   .position-slider trough highlight,
   .position-slider trough progress {
     border-radius: 100px;
-    background-color: #e2e2e6;
+    background-color: #fff;
     border-radius: 100px; }
   .position-slider trough slider {
     border-radius: 100px;
     min-height: 4px;
     min-width: 4px;
-    background-color: #e2e2e6; }
+    background-color: #fff; }
 
 .notification-popup {
   min-width: 340px; }
 
 .notification {
-  color: #e2e2e6;
-  background-color: #111316;
+  color: #e2e2e5;
+  background-color: #0c0e10;
   border-radius: 22px;
   margin-bottom: 4px;
   padding: 20px; }
@@ -256,7 +262,7 @@
     margin-top: 14px; }
 
 .notifications-center {
-  background-color: rgba(27, 27, 27, 0.6);
+  background-color: rgba(30, 32, 34, 0.6);
   border-radius: 30px;
   padding: 10px; }
 
@@ -269,35 +275,37 @@
   margin-bottom: 10px; }
 
 .notifications-center__header_clear-button {
+  color: #e2e2e5;
   padding: 10px 14px;
   border-radius: 100px;
-  background-color: #111316;
+  background-color: #0c0e10;
   margin-top: 5px;
   margin-right: 5px; }
 
 .notifications-center__header_dnd-button {
+  color: #e2e2e5;
   padding: 0;
   min-width: 38px;
   min-height: 38px;
   border-radius: 100px;
-  background-color: #111316;
+  background-color: #0c0e10;
   margin-top: 5px;
   margin-left: 5px; }
 
-window.indicator .indicator {
+window.indicator .progress {
   padding: 0px;
   border-radius: 100px;
-  background-color: rgba(27, 27, 27, 0.6);
+  background-color: rgba(12, 14, 16, 0.6);
   min-width: 70px;
   margin-left: 24px; }
-  window.indicator .indicator .fill {
+  window.indicator .progress .fill {
     border-radius: 100px;
-    background-color: #9bcaff;
-    color: #1b1b1b;
+    background-color: #8bcdff;
+    color: #0c0e10;
     min-width: 60px; }
-    window.indicator .indicator .fill image {
+    window.indicator .progress .fill image {
       margin-top: 20px;
       -gtk-icon-transform: scale(1); }
-    window.indicator .indicator .fill label {
+    window.indicator .progress .fill label {
       margin: 3px;
       font-size: 12px; }

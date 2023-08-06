@@ -105,10 +105,9 @@ Widget.widgets['audio/microphone-mute-status'] = props => _connectStream({
     },
     callback: label => {
         if (Audio.microphone.isMuted)
-            label.label = "Off";
-        else {
-            label.label = "On";
-        }
+            label.label = 'Off';
+        else
+            label.label = 'On';
     },
 });
 
