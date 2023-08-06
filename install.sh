@@ -17,7 +17,7 @@ yay -Syu --noconfirm 'hyprland-git' 'rofi-lbonn-wayland-only-git' 'alsa-tools' \
   'alsa-utils' 'bluez' 'bluez-utils' 'trash-cli' 'swaylock-effects' 'polkit-gnome'\
   'brightnessctl' 'git' 'zathura' 'zathura-pdf-mupdf' 'bpytop' 'wl-gammactl' \
   'neovim' 'spotify' 'npm' 'lutris' 'discord-screenaudio' 'cmake' \
-  'base-devel' 'python' 'python-pip' 'lf' 'joshuto-git' 'meson' \
+  'base-devel' 'python' 'python-pip' 'pipx' 'lf' 'joshuto-git' 'meson' \
   'zsh' 'playerctl' 'pamixer' 'pavucontrol' 'adw-gtk3' --needed
 
 #Installing ags
@@ -26,6 +26,9 @@ cd ags
 meson setup build
 meson install -C build
 clear
+
+# Installing pmt
+pipx install posaydones-material-theming
 
 #Cloning dots
 echo -e "\e[1;31m${bold}Cloning dotfiles${normal}\e[0m"

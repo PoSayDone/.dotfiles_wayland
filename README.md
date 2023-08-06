@@ -1,4 +1,3 @@
-
 <div align="center">
 <img src="https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/14f29b6d-b868-47b6-bb6d-7a0bc41c9b22" width=700>
 </div>
@@ -13,15 +12,14 @@
 
 <img src="https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/d4e66b8a-cc0e-4700-8e7a-f8a0bfd024d3" width=350 align="right">
 
-
-| task              | name                   |
-| ----------------- | ---------------------- |
-| wm/compositor     | [Hyprland](https://github.com/hyprwm/hyprland)                               |
-| shell             | [ags](https://github.com/aylur/ags)                                         |
-| terminal          | [kitty](https://github.com/kovidgoyal/kitty)                                 |
-| music player      | [spot](https://github.com/xou816/spot/)                                      |
-| gtk theme         | [adw-gtk3](https://github.com/lassekongo83/adw-gtk3)                         |
-| colorscheming     | [flavours](https://github.com/Misterio77/flavours) + some material you magic |
+| task          | name                                                 |
+| ------------- | ---------------------------------------------------- |
+| wm/compositor | [Hyprland](https://github.com/hyprwm/hyprland)       |
+| shell         | [ags](https://github.com/aylur/ags)                  |
+| terminal      | [kitty](https://github.com/kovidgoyal/kitty)         |
+| music player  | [spot](https://github.com/xou816/spot/)              |
+| gtk theme     | [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) |
+| colorscheming | [pmt](https://github.com/PoSayDone/pmt) (WIP)        |
 
 <h2>Installation</h2>
 
@@ -43,4 +41,3 @@ curl -s -L https://raw.githubusercontent.com/PoSayDone/.dotfiles_wayland/main/in
 ![image](https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/095aae60-6768-44c9-ada6-f3b6a294f6fd)
 ![image](https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/1cbff17d-46f6-45d9-a917-2af9f3c14829)
 ![image](https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/77e8edc2-34fd-4866-aee9-f0391bfeca7c)
-
