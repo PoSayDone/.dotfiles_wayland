@@ -93,11 +93,17 @@ Widget.widgets['audio/microphone-mute-toggle'] = props => _connectStream({
         if (!Audio.microphone)
             return;
 
-        button.toggleClassName('on', !Audio.microphone.isMuted);
+        button.toggleClassName('active', !Audio.microphone.isMuted);
     },
 });
 
-Widget.widgets['audio/microphone-mute-status'] = props => _connectStream({
+Widget.widgets['audio/microphone-mute-label'] = props => Widget({
+    ...props,
+    type: 'label',
+    label: 'Microphone',
+});
+
+Widget.widgets['audio/microphone-mute-status-label'] = props => _connectStream({
     stream: 'microphone',
     widget: {
         ...props,

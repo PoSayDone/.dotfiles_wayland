@@ -1,141 +1,173 @@
 .quicksettings {
-    min-width: 340px;
+	min-width: 340px;
 }
 
 .quicksettings__container {
-    min-width: 340px;
-    background-color: transparentize($surface3, 0.4);
-    padding: 20px;
-    border-radius: 40px;
+	min-width: 340px;
+	background-color: transparentize($surface3, 0.4);
+	padding: 20px;
+	border-radius: 40px;
 }
 
 .quicksettings__button {
-    background-color: $surface1;
-    color: $fg_color;
-    padding: 0px;
-    border-radius: 30px;
-    min-width: 225px;
-    min-height: 75px;
-    transition: background-color 0.3s ease-in-out;
-    transition: color 0.3s ease-in-out;
+	background-color: $surface1;
+	color: $fg_color;
+	padding: 0px;
+	border-radius: 30px;
+	min-width: 225px;
+	min-height: 75px;
+	transition: background-color 0.3s ease-in-out;
+	transition: color 0.3s ease-in-out;
 
-    &.on {
-        background-color: $primary;
-        color: $onPrimary;
-    }
+	&.active {
+		background-color: $primary;
+		color: $onPrimary;
+	}
 
-    button {
-        background-color: transparentize($fg_color, 0.5);
-        border-radius: 100px;
-        padding: 0px;
-        margin: 0px;
-        margin-right: 16px;
-        min-height: 36px;
-        min-width: 36px;
-
-        icon {
-            padding: 0px;
-            margin: 0px;
-        }
-    }
+	.arrow {
+		padding: 18px;
+	}
 }
 
 .quicksettings__button_icon {
-    margin-left: 24px;
-    margin-right: 18px;
+	margin-left: 24px;
+	margin-right: 18px;
+}
+
+.submenu {
+	margin-top: 8px;
+	background-color: $surface1;
+	color: $fg_color;
+	padding: 30px;
+	border-radius: 30px;
+
+	.title {
+		padding: 14px 20px;
+		background-color: $primary;
+		color: $onPrimary;
+		border-radius: 100px;
+		margin-bottom: 8px;
+
+		> *:first-child {
+			margin-right: 14px;
+		}
+
+		label {
+			font-weight: bold;
+			font-size: 16px;
+		}
+	}
+
+	.content {
+		> button,
+		> box {
+			margin: 8px;
+		}
+
+		> button:last-child,
+		> box:last-child {
+			margin: 8px;
+			margin-bottom: 0px;
+		}
+
+		image {
+			margin-right: 4px;
+		}
+	}
 }
 
 @mixin sliders() {
-    image {
-        color: $onSurface;
-        background-color: $surface1;
-        padding: 0;
-        border-radius: 100px;
-        min-height: 42px;
-        min-width: 42px;
-    }
+	image {
+		color: $onSurface;
+		background-color: $surface1;
+		padding: 0;
+		border-radius: 100px;
+		min-height: 42px;
+		min-width: 42px;
+	}
 
-    scale {
-        margin: 0 8px;
-        @include slider($width: .3em, $slider_width: .5em);
-    }
+	scale {
+		margin: 0 8px;
+		@include slider($width: 0.3em, $slider_width: 0.5em);
+	}
 
-    // .percent {
-    //     min-width: 2.8em;
-    // }
+	// .percent {
+	//     min-width: 2.8em;
+	// }
 }
 
 .sliders {
-    @include sliders;
+	@include sliders;
 }
 
 .cover-art {
-    margin: 10px 0;
-    min-height: 205px;
-    border-radius: 30px;
-    background-size: cover;
-    transition: all 0.2s;
+	margin: 10px 0;
+	min-height: 205px;
+	border-radius: 30px;
+	background-size: cover;
+	transition: all 0.2s;
 
-    .footerbox {
+	.footerbox {
 		.controls {
 		}
-        .previous {
+		.previous {
 			font-size: 20px;
-            margin-right: 16px;
-        }
-        .next, .shuffle, .loop {
+			margin-right: 16px;
+		}
+		.next,
+		.shuffle,
+		.loop {
 			font-size: 20px;
-            margin-left: 16px;
-        }
-    }
+			margin-left: 16px;
+		}
+	}
 }
 
 .shader {
-    padding: 20px;
+	padding: 20px;
 }
 
-
 .title-box {
-    .title {
-        font-weight: 600;
-        font-size: 19px;
-    }
+	.title {
+		font-weight: 600;
+		font-size: 19px;
+	}
 
-    .artist {
-        font-weight: 400;
-        font-size: 17px;
-    }
+	.artist {
+		font-weight: 400;
+		font-size: 17px;
+	}
 }
 
 .play-pause {
-    min-width: 60px;
-    min-height: 60px;
-    border-radius: 20px;
-    padding: 0;
-    transition: all 0.3s;
+	min-width: 60px;
+	min-height: 60px;
+	border-radius: 20px;
+	padding: 0;
+	transition: all 0.3s;
 }
 
 .position-slider {
-    // margin: 0 18px;
+	// margin: 0 18px;
 
-    trough {
-        transition: $transition;
-        border-radius: 100px;
-        background-color: transparentize(#fff, 0.5);
-        min-height: 4px;
+	trough {
+		transition: $transition;
+		border-radius: 100px;
+		background-color: transparentize(#fff, 0.5);
+		min-height: 4px;
 
-        highlight,
-        progress {
-            border-radius: 100px;
-            background-color: #fff;
-            border-radius: 100px;
-        }
+		highlight,
+		progress {
+			border-radius: 100px;
+			background-color: #fff;
+			border-radius: 100px;
+		}
 
-        slider {
-            border-radius: 100px;
-            min-height: 4px;
-            min-width: 4px;
-            background-color: #fff;
-        }
-    }
+		slider {
+			border-radius: 100px;
+			min-height: 4px;
+			min-width: 4px;
+			background-color: #fff;
+		}
+	}
 }

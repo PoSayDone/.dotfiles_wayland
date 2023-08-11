@@ -73,7 +73,7 @@ const createNotification = ({ id, summary, body, actions, urgency, ...icon }) =>
                                                 type: 'label',
                                                 maxWidth: 24,
                                                 wrap: true,
-                                                label: summary.length > 55 ? summary.substring(0, 55) + "..." : summary,
+                                                label: summary.length > 55 ? summary.substring(0, 55) + '...' : summary,
                                             },
                                         ],
                                     },
@@ -84,7 +84,7 @@ const createNotification = ({ id, summary, body, actions, urgency, ...icon }) =>
                                         xalign: 0,
                                         justify: 'left',
                                         type: 'label',
-                                        label: body.length > 140 ? body.substring(0, 140) + "..." : body,
+                                        label: body.length > 140 ? body.substring(0, 140) + '...' : body,
                                         wrap: true,
                                     },
                                 ],
@@ -104,9 +104,9 @@ const createNotification = ({ id, summary, body, actions, urgency, ...icon }) =>
                                 child: Widget({ type: 'icon', icon: 'window-close-symbolic' }),
                                 onClick: () => Notifications.close(id),
                             },
-                        ]
-                    }
-                ]
+                        ],
+                    },
+                ],
             },
             {
                 type: 'box',
@@ -313,14 +313,20 @@ Widget.widgets['notifications/dnd-toggle'] = props => Widget({
     type: 'button',
     onClick: () => { Notifications.dnd = !Notifications.dnd; },
     connections: [[Notifications, button => {
-        button.toggleClassName('on', !Notifications.dnd);
+        button.toggleClassName('active', !Notifications.dnd);
     }]],
+});
+
+Widget.widgets['notifications/label'] = props => Widget({
+    ...props,
+    type: 'label',
+    label: 'Notifications',
 });
 
 Widget.widgets['notifications/status-label'] = props => Widget({
     ...props,
     type: 'label',
-    connections: [[Notifications, label => label.label = (!Notifications.dnd ? "On" : "Off")]],
+    connections: [[Notifications, label => label.label = (!Notifications.dnd ? 'On' : 'Off')]],
 });
 
 Widget.widgets['notifications/list'] = props => Widget({

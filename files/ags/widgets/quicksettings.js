@@ -1,8 +1,154 @@
-const { Widget } = ags;
-const { Network, Bluetooth, Battery, Audio, System } = ags.Service;
-const { runCmd, execAsync } = ags.Utils;
-const { getColors } = imports.modules.mpris;
+const { Service, App } = ags;
+const { Network, Bluetooth, Notifications, Audio } = ags.Service;
+const { runCmd, timeout } = ags.Utils;
 const { separator } = imports.modules.separator;
+
+class QSMenu extends Service {
+    static { Service.register(this); }
+    static instance = new QSMenu();
+    static opened = '';
+    static toggle(menu) {
+        QSMenu.opened = QSMenu.opened === menu ? '' : menu;
+        QSMenu.instance.emit('changed');
+    }
+
+    constructor() {
+        super();
+        App.instance.connect('window-toggled', (_a, name, visible) => {
+            if (name === 'quicksettings' && !visible) {
+                QSMenu.opened = '';
+                QSMenu.instance.emit('changed');
+            }
+        });
+    }
+}
+
+const arrow = (menu, toggleOn) => ({
+    type: 'button',
+    className: 'arrow',
+    onClick: () => {
+        QSMenu.toggle(menu);
+        if (toggleOn)
+            toggleOn();
+    },
+    connections: [[QSMenu, button => {
+        button.toggleClassName('opened', QSMenu.opened === menu);
+    }]],
+    child: {
+        type: 'icon',
+        icon: 'pan-end-symbolic',
+        properties: [
+            ['deg', 0],
+            ['opened', false],
+        ],
+        connections: [[QSMenu, icon => {
+            if (QSMenu.opened === menu && !icon._opened || QSMenu.opened !== menu && icon._opened) {
+                const step = QSMenu.opened === menu ? 10 : -10;
+                icon._opened = !icon._opened;
+                for (let i = 0; i < 9; ++i) {
+                    timeout(5 * i, () => {
+                        icon._deg += step;
+                        icon.setStyle(`-gtk-icon-transform: rotate(${icon._deg}deg);`);
+                    });
+                }
+            }
+        }]],
+    },
+});
+
+const arrowToggle = ({ icon, label, connection, status, toggle, name, toggleOn }) => ({
+    type: 'box',
+    connections: [[
+        connection[0],
+        w => w.toggleClassName('active', connection[1]()),
+    ]],
+    className: 'quicksettings__button',
+    children: [
+        {
+            type: 'button',
+            valign: 'center',
+            hexpand: true,
+            onClick: toggle,
+            child: {
+                type: 'box',
+                children: [
+                    {
+                        type: 'box',
+                        className: 'quicksettings__button_icon',
+                        orientation: 'horizontal',
+                        children: [
+                            { type: icon },
+                        ],
+                    },
+                    {
+                        type: 'box',
+                        orientation: 'vertical',
+                        hexpand: false,
+                        children: [
+                            {
+                                type: label,
+                                className: 'text__bold',
+                                halign: 'start',
+                            },
+                            {
+                                type: status,
+                                halign: 'start',
+                            },
+                        ],
+                    },
+                ],
+            },
+        },
+        arrow(name, toggleOn),
+    ],
+});
+
+const toggle = ({ icon, label, toggle, status }) => ({
+    type: toggle,
+    className: 'quicksettings__button',
+    child: {
+        type: 'box',
+        orientation: 'horizontal',
+        valign: 'center',
+        children: [
+            {
+                type: 'button',
+                valign: 'center',
+                hexpand: true,
+                child: {
+                    type: 'box',
+                    children: [
+                        {
+                            type: 'box',
+                            className: 'quicksettings__button_icon',
+                            orientation: 'horizontal',
+                            children: [
+                                { type: icon },
+                            ],
+                        },
+                        {
+                            type: 'box',
+                            orientation: 'vertical',
+                            hexpand: false,
+                            children: [
+                                {
+                                    type: label,
+                                    className: 'text__bold',
+                                    halign: 'start',
+                                },
+                                {
+                                    type: status,
+                                    halign: 'start',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            },
+        ],
+    },
+
+});
 
 const slider = ({ icon, slider, arrowCmd }) => ({
     type: 'box',
@@ -21,178 +167,106 @@ const slider = ({ icon, slider, arrowCmd }) => ({
     ],
 });
 
-var quicksettingsWifi = {
-    type: 'network/wifi-toggle',
-    className: 'quicksettings__button',
-    child: {
-        type: 'box',
-        orientation: 'horizontal',
-        valign: 'center',
-        children: [
-            {
-                type: 'box',
-                className: 'quicksettings__button_icon',
-                orientation: 'horizontal',
-                children: [
-                    { type: 'network/wifi-indicator' }
-                ]
-            },
-            {
-                type: 'box',
-                orientation: 'vertical',
-                hexpand: false,
-                children: [
-                    {
-                        type: 'network/ssid-label',
-                        className: 'text__bold',
-                        halign: 'start',
-                    },
-                    {
-                        type: 'network/wifi-status-label',
-                        halign: 'start',
-                    }
-                ]
-            },
-        ]
-    }
-}
-
-var quicksettingsBluetooth = {
-    type: 'bluetooth/toggle',
-    className: 'quicksettings__button',
-    onClick: () => Bluetooth.enabled = !Bluetooth.enabled,
-    child: {
-        type: 'box',
-        orientation: 'horizontal',
-        valign: 'center',
-        children: [
-            {
-                type: 'box',
-                className: 'quicksettings__button_icon',
-                orientation: 'horizontal',
-                children: [
-                    { type: 'bluetooth/indicator' }
-                ]
-            },
-            {
-                type: 'box',
-                orientation: 'vertical',
-                hexpand: false,
-                children: [
-                    {
-                        type: 'label',
-                        className: 'text__bold',
-                        label: 'Bluetooth',
-                        halign: 'start',
-                    },
-                    {
-                        type: 'bluetooth/status-label',
-                        halign: 'start',
-                    }
-                ]
-            },
-        ]
-    }
-}
-
-var quicksettingsNotifications = {
-    type: 'notifications/dnd-toggle',
-    className: 'quicksettings__button',
-    child: {
-        type: 'box',
-        orientation: 'horizontal',
-        valign: 'center',
-        children: [
-            {
-                type: 'box',
-                className: 'quicksettings__button_icon',
-                orientation: 'horizontal',
-                children: [
-                    { type: 'notifications/dnd-indicator' }
-                ]
-            },
-            {
-                type: 'box',
-                orientation: 'vertical',
-                hexpand: false,
-                children: [
-                    {
-                        type: 'label',
-                        className: 'text__bold',
-                        label: 'Notifications',
-                        halign: 'start',
-                    },
-                    {
-                        type: 'notifications/status-label',
-                        halign: 'start',
-                    }
-                ]
-            },
-        ]
-    }
-}
+const menu = (name, child) => ({
+    type: 'box',
+    children: [{
+        type: 'revealer',
+        transition: 'slide_down',
+        connections: [[QSMenu, r => r.reveal_child = name === QSMenu.opened]],
+        child,
+    }],
+});
 
 
-var quicksettingsMic = {
-    type: 'audio/microphone-mute-toggle',
-    className: 'quicksettings__button',
-    child: {
-        type: 'box',
-        orientation: 'horizontal',
-        valign: 'center',
-        children: [
-            {
-                type: 'box',
-                className: 'quicksettings__button_icon',
-                orientation: 'horizontal',
-                children: [
-                    { type: 'audio/microphone-mute-indicator' }
-                ]
-            },
-            {
-                type: 'box',
-                orientation: 'vertical',
-                hexpand: false,
-                children: [
-                    {
-                        type: 'label',
-                        label: 'Microphone',
-                        halign: 'start',
-                        className: 'text__bold',
-                    },
-                    {
-                        type: 'audio/microphone-mute-status',
-                        halign: 'start',
-                    }
-                ]
-            },
-        ]
-    }
-}
+const submenu = ({ menuName, icon, title, contentType }) => menu(menuName, {
+    type: 'box',
+    orientation: 'vertical',
+    className: `submenu ${menuName}`,
+    children: [
+        { className: 'title', type: 'box', children: [icon, title], hexpand: false },
+        { className: 'content', type: contentType, hexpand: true },
+    ],
+});
+
+const networkSelection = submenu({
+    menuName: 'network',
+    icon: { type: 'icon', icon: 'network-wireless-symbolic' },
+    title: 'Wireless Networks',
+    contentType: 'network/wifi-selection',
+});
+
+const bluetoothSelection = submenu({
+    menuName: 'bluetooth',
+    icon: { type: 'icon', icon: 'bluetooth-symbolic' },
+    title: 'Bluetooth',
+    contentType: 'bluetooth/devices',
+});
+
+const networkToggle = arrowToggle({
+    icon: 'network/wifi-indicator',
+    label: 'network/ssid-label',
+    status: 'network/wifi-status-label',
+    connection: [Network, () => Network.wifi?.enabled],
+    toggle: Network.toggleWifi,
+    toggleOn: () => {
+        Network.wifi.enabled = true;
+        Network.wifi.scan();
+    },
+    name: 'network',
+});
+
+const bluetoothToggle = arrowToggle({
+    icon: 'bluetooth/indicator',
+    label: 'bluetooth/label',
+    status: 'bluetooth/status-label',
+    connection: [Bluetooth, () => Bluetooth.enabled],
+    toggle: () => Bluetooth.enabled = !Bluetooth.enabled,
+    toggleOn: () => {
+        Bluetooth.enabled = QSMenu.opened === 'bluetooth'
+            ? true : Bluetooth.enabled;
+    },
+    name: 'bluetooth',
+});
+
+const notificationsToggle = toggle({
+    toggle: 'notifications/dnd-toggle',
+    icon: 'notifications/dnd-indicator',
+    label: 'notifications/label',
+    status: 'notifications/status-label',
+});
+
+const muteToggle = toggle({
+    toggle: 'audio/microphone-mute-toggle',
+    icon: 'audio/microphone-mute-indicator',
+    label: 'audio/microphone-mute-label',
+    status: 'audio/microphone-mute-status-label',
+});
 
 var quicksettingsContainer = {
     type: 'box',
     orientation: 'vertical',
-    hexpand:false,
+    hexpand: false,
     className: 'quicksettings__container',
     children:
         [
             {
                 type: 'box',
                 children: [
-                    quicksettingsWifi,
+                    networkToggle,
                     separator,
-                    quicksettingsBluetooth
-                ]
+                    bluetoothToggle,
+                ],
             },
+            networkSelection,
+            bluetoothSelection,
             separator,
             {
                 type: 'box',
                 children: [
-                    quicksettingsNotifications,
+                    notificationsToggle,
                     separator,
-                    quicksettingsMic,
-                ]
+                    muteToggle,
+                ],
             },
             separator,
             {
@@ -204,7 +278,7 @@ var quicksettingsContainer = {
                         orientation: 'vertical',
                         hexpand: true,
                     },
-                ]
+                ],
             },
             separator,
             {
@@ -225,5 +299,5 @@ var quicksettingsContainer = {
                     }),
                 ],
             },
-        ]
-}
+        ],
+};
