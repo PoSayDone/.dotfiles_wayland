@@ -1,0 +1,63 @@
+@import "./colors.css";
+
+* {
+	font-family: Product Sans;
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	background-color: var(--surface);
+	max-width: 1128px;
+	margin: 0 auto;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+}
+
+h1 {
+	color: var(--on-surface);
+	font-size: 45px;
+	margin: 24px;
+	font-weight: 500;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: 156px;
+	gap: 24px;
+}
+
+.card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 18px;
+	border-radius: 24px;
+	padding: 24px;
+	max-width: 264px;
+	font-size: 24px;
+	font-weight: 400;
+	background-color: var(--surface3);
+	color: var(--on-surface);
+	text-decoration: unset;
+	transition: transform 0.3s ease;
+}
+
+.card:hover {
+	transform: scale(102%);
+}
+
+.card:active {
+	transform: scale(98%);
+}

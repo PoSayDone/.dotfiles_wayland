@@ -1,16 +1,20 @@
 // in config.js
 const { CONFIG_DIR, exec } = ags.Utils;
-const { windows } = imports.windows;
+import { bar } from './windows';
 
 exec(`sassc ${CONFIG_DIR}/scss/main.scss ${CONFIG_DIR}/style.css`);
 
-Object.keys(imports.widgets).forEach(m => imports.widgets[m]);
-Object.keys(imports.modules).forEach(m => imports.modules[m]);
+const monitors = ags.Service.Hyprland.HyprctlGet('monitors')
+    .map(mon => mon.id);
 
-var config = {
-    exitOnError: false,
-    notificationPopupTimeout: 5000, // milliseconds
-    stackTraceOnError: false,
+export default {
+    closeWindowDelay: {
+        'quicksettings': 300,
+        'dashboard': 300,
+    },
     style: `${CONFIG_DIR}/style.css`,
-    windows: [...windows],
+    notificationPopupTimeout: 5000, // milliseconds
+    windows: [
+        bar,
+    ],
 };

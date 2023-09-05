@@ -17,7 +17,7 @@ var notificationsCenterContainer = {
                         hexpand: true,
                         halign: 'center',
                         type: 'notifications/dnd-indicator',
-                    }
+                    },
                 },
                 {
                     type: 'notifications/clear-button',
@@ -26,11 +26,11 @@ var notificationsCenterContainer = {
                     halign: 'end',
                     child: {
                         type: 'label',
-                        label: 'Clear all'
-                    }
-                }
-            ]
+                        label: 'Clear all',
+                    },
+                },
+            ],
         },
         { type: 'notifications/list' },
-    ]
-}
+    ],
+};

@@ -39,7 +39,7 @@ Widget.widgets['mpris/title-label'] = ({ player = prefer, ...props }) => Widget(
     type: 'label',
     connections: [[Mpris, label => {
         body = Mpris.getPlayer(player)?.trackTitle || '';
-        label.label = body.length > 35 ? body.substring(0, 35) + "..." : body;
+        label.label = body.length > 35 ? body.substring(0, 35) + '...' : body;
     }]],
 });
 
@@ -48,7 +48,7 @@ Widget.widgets['mpris/artist-label'] = ({ player, ...props }) => Widget({
     type: 'label',
     connections: [[Mpris, label => {
         body = Mpris.getPlayer(player)?.trackArtists.join(', ') || '';
-        label.label = body.length > 40 ? body.substring(0, 40) + "..." : body;
+        label.label = body.length > 40 ? body.substring(0, 40) + '...' : body;
     }]],
 });
 
@@ -302,4 +302,3 @@ Widget.widgets['mpris/next-button'] = ({
     canProp: 'canGoNext',
     cantValue: false,
 });
-

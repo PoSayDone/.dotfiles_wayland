@@ -1,7 +1,7 @@
 current_directory = "/home/posaydone/Pictures/Wallpapers/"
 [[item]]
-file = "~/.config/ags/scss/colors.scss"
-hook = "ags run-js \"imports.modules.misc.reloadCss()\""
+file = "~/.config/ags/styles/colors.scss"
+hook = "ags run-js \"modules.misc.reloadCss()\""
 template = "ags"
 
 [[item]]
@@ -34,4 +34,8 @@ template = "firefox"
 file = "~/.config/tmux/plugins/catppuccin-tmux/catppuccin-latte.tmuxtheme"
 template = "tmux"
 hook = "tmux source ~/.config/tmux/tmux.conf"
+
+[[item]]
+file = "~/.dotfiles_wayland/additional/new-tab-page/css/colors.css"
+template = "newtab"
 

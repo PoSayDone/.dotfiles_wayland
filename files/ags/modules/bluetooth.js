@@ -1,18 +1,19 @@
 const { Widget } = ags;
 const { Bluetooth } = ags.Service;
 
-Widget.widgets['bluetooth/indicator'] = ({
-    enabled = { type: 'icon', icon: 'bluetooth-active-symbolic' },
-    disabled = { type: 'icon', icon: 'bluetooth-disabled-symbolic' },
+export const Indicator = ({
+    enabled = Icon({ icon: 'bluetooth-active-symbolic', className: 'enabled' }),
+    disabled = Icon({ icon: 'bluetooth-disabled-symbolic', className: 'disabled' }),
     ...props
-}) => Widget({
+} = {}) => Stack({
     ...props,
-    type: 'dynamic',
     items: [
-        { value: true, widget: enabled },
-        { value: false, widget: disabled },
+        ['true', enabled],
+        ['false', disabled],
     ],
-    connections: [[Bluetooth, dynamic => dynamic.update(value => value === Bluetooth.enabled)]],
+    connections: [[Bluetooth, stack => {
+        stack.shown = `${Bluetooth.enabled}`;
+    }]],
 });
 
 Widget.widgets['bluetooth/status-label'] = props => Widget({

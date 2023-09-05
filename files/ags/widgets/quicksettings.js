@@ -1,7 +1,8 @@
+import { separator } from '../modules/separator.js';
+
 const { Service, App } = ags;
-const { Network, Bluetooth, Notifications, Audio } = ags.Service;
+const { Network, Bluetooth } = ags.Service;
 const { runCmd, timeout } = ags.Utils;
-const { separator } = imports.modules.separator;
 
 class QSMenu extends Service {
     static { Service.register(this); }
@@ -35,8 +36,7 @@ const arrow = (menu, toggleOn) => ({
         button.toggleClassName('opened', QSMenu.opened === menu);
     }]],
     child: {
-        type: 'icon',
-        icon: 'pan-end-symbolic',
+        type: 'icon', icon: 'pan-end-symbolic',
         properties: [
             ['deg', 0],
             ['opened', false],
@@ -82,17 +82,17 @@ const arrowToggle = ({ icon, label, connection, status, toggle, name, toggleOn }
                     },
                     {
                         type: 'box',
-                        orientation: 'vertical',
+                        vertical: true,
                         hexpand: false,
                         children: [
                             {
                                 type: label,
                                 className: 'text__bold',
-                                halign: 'start',
+                                halign: 'center',
                             },
                             {
                                 type: status,
-                                halign: 'start',
+                                halign: 'center',
                             },
                         ],
                     },
@@ -242,7 +242,7 @@ const muteToggle = toggle({
     status: 'audio/microphone-mute-status-label',
 });
 
-var quicksettingsContainer = {
+export const quicksettingsContainer = {
     type: 'box',
     orientation: 'vertical',
     hexpand: false,

@@ -1,9 +1,9 @@
+import { separator } from '../modules/separator.js';
+
 const { App, Widget } = ags;
 const { Hyprland, Applications } = ags.Service;
 const { execAsync, exec, lookUpIcon, warning } = ags.Utils;
 const { Bluetooth, Battery, Audio, System } = ags.Service;
-const { keyboardlayout } = imports.modules.keyboardlayout;
-const { separator } = imports.modules.separator;
 
 const network = {
     type: 'box',
@@ -19,7 +19,7 @@ const network = {
                     type: 'revealer',
                     transition: 'slide_right',
                     child: {
-                        type: 'network/ssid-label'
+                        type: 'network/ssid-label',
                     },
                 },
                 { type: 'network/indicator' },
@@ -54,7 +54,7 @@ const bluetooth = {
                     }]],
                 },
                 {
-                    type: 'bluetooth/indicator'
+                    type: 'bluetooth/indicator',
                 },
             ],
         },
@@ -87,14 +87,14 @@ const audio = {
                     },
                 },
                 {
-                    type: 'audio/speaker-indicator'
+                    type: 'audio/speaker-indicator',
                 },
             ],
         },
     }],
 };
 
-var barNotifications = {
+const barNotifications = {
     type: 'box',
     className: 'bar__notifications',
     hexpand: true,
@@ -102,11 +102,11 @@ var barNotifications = {
     children: [
         {
             type: 'notifications/notifications-indicator',
-        }
-    ]
-}
+        },
+    ],
+};
 
-var barQuicksettings = {
+const barQuicksettings = {
     type: 'eventbox',
     onClick: () => App.toggleWindow('quicksettings'),
     child:
@@ -119,11 +119,11 @@ var barQuicksettings = {
             bluetooth,
             separator,
             audio,
-        ]
-    }
-}
+        ],
+    },
+};
 
-var launcher = {
+const launcher = {
     type: 'button',
     className: 'launcher',
     child: {
@@ -142,7 +142,7 @@ const indicator = {
     valign: 'center',
 };
 
-var workspaces = {
+const workspaces = {
     type: 'eventbox',
     className: 'workspaces',
     child: {
@@ -151,16 +151,16 @@ var workspaces = {
         active: indicator,
         occupied: indicator,
         empty: indicator,
-    }
-}
+    },
+};
 
-var clock = {
+const clock = {
     type: 'eventbox',
     onClick: () => App.toggleWindow('notificationsCenter'),
     child: {
-        type: 'clock'
-    }
-}
+        type: 'clock',
+    },
+};
 
 const left = {
     type: 'box',
@@ -172,16 +172,16 @@ const left = {
         launcher,
         separator,
         workspaces,
-    ]
-}
+    ],
+};
 
 const center = {
     type: 'box',
     className: 'bar__center',
     children: [
         clock,
-    ]
-}
+    ],
+};
 
 const battery = {
     type: 'box',
@@ -194,8 +194,8 @@ const battery = {
         {
             type: 'battery/level-label',
         },
-    ]
-}
+    ],
+};
 
 const right = {
     type: 'box',
@@ -206,19 +206,19 @@ const right = {
         barNotifications,
         barQuicksettings,
         separator,
-        keyboardlayout,
+        keyboardlay,
         separator,
         battery,
-    ]
-}
+    ],
+};
 
-var barContainer = {
+export const barContainer = {
     type: 'centerbox',
     className: 'bar__container',
     // orientation: 'horizontal',
     children: [
         left,
         center,
-        right
-    ]
-}
+        right,
+    ],
+};
