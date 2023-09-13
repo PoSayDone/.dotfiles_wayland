@@ -1,222 +1,220 @@
-const { App, Widget } = ags;
+import { HoverRevealer, Separator } from '../modules/misc.js';
+import * as mpris from '../modules/mpris.js';
+import * as materialcolors from '../modules/materialcolors.js';
+const { Box, CenterBox, Label, Button } = ags.Widget;
 const { Mpris } = ags.Service;
-const { timeout, CONFIG_DIR, execAsync } = ags.Utils;
-const { separator } = imports.modules.separator;
+const { timeout } = ags.Utils;
 
-var prefer = player => players => {
-    let last;
-    for (const [name, mpris] of players) {
-        if (name.includes(player))
-            return mpris;
-        last = mpris;
-    }
-    return last;
-};
-
-const slash = player => ({
-    type: 'label', label: '/',
-    connections: [
-        [Mpris, label => {
-            const mpris = Mpris.getPlayer(player);
-            label.visible = mpris && mpris.length > 0;
-        }],
-    ],
-});
-
-const mediabox = (player, className) => ({
-    type: 'mpris/box', player,
-    className: `mediabox ${className}`,
+export const MediaBox = ({ player = mpris.prefer, ...props }) => mpris.MprisBox({
+    ...props,
+    className: 'mediabox',
     hexpand: true,
+    player,
     children: [
-        {
-            type: 'materialcolors/cover-art', player,
+        materialcolors.CoverArt({
+            player,
             className: 'cover-art',
             hexpand: true,
             vexpand: false,
-            children: [{
-                type: 'centerbox',
-                className: 'shader',
-                orientation: 'vertical',
-                hexpand: true,
-                children: [
-                    {
-                        className: 'header-box',
-						type: 'materialcolors/box',
-                        orientation: 'vertical',
-                        vexpand: true,
-                        children: [
-                            {
-                                type: 'mpris/player-icon', player,
-                                size: 24,
-                                className: 'player',
-                                hexpand: true,
-                                halign: 'start',
-                                valign: 'start',
-                                symbolic: true,
-                            },
-                        ],
-                    },
-                    {
-                        className: 'center-box',
-                        type: 'box',
-                        orientation: 'horizontal',
-                        hexpand: true,
-                        children: [
-                            {
-                                className: 'title-box',
-								type: 'materialcolors/box',
-                                orientation: 'vertical',
-                                valign: 'center',
-                                hexpand: true,
-                                children: [
-                                    {
-                                        type: 'mpris/title-label', player,
-                                        className: 'title',
-                                        maxWidth: 0,
-                                        xalign: 0,
-                                        justify: 'left',
-                                        wrap: false,
-                                    },
-                                    separator,
-                                    {
-                                        type: 'mpris/artist-label', player,
-                                        className: 'artist',
-                                        xalign: 0,
-                                    },
-                                ],
-                            },
-                            {
-                                type: 'box',
-                                orientation: 'horizontal',
-                                children: [
-                                    {
-                                        vexpand: false,
-                                        halign: 'end',
-                                        type: 'materialcolors/play-pause',
-                                        player,
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        className: 'footerbox',
-                        type: 'materialcolors/box',
-                        valign: 'end',
-                        children: [
-                            {
-                                className: 'controls',
-                                type: 'box',
-                                hexpand: true,
-                                children: [
-                                    { type: 'mpris/previous-button', player },
-                                    { type: 'mpris/position-slider', hexpand: true, className: 'position-slider', player },
-                                    { type: 'mpris/next-button', player },
-                                    { type: 'mpris/shuffle-button', player },
-                                    { type: 'mpris/loop-button', player },
-                                ],
-                            },
-                        ],
-                    },
-                ],
-            }],
-        },
-    ],
-});
-
-Widget.widgets['media/panel-button'] = ({ player = prefer('spotify') }) => Widget({
-    type: 'mpris/box',
-    className: 'mpris',
-    player,
-    children: [{
-        type: 'button',
-        onClick: () => App.toggleWindow('media'),
-        onSecondaryClick: () => Mpris.getPlayer(player)?.playPause(),
-        onScrollUp: () => Mpris.getPlayer(player)?.next(),
-        onScrollDown: () => Mpris.getPlayer(player)?.previous(),
-        child: {
-            type: 'box',
             children: [
-                { type: 'mpris/player-icon', player, halign: 'start', size: 18 },
-                ' ',
-                { type: 'mpris/artist-label', className: 'artist', player },
-                ' - ',
-                { type: 'mpris/title-label', className: 'title', player },
+                CenterBox({
+                    className: 'shader',
+                    vertical: true,
+                    hexpand: true,
+                    children: [
+                        materialcolors.MaterialBox({
+                            player,
+                            className: 'header-box',
+                            vertical: true,
+                            vexpand: true,
+                            children: [
+                                mpris.PlayerIcon({
+                                    player,
+                                    size: 24,
+                                    className: 'player',
+                                    hexpand: true,
+                                    halign: 'start',
+                                    valign: 'start',
+                                    symbolic: true,
+                                }),
+                            ],
+                        }),
+                        Box({
+                            className: 'center-box',
+                            orientation: 'horizontal',
+                            hexpand: true,
+                            children: [
+                                materialcolors.MaterialBox({
+                                    player,
+                                    className: 'title-box',
+                                    vertical: true,
+                                    valign: 'center',
+                                    hexpand: true,
+                                    children: [
+                                        mpris.TitleLabel({
+                                            player,
+                                            className: 'title',
+                                            xalign: 0,
+                                            justify: 'left',
+                                        }),
+                                        Separator(),
+                                        mpris.ArtistLabel({
+                                            player,
+                                            className: 'artist',
+                                            xalign: 0,
+                                        }),
+                                    ],
+                                }),
+                                Box({
+                                    children: [
+                                        materialcolors.ColoredBox({
+                                            player,
+                                            className: 'play-pause',
+                                            hexpand: false,
+                                            vexpand: false,
+                                            children: [
+                                                mpris.PlayPauseButton({
+                                                    player,
+                                                    className: 'play-pause',
+                                                    vexpand: false,
+                                                    halign: 'end',
+                                                }),
+                                            ],
+                                        }),
+                                    ],
+                                }),
+                            ],
+                        }),
+                        materialcolors.MaterialBox({
+                            player,
+                            className: 'footerbox',
+                            valign: 'end',
+                            children: [
+                                Box({
+                                    className: 'controls',
+                                    hexpand: true,
+                                    children: [
+                                        mpris.PreviousButton({ player }),
+                                        mpris.PositionSlider({ hexpand: true, className: 'position-slider', player }),
+                                        mpris.NextButton({ player }),
+                                        mpris.ShuffleButton({  player }),
+                                        mpris.LoopButton({  player }),
+                                    ],
+                                }),
+                            ],
+                        }),
+                    ] }),
             ],
-        },
-    }],
-});
-
-Widget.widgets['media/popup-content'] = props => Widget({
-    ...props,
-    type: 'box',
-    children: [
-        mediabox('', ''),
+        }),
     ],
 });
 
-const icon = player => ({ type: 'mpris/player-icon', player });
-const reaveler = player => ({
-    type: 'revealer',
-    transition: 'slide_left',
-    child: {
-        type: 'box',
-        children: [
-            { type: 'mpris/artist-label', className: 'artist', player },
-            ' - ',
-            { type: 'mpris/title-label', className: 'title', player },
-        ],
-    },
-});
-
-
-Widget.widgets['media/indicator'] = ({
-    player = prefer('spotify'),
-    direction = 'left',
-    onClick = () => Mpris.getPlayer(player)?.playPause(),
-    ...props
-}) => Widget({
+export const PopupContent = props => Box({
+    vertical: true,
+    className: 'media',
     ...props,
-    type: 'mpris/box',
-    player,
-    children: [{
-        type: 'eventbox',
-        onHover: box => {
-            timeout(200, () => box._revealed = true);
-            box.get_child().get_children()[direction === 'left' ? 0 : 1].reveal_child = true;
-        },
-        onHoverLost: box => {
-            if (!box._revealed)
+    properties: [['players', new Map()], ['activePlayer', '']],
+    connections: [
+        [Mpris, (box, busName) => {
+            if (!busName || box._players.has(busName))
                 return;
 
-            timeout(200, () => box._revealed = false);
-            box.get_child().get_children()[direction === 'left' ? 0 : 1].reveal_child = false;
+            const widget = MediaBox({ player: busName });
+            box._players.set(busName, widget);
+            box.add(widget);
+            widget.show();
+        }, 'player-added'],
+    ],
+});
+
+export const PopupContentWithButtons = props => {
+    const players = [];
+    const activePlayer = 0;
+
+    const PopupContent = Box({
+        vertical: true,
+        className: 'media',
+        ...props,
+        connections: [
+            [Mpris, busName => {
+                // if (!busName || players.forEach(item => item[0] === busName))
+                //     players = [];
+
+                const widget = MediaBox({ player: busName });
+                players.push([busName, widget]);
+                console.log(players);
+            }, 'player-added'],
+        ],
+        children: [
+            players[activePlayer]? players[activePlayer][1] : Box(),
+        ],
+    });
+    const nextPlayer = Button(
+        {
+            onPrimaryClick: () => players._activePlayer += 1,
+            child: Label({ label: 'haha' }),
         },
-        onClick,
-        onSecondaryClick: () => Mpris.getPlayer(player)?.playPause(),
+    );
+    const previousPlayer = Button(
+        {
+            onPrimaryClick: () => players._activePlayer -= 1,
+            child: Label({ label: 'haha' }),
+        },
+    );
+
+    return Box({
+        vertical: true,
+        children: [
+            PopupContent,
+            Box({
+                children: [
+                    previousPlayer, Separator({ hexpand: true }), nextPlayer,
+                ],
+            }),
+        ],
+    });
+};
+
+export const PanelIndicator = ({
+    player = mpris.prefer,
+    direction = 'left',
+    onPrimaryClick = () => Mpris.getPlayer(player)?.playPause(),
+    ...props
+} = {}) => mpris.MprisBox({
+    ...props,
+    className: 'media panel-button',
+    player,
+    children: [HoverRevealer({
+        direction,
+        onPrimaryClick,
         onScrollUp: () => Mpris.getPlayer(player)?.next(),
         onScrollDown: () => Mpris.getPlayer(player)?.previous(),
-        connections: [[Mpris, box => {
+        onSecondaryClick: () => Mpris.getPlayer(player)?.playPause(),
+        indicator: mpris.PlayerIcon({
+            player,
+            className: 'icon',
+            symbolic: true,
+        }),
+        child: Box({
+            children: [
+                mpris.ArtistLabel({ player }),
+                Label(' - '),
+                mpris.TitleLabel({ player }),
+            ],
+        }),
+        connections: [[Mpris, revealer => {
             const mpris = Mpris.getPlayer(player);
             if (!mpris)
                 return;
 
-            if (box._current === mpris.trackTitle)
+            if (revealer._current === mpris.trackTitle)
                 return;
 
-            box._current = mpris.trackTitle;
-            box.get_child().get_children()[direction === 'left' ? 0 : 1].reveal_child = true;
-            timeout(5000, () => {
-                box.get_child().get_children()[direction === 'left' ? 0 : 1].reveal_child = false;
+            revealer._current = mpris.trackTitle;
+            revealer.reveal_child = true;
+            timeout(3000, () => {
+                revealer.reveal_child = false;
             });
         }]],
-        child: {
-            type: 'box',
-            children: direction === 'left'
-                ? [reaveler(player), icon(player)]
-                : [icon(player), reaveler(player)],
-        },
-    }],
+    })],
 });
-
-

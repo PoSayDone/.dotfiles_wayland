@@ -1,92 +1,95 @@
-const { Service, Widget } = ags;
-const { CONFIG_DIR, exec, execAsync, timeout } = ags.Utils;
+const { Service } = ags;
+const { Box } = ags.Widget;
+const { USER, exec } = ags.Utils;
 const { Mpris } = ags.Service;
 
-var prefer = player => players => {
-    let last;
-    for (const [name, mpris] of players) {
-        if (name.includes(player))
-            return mpris;
-        last = mpris;
-    }
-    return last;
-};
 class MaterialcolorsService extends Service {
     static { Service.register(this); }
-
-    // static coverPath = '';
 
     getColors(url) {
         if (url !== 'undefined')
         {
-            const commandString = `python ${CONFIG_DIR}/bin/getCoverColors "${url}"`;
+            const commandString = `python /home/${USER}/.config/ags/bin/getCoverColors "${url}"`;
+
             try {
-                this._colors = JSON.parse(exec(commandString));
+                return JSON.parse(exec(commandString));
             }
             catch {
                 return;
             }
-            this.emit('changed');
         }
     }
 
     constructor() {
         super();
-        this._colors = {
+
+        this._colors = new Map();
+        this._coverPaths = new Map();
+
+        this._defaultColors = {
             primary: '#222222',
             onPrimary: '#ffffff',
             background: '#222222',
             onBackground: '#ffffff',
         };
 
-        Mpris.instance.connect('changed', () => {
-            this._mprisPlayer = Mpris.getPlayer('');
-            this._coverPath = this._mprisPlayer.coverPath;
-            this._colors = this.getColors(this.coverPath);
+        const id = Mpris.instance.connect('player-changed', (obj, busName) => {
+            this._mprisPlayer = Mpris.instance.getPlayer(busName);
+            this._coverPaths.set(busName, this._mprisPlayer.coverPath);
+            this._colors.set(busName, this.getColors(this._mprisPlayer.coverPath) ?? this.defaultColors);
+            this.emit('changed');
         });
+
+        Mpris.instance.connect('player-closed', () => this.disconnect(id));
     }
 
     get colors() { return this._colors; }
-    get coverPath() { return this._coverPath; }
+    get coverPaths() { return this._coverPath; }
 }
 
-class Materialcolors {
+class Materialcolors  {
     static { Service.export(this, 'Materialcolors'); }
-    static instance = new MaterialcolorsService;
+    static instance = new MaterialcolorsService();
     static get colors() { return Materialcolors.instance._colors; }
-    static get coverPath() { return Materialcolors.instance._coverPath; }
+    static get defaultColors() { return Materialcolors.instance._defaultColors; }
+    static get coverPaths() { return Materialcolors.instance._coverPaths; }
 }
 
-Widget.widgets['materialcolors/play-pause'] = props => Widget({
+export const CoverArt = ({ player, ...props  } = {}) => Box({
     ...props,
-    type: 'mpris/play-pause-button',
+    connections: [[Materialcolors, box => {
+        if (Materialcolors.colors.get(player)) {
+            box.setStyle(`
+        	background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 30%, \
+			${Materialcolors.colors.get(player).primary}), \
+			url("${Materialcolors.coverPaths.get(player)}"); \
+        	background-size: cover; \
+        	background-position: center; \
+        	color: ${Materialcolors.colors.get(player).onBackground};
+        `);
+        }
+    }]],
+});
+
+export const ColoredBox = ({ player, ...props  } = {}) => Box({
+    ...props,
     connections: [[Materialcolors, icon => {
-        icon.setStyle(`
-			background: ${Materialcolors.colors.primary}; \
-			color: ${Materialcolors.colors.onPrimary};
-		`);
+        if (Materialcolors.colors.get(player)) {
+            icon.setStyle(`
+				background: ${Materialcolors.colors.get(player).primary}; \
+				color: ${Materialcolors.colors.get(player).onPrimary};
+			`);
+        }
     }]],
 });
 
-Widget.widgets['materialcolors/cover-art'] = props => Widget({
+export const MaterialBox = ({ player, ...props  } = {}) => Box({
     ...props,
-    type: 'mpris/cover-art',
     connections: [[Materialcolors, box => {
-        box.setStyle(`
-			background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 30%, ${Materialcolors.colors.primary}), url("${Materialcolors.coverPath}"); \
-			background-size: cover; \
-			background-position: center; \
-			color: ${Materialcolors.colors.onBackground};
-		`);
-    }]],
-});
-
-Widget.widgets['materialcolors/box'] = props => Widget({
-    ...props,
-    type: 'box',
-    connections: [[Materialcolors, box => {
-        box.setStyle(`
-			color: ${Materialcolors.colors.onBackground};
-		`);
+        if (Materialcolors.colors.get(player)) {
+            box.setStyle(`
+				color: ${Materialcolors.colors.get(player).onBackground};
+			`);
+        }
     }]],
 });

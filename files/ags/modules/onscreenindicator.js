@@ -1,5 +1,7 @@
-const { Service, Widget } = ags;
+const { Service } = ags;
 const { timeout, lookUpIcon, connect } = ags.Utils;
+const { Box, Revealer, Stack, Icon } = ags.Widget;
+import { FontIcon, Progress } from './misc.js';
 
 class IndicatorService extends Service {
     static {
@@ -36,14 +38,14 @@ class IndicatorService extends Service {
                     return icons[i];
             }
         };
-        Indicator.popup(value, icon(value));
+        this.popup(value, icon(value));
     }
 
     display() {
         // brightness is async, so lets wait a bit
         timeout(10, () => {
             const value = ags.Service.Brightness.screen;
-            const icon = 'display-brightness-symbolic'
+            const icon = 'display-brightness-symbolic';
             Indicator.popup(value, icon);
         });
     }
@@ -52,7 +54,7 @@ class IndicatorService extends Service {
         // brightness is async, so lets wait a bit
         timeout(10, () => {
             const value = ags.Service.Brightness.kbd;
-            this.popup((value*33+1)/100, 'keyboard-brightness-symbolic');
+            this.popup((value * 33 + 1) / 100, 'keyboard-brightness-symbolic');
         });
     }
 
@@ -70,98 +72,41 @@ class Indicator {
     static kbd() { Indicator.instance.kbd(); }
 }
 
-Widget.widgets['on-screen-indicator'] = ({ height = 320, width = 60 }) => Widget({
-    type: 'box',
+export const OnScreenIndicator = ({ height = 380, width = 24 } = {}) => Box({
     className: 'indicator',
     style: 'padding: 1px;',
-    children: [{
-        type: 'revealer',
+    children: [Revealer({
         transition: 'slide_right',
         connections: [[Indicator, (revealer, value) => {
-            revealer.reveal_child = value > -1;
+            revealer.revealChild = value > -1;
         }]],
-        child: {
-            type: 'progress',
+        child: Progress({
             width,
             height,
             vertical: true,
             connections: [[Indicator, (progress, value) => progress.setValue(value)]],
-            child: {
-                type: 'dynamic',
-                className: 'icon',
+            child: Stack({
                 valign: 'start',
                 halign: 'center',
                 hexpand: true,
                 items: [
-                    {
-                        value: true, widget: {
-                            type: 'icon',
-                            halign: 'center',
-                            size: 22,
-                            connections: [[Indicator, (icon, _v, name) => icon.icon_name = name || '']],
-                        },
-                    },
-                    {
-                        value: false, widget: {
-                            type: 'label',
-                            halign: 'center',
-                            connections: [[Indicator, (lbl, _v, name) => lbl.label = name || '']],
-                        },
-                    },
+                    ['true', Icon({
+                        halign: 'center',
+                        hexpand: true,
+                        size: width,
+                        connections: [[Indicator, (icon, _v, name) => icon.icon = name || '']],
+                    })],
+                    ['false', FontIcon({
+                        halign: 'center',
+                        hexpand: true,
+                        style: `font-size: ${width}px;`,
+                        connections: [[Indicator, ({ label }, _v, name) => label.label = name || '']],
+                    })],
                 ],
-                connections: [[Indicator, (dynamic, _v, name) => {
-                    dynamic.update(value => value === !!lookUpIcon(name));
+                connections: [[Indicator, (stack, _v, name) => {
+                    stack.shown = `${!!lookUpIcon(name)}`;
                 }]],
-            },
-        },
-    }],
+            }),
+        }),
+    })],
 });
-
-Widget.widgets['progress'] = ({ height = 18, width = 180, vertical = false, child, ...props }) => {
-    const fill = Widget({
-        type: 'box',
-        className: 'fill',
-        hexpand: vertical,
-        vexpand: !vertical,
-        halign: vertical ? 'fill' : 'start',
-        valign: vertical ? 'end' : 'fill',
-        children: [child],
-    });
-    const progress = Widget({
-        ...props,
-        type: 'box',
-        className: 'progress',
-        style: `
-            min-width: ${width}px;
-            min-height: ${height}px;
-        `,
-        children: [fill],
-    });
-    progress.setValue = value => {
-        if (value < 0)
-            return;
-
-        const axis = vertical ? 'height' : 'width';
-        const axisv = vertical ? height : width;
-        const min = vertical ? width : height;
-        const preferred = (axisv - min) * value + min;
-
-        if (!fill._size) {
-            fill._size = preferred;
-            fill.setStyle(`min-${axis}: ${preferred}px;`);
-            return;
-        }
-
-        const frames = 10;
-        const goal = preferred - fill._size;
-        const step = goal/frames;
-
-        for (let i=0; i<frames; ++i) {
-            timeout(5*i, () => {
-                fill._size += step;
-                fill.setStyle(`min-${axis}: ${fill._size}px`);
-            });
-        }
-    };
-    return progress;
-};

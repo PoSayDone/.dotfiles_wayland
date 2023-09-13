@@ -1,4 +1,4 @@
-current_directory = "/home/posaydone/Pictures/Wallpapers/"
+current_directory = "/home/posaydone/Pictures/Wallpapers"
 [[item]]
 file = "~/.config/ags/styles/colors.scss"
 hook = "ags run-js \"modules.misc.reloadCss()\""

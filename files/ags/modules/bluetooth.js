@@ -1,5 +1,6 @@
-const { Widget } = ags;
+import { Spinner } from './misc.js';
 const { Bluetooth } = ags.Service;
+const { Icon, Label, Box, Button, Stack } = ags.Widget;
 
 export const Indicator = ({
     enabled = Icon({ icon: 'bluetooth-active-symbolic', className: 'enabled' }),
@@ -16,61 +17,46 @@ export const Indicator = ({
     }]],
 });
 
-Widget.widgets['bluetooth/status-label'] = props => Widget({
+export const Toggle = props => Button({
     ...props,
-    type: 'label',
-    connections: [[Bluetooth, label => label.label = (Bluetooth.enabled ? 'On' : 'Off')]],
-});
-
-Widget.widgets['bluetooth/status'] = props => Widget({
-    ...props,
-    type: 'label',
-    connections: [[Bluetooth, label => {
-        label.label = Bluetooth.connectedDevices[0]?.alias || 'Not Connected';
-    }]],
-});
-
-Widget.widgets['bluetooth/toggle'] = props => Widget({
-    ...props,
-    type: 'button',
-    onClick: () => Bluetooth.enabled = !Bluetooth.enabled,
+    onClicked: () => Bluetooth.enabled = !Bluetooth.enabled,
     connections: [[Bluetooth, button => button.toggleClassName('on', Bluetooth.enabled)]],
 });
 
-Widget.widgets['bluetooth/label'] = props => Widget({
+export const ConnectedLabel = props => Label({
     ...props,
-    type: 'label',
-    label: 'Bluetooth',
+    connections: [[Bluetooth, label => {
+        if (!Bluetooth.enabled)
+            return label.label = 'Disabled';
+
+        if (Bluetooth.connectedDevices.size === 0)
+            return label.label = 'Not Connected';
+
+        if (Bluetooth.connectedDevices.size === 1)
+            return label.label = Bluetooth.connectedDevices.entries().next().value[1].alias;
+
+        label.label = `${Bluetooth.connectedDevices.size} Connected`;
+    }]],
 });
 
-Widget.widgets['bluetooth/devices'] = props => Widget({
+export const Devices = props => Box({
     ...props,
-    type: 'box',
-    orientation: 'vertical',
+    vertical: true,
     connections: [[Bluetooth, box => {
-        box.get_children().forEach(ch => ch.destroy());
-        for (const [, device] of Bluetooth.devices) {
-            box.add(Widget({
-                type: 'box',
-                hexpand: false,
-                children: [
-                    {
-                        type: 'icon',
-                        icon: device.iconName + '-symbolic',
-                    },
-                    {
-                        type: 'label',
-                        label: device.name,
-                    },
-                    { type: 'box', hexpand: true },
-                    device._connecting ? { type: 'spinner' } : {
-                        type: 'switch',
-                        active: device.connected,
-                        onActivate: ({ active }) => device.setConnection(active),
-                    },
-                ],
-            }));
-        }
-        box.show_all();
+        box.children = Array.from(Bluetooth.devices.values()).map(device => Box({
+            hexpand: false,
+            children: [
+                Icon(device.iconName + '-symbolic'),
+                Label(device.name),
+                Box({ hexpand: true }),
+                device._connecting ? Spinner() : ags.Widget({
+                    type: imports.gi.Gtk.Switch,
+                    active: device.connected,
+                    connections: [['activate', ({ active }) => {
+                        device.setConnection(active);
+                    }]],
+                }),
+            ],
+        }));
     }]],
 });

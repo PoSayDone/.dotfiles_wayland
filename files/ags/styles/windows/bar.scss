@@ -1,10 +1,4 @@
 .bar {
-	background-color: transparent;
-	margin: 0;
-	padding: 0;
-}
-
-.bar__container {
 	background-color: transparentize($surface3, 0.4);
 	margin: 0;
 	padding: 8px 12px;
@@ -37,38 +31,36 @@
 	}
 }
 
-.workspaces button {
-	.indicator {
-		min-width: 14px;
-		min-height: 14px;
-		border-radius: 100%;
-		margin: 0 5px;
-		padding: 0;
-		transition: background-color 1s ease-out;
-	}
+.workspace-indicator {
+	min-width: 14px;
+	min-height: 14px;
+	border-radius: 100%;
+	margin: 0 5px;
+	padding: 0;
+	transition: background-color 0.4s ease-out;
 
-	&:last-child .indicator {
+	&:last-child {
 		margin-right: 14px;
 	}
 
-	&:first-child .indicator {
+	&:first-child {
 		margin-left: 14px;
 	}
 
-	&.empty .indicator {
+	&.empty {
 		background-color: $bg3_color;
 	}
 
-	&.occupied .indicator {
+	&.occupied {
 		background-color: $bg3_color;
 	}
 
-	&:hover .indicator {
+	&:hover {
 		background-color: transparentize($accent, 0.4);
 	}
 
-	&.active .indicator,
-	&:active .indicator {
+	&.active,
+	&:active {
 		background-color: $accent;
 	}
 }
@@ -103,6 +95,9 @@
 }
 
 .battery {
+	.battery__indicator {
+		margin-right: 4px;
+	}
 	padding: 0 12px;
 	min-width: 0;
 
@@ -115,5 +110,12 @@
 	padding: 0px 12px;
 	label {
 		margin-left: 5px;
+	}
+}
+
+.tray {
+	image {
+		font-size: 17px;
+		margin-left: 8px;
 	}
 }

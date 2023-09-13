@@ -54,7 +54,7 @@ case $chosen in
     $logout)
 		ans=$($DIR/rofi/bin/confirm)
 		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-			hyprctl dispatch exit
+			loginctl kill-user $(whoami)
 		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit
         fi

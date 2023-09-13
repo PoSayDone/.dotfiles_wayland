@@ -7,14 +7,14 @@
  */
 
 * {
-    accent:                      #8bcdff;
-    accentfg:                    #003450;
+    accent:                      #91ccff;
+    accentfg:                    #003353;
     red:                         #ffaedb;
-    blue:                        #9acaff;
+    blue:                        #9ccaff;
     lightfg:                     #e2e2e5;
     lightbg:                     #1e2022;
     foreground:                  #e2e2e5;
-    background:                  rgba ( 40, 42, 44, 60 % );
+    background:                  rgba ( 40, 42, 45, 60 % );
     background-color:            rgba ( 30, 32, 34, 0 % );
     separatorcolor:              @foreground;
     border-color:                @foreground;

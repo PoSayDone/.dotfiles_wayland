@@ -1,20 +1,24 @@
 // in config.js
-const { CONFIG_DIR, exec } = ags.Utils;
-import { bar } from './windows';
+import { USER, exec } from 'resource:///com/github/Aylur/ags/utils.js';
+import { Bar, Notifications, Indicator, Controlcenter } from './layouts/windows.js';
 
-exec(`sassc ${CONFIG_DIR}/scss/main.scss ${CONFIG_DIR}/style.css`);
+exec(`sassc /home/${USER}/.config/ags/styles/main.scss /home/${USER}/.config/ags/style.css`);
 
-const monitors = ags.Service.Hyprland.HyprctlGet('monitors')
-    .map(mon => mon.id);
+const monitors = ags.Service.Hyprland.HyprctlGet('monitors');
 
 export default {
     closeWindowDelay: {
         'quicksettings': 300,
         'dashboard': 300,
     },
-    style: `${CONFIG_DIR}/style.css`,
+    style: `/home/${USER}/.config/ags/style.css`,
     notificationPopupTimeout: 5000, // milliseconds
     windows: [
-        bar,
+        ...monitors.map(element => [
+            Bar(element.id),
+            Notifications(element.id),
+            Indicator(element.id),
+        ]),
+        Controlcenter(),
     ],
 };

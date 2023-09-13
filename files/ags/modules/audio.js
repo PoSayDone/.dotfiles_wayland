@@ -1,186 +1,201 @@
-const { Widget } = ags;
 const { Audio } = ags.Service;
+const { Label, Box, Icon, Stack, Button, Slider } = ags.Widget;
 
-const _connectStream = ({ stream, widget, callback }) => Widget({
-    ...widget,
-    connections: [[Audio, widget => {
-        if (widget[stream] === Audio[stream])
+const iconSubstitute = item => {
+    const substitues = [
+        { from: 'audio-headset-bluetooth', to: 'audio-headphones-symbolic' },
+        { from: 'audio-card-analog-usb', to: 'audio-speakers-symbolic' },
+        { from: 'audio-card-analog-pci', to: 'audio-card-symbolic' },
+    ];
+
+    for (const { from, to } of substitues) {
+        if (from === item)
+            return to;
+    }
+    return item;
+};
+
+export const SpeakerIndicator = ({
+    items = [
+        ['101', Icon('audio-volume-overamplified-symbolic')],
+        ['67', Icon('audio-volume-high-symbolic')],
+        ['34', Icon('audio-volume-medium-symbolic')],
+        ['1', Icon('audio-volume-low-symbolic')],
+        ['0', Icon('audio-volume-muted-symbolic')],
+    ],
+    ...props
+} = {}) => Stack({
+    ...props,
+    items,
+    connections: [[Audio, stack => {
+        if (!Audio.speaker)
             return;
 
-        const disconnect = () => {
-            if (widget._id) {
-                widget[stream].disconnect(widget._id);
-                widget._id = null;
-            }
-        };
-        widget.connect('destroy', disconnect);
-        disconnect();
+        if (Audio.speaker.isMuted)
+            return stack.shown = '0';
 
-        widget[stream] = Audio[stream];
-        widget._id = widget[stream].connect('changed', () => callback(widget));
-        callback(widget);
+        const vol = Audio.speaker.volume * 100;
+        for (const threshold of [100, 66, 33, 0, -1]) {
+            if (vol > threshold + 1)
+                return stack.shown = `${threshold + 1}`;
+        }
+    }, 'speaker-changed']],
+});
+
+export const SpeakerTypeIndicator = props => Icon({
+    ...props,
+    connections: [[Audio, icon => {
+        if (Audio.speaker)
+            icon.icon = iconSubstitute(Audio.speaker.iconName);
     }]],
 });
 
-Widget.widgets['audio/speaker-indicator'] = ({ items, ...props }) => {
-    items ||= [
-        { value: 101, widget: { type: 'icon', icon: 'audio-volume-overamplified-symbolic' } },
-        { value: 67, widget: { type: 'icon', icon: 'audio-volume-high-symbolic' } },
-        { value: 34, widget: { type: 'icon', icon: 'audio-volume-medium-symbolic' } },
-        { value: 1, widget: { type: 'icon', icon: 'audio-volume-low-symbolic' } },
-        { value: 0, widget: { type: 'icon', icon: 'audio-volume-muted-symbolic' } },
-    ];
-    return _connectStream({
-        stream: 'speaker',
-        widget: { ...props, type: 'dynamic', items },
-        callback: dynamic => dynamic.update(value => {
-            if (Audio.speaker.isMuted)
-                return value === 0;
+export const SpeakerPercentLabel = props => Label({
+    ...props,
+    connections: [[Audio, label => {
+        if (!Audio.speaker)
+            return;
 
-            return value <= (Audio.speaker.volume*100);
-        }),
-    });
-};
-
-Widget.widgets['audio/speaker-label'] = props => _connectStream({
-    stream: 'speaker',
-    widget: { ...props, type: 'label' },
-    callback: label => label.label = `${Math.floor(Audio.speaker.volume*100)}%`,
+        label.label = `${Math.floor(Audio.speaker.volume * 100)}%`;
+    }, 'speaker-changed']],
 });
 
-Widget.widgets['audio/speaker-slider'] = props => _connectStream({
-    stream: 'speaker',
-    widget: {
-        ...props,
-        type: 'slider',
-        onChange: value => Audio.speaker.volume = value,
-    },
-    callback: slider => {
-        slider.adjustment.value = Audio.speaker.volume;
-    },
+export const SpeakerSlider = props => Slider({
+    ...props,
+    drawValue: false,
+    onChange: ({ value }) => Audio.speaker.volume = value,
+    connections: [[Audio, slider => {
+        if (!Audio.speaker)
+            return;
+
+        slider.sensitive = !Audio.speaker.isMuted;
+        slider.value = Audio.speaker.volume;
+    }, 'speaker-changed']],
 });
 
-Widget.widgets['audio/microphone-mute-indicator'] = ({
-    muted = Widget({ type: 'icon', icon: 'microphone-disabled-symbolic' }),
-    unmuted = Widget({ type: 'icon', icon: 'microphone-sensitivity-high-symbolic' }),
+export const MicrophoneMuteIndicator = ({
+    muted = Icon('microphone-disabled-symbolic'),
+    unmuted = Icon('microphone-sensitivity-high-symbolic'),
     ...props
-}) => _connectStream({
-    stream: 'microphone',
-    widget: {
-        ...props,
-        type: 'dynamic',
-        items: [
-            { value: true, widget: muted },
-            { value: false, widget: unmuted },
-        ],
-    },
-    callback: dynamic => dynamic.update(value => value === Audio.microphone?.isMuted),
+} = {}) => Stack({
+    ...props,
+    items: [
+        ['true', muted],
+        ['false', unmuted],
+    ],
+    connections: [[Audio, stack => {
+        stack.shown = `${Audio.microphone?.isMuted}`;
+    }, 'microphone-changed']],
 });
 
-Widget.widgets['audio/microphone-mute-toggle'] = props => _connectStream({
-    stream: 'microphone',
-    widget: {
-        ...props,
-        type: 'button',
-        onClick: () => {
-            if (!Audio.microphone)
-                return;
-
-            Audio.microphone.isMuted = !Audio.microphone.isMuted;
-        },
-    },
-    callback: button => {
+export const MicrophoneMuteToggle = props => Button({
+    ...props,
+    onClicked: 'pactl set-source-mute @DEFAULT_SOURCE@ toggle',
+    connections: [[Audio, button => {
         if (!Audio.microphone)
             return;
 
         button.toggleClassName('active', !Audio.microphone.isMuted);
-    },
+    }, 'microphone-changed']],
 });
 
-Widget.widgets['audio/microphone-mute-label'] = props => Widget({
+export const MicrophoneStatus = props => Label({
     ...props,
-    type: 'label',
-    label: 'Microphone',
+    connections: [[Audio, label => {
+        if (!Audio.microphone)
+        {
+            label.label = 'Not found';
+        }
+        else {
+            if (Audio.microphone.isMuted)
+                label.label = 'Off';
+            else
+                label.label = 'On';
+        }
+    }, 'microphone-changed']],
 });
 
-Widget.widgets['audio/microphone-mute-status-label'] = props => _connectStream({
-    stream: 'microphone',
-    widget: {
-        ...props,
-        type: 'label',
-    },
-    callback: label => {
-        if (Audio.microphone.isMuted)
-            label.label = 'Off';
-        else
-            label.label = 'On';
-    },
-});
-
-
-Widget.widgets['audio/app-mixer'] = ({ item, ...props }) => {
-    item ||= stream => {
-        const icon = Widget({ type: 'icon' });
-        const label = Widget({ type: 'label', xalign: 0, justify: 'left', wrap: true });
-        const percent = Widget({ type: 'label', xalign: 1 });
-        const slider = Widget({
-            type: 'slider',
+export const AppMixer = props => {
+    const AppItem = stream => {
+        const icon = Icon();
+        const label = Label({ xalign: 0, justify: 'left', wrap: true, ellipsize: 3 });
+        const percent = Label({ xalign: 1 });
+        const slider = Slider({
             hexpand: true,
-            onChange: value => stream.volume = value,
+            drawValue: false,
+            onChange: ({ value }) => {
+                stream.volume = value;
+            },
         });
-        const box = Widget({
-            type: 'box',
+        const sync = () => {
+            icon.icon = stream.iconName;
+            icon.tooltipText = stream.name;
+            slider.value = stream.volume;
+            percent.label = `${Math.floor(stream.volume * 100)}%`;
+            label.label = stream.description || '';
+        };
+        const id = stream.connect('changed', sync);
+        return Box({
             hexpand: true,
             children: [
                 icon,
-                Widget({
-                    type: 'box',
-                    hexpand: true,
-                    orientation: 'vertical',
+                Box({
                     children: [
-                        label,
-                        {
-                            type: 'box',
+                        Box({
+                            vertical: true,
                             children: [
+                                label,
                                 slider,
-                                percent,
                             ],
-                        },
+                        }),
+                        percent,
                     ],
                 }),
             ],
+            connections: [['destroy', () => stream.disconnect(id)]],
+            setup: sync,
         });
-        box.update = () => {
-            icon.icon_name = stream.iconName;
-            icon.set_tooltip_text(stream.name);
-            slider.set_value(stream.volume);
-            percent.label = `${Math.floor(stream.volume*100)}%`;
-            stream.description.length > 37
-                ? label.label = stream.description.substring(0, 37)+'..'
-                : label.label = stream.description;
-        };
-        return box;
     };
 
-    return Widget({
+    return Box({
         ...props,
-        type: 'box',
-        orientation: 'vertical',
+        vertical: true,
         connections: [[Audio, box => {
-            box.get_children().forEach(ch => ch.destroy());
-            for (const [, stream] of Audio.apps) {
-                const app = item(stream);
-                box.add(app);
-                const id1 = stream.connect('changed', () => app.update());
-                const id2 = stream.connect('closed', () => stream.disconnect(id1));
-                app.connect('destroy', () => {
-                    stream.disconnect(id1);
-                    stream.disconnect(id2);
-                });
-                app.update();
-            }
-
-            box.show_all();
+            box.children = Array.from(Audio.apps.values())
+                .map(stream => AppItem(stream));
         }]],
     });
 };
+
+export const StreamSelector = ({ streams = 'speakers', ...props } = {}) => Box({
+    ...props,
+    vertical: true,
+    connections: [[Audio, box => {
+        box.children = Array.from(Audio[streams].values()).map(stream => Button({
+            child: Box({
+                children: [
+                    Icon({
+                        icon: iconSubstitute(stream.iconName),
+                        tooltipText: stream.iconName,
+                    }),
+                    Label(stream.description.split(' ').slice(0, 4).join(' ')),
+                    Icon({
+                        icon: 'object-select-symbolic',
+                        hexpand: true,
+                        halign: 'end',
+                        connections: [['draw', icon => {
+                            icon.visible = Audio.speaker === stream;
+                        }]],
+                    }),
+                ],
+            }),
+            onClicked: () => {
+                if (streams === 'speakers')
+                    Audio.speaker = stream;
+
+                if (streams === 'microphones')
+                    Audio.microphone = stream;
+            },
+        }));
+    }]],
+});

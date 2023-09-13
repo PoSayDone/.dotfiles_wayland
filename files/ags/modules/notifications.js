@@ -1,23 +1,23 @@
 const { GLib } = imports.gi;
 const { Notifications } = ags.Service;
-const { lookUpIcon } = ags.Utils;
-const { Widget } = ags;
-const { timeout } = ags.Utils;
+const { lookUpIcon, timeout } = ags.Utils;
+const { Box, Icon, Label, EventBox, Button, Stack, Revealer } = ags.Widget;
 
-const createIconWidget = ({ appEntry, appIcon, image }) => {
+const NotificationIcon = ({ appEntry, appIcon, image }) => {
     if (image) {
-        return {
-            type: 'box',
-            className: 'icon',
+        return Box({
+            valign: 'start',
+            hexpand: false,
+            className: 'icon img',
             style: `
                 background-image: url("${image}");
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                min-width: 30px;
-                min-height: 30px;
+                min-width: 38px;
+                min-height: 38px;
             `,
-        };
+        });
     }
 
     let icon = 'dialog-information-symbolic';
@@ -27,347 +27,227 @@ const createIconWidget = ({ appEntry, appIcon, image }) => {
     if (lookUpIcon(appEntry))
         icon = appEntry;
 
-    return {
-        type: 'box',
+    return Box({
+        valign: 'start',
+        hexpand: false,
         className: 'icon',
         style: `
-            min-width: 30px;
-            min-height: 30px;
+            min-width: 38px;
+            min-height: 38px;
         `,
-        children: [{
-            type: 'icon', icon, size: 30,
-            halign: 'center', hexpand: false,
-            valign: 'center', vexpand: false,
-        }],
-    };
-};
-
-
-const createNotification = ({ id, summary, body, actions, urgency, ...icon }) => {
-    const child = {
-        type: 'box',
-        orientation: 'vertical',
-        className: 'notification',
-        children: [
-            {
-                type: 'box',
-                orientation: 'horizontal',
-                children: [
-                    createIconWidget(icon),
-                    {
-                        type: 'box',
-                        children: [
-                            {
-                                type: 'box',
-                                hexpand: true,
-                                orientation: 'vertical',
-                                children: [
-                                    {
-                                        type: 'box',
-                                        children: [
-                                            {
-                                                className: 'title',
-                                                xalign: 0,
-                                                justify: 'left',
-                                                hexpand: true,
-                                                type: 'label',
-                                                maxWidth: 24,
-                                                wrap: true,
-                                                label: summary.length > 55 ? summary.substring(0, 55) + '...' : summary,
-                                            },
-                                        ],
-                                    },
-                                    {
-                                        className: 'description',
-                                        hexpand: true,
-                                        markup: true,
-                                        xalign: 0,
-                                        justify: 'left',
-                                        type: 'label',
-                                        label: body.length > 140 ? body.substring(0, 140) + '...' : body,
-                                        wrap: true,
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        type: 'box',
-                        hexpand: true,
-                        halign: 'end',
-                        valign: 'start',
-                        children: [
-                            {
-                                className: 'close-button',
-                                type: 'button',
-                                valign: 'end',
-                                child: Widget({ type: 'icon', icon: 'window-close-symbolic' }),
-                                onClick: () => Notifications.close(id),
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
-                type: 'box',
-                className: 'actions',
-                children: actions.map(({ action, label }) => ({
-                    className: 'action-button',
-                    type: 'button',
-                    onClick: () => Notifications.invoke(id, action),
-                    hexpand: true,
-                    child: label,
-                })),
-            },
-        ],
-    };
-
-    return Widget({
-        type: 'eventbox',
-        className: `notifications__container ${urgency}`,
-        onClick: () => Notifications.dismiss(id),
-        child: child,
+        children: [Icon({
+            icon, size: 38,
+            halign: 'center', hexpand: true,
+            valign: 'center', vexpand: true,
+        })],
     });
 };
 
-const createNotificationList = (map, { notification = createNotification, ...rest }) => Widget({
-    ...rest,
-    type: 'box',
-    orientation: 'vertical',
-    connections: [[Notifications, box => {
-        box.get_children().forEach(ch => ch.destroy());
-        const notifications = [...Notifications[map]].map(([id, n]) => ({ id, ...n }));
-        notifications.reverse();
-        for (const n of notifications)
-            box.add(notification(n));
-        box.show_all();
-    }]],
-});
+const Notification = ({ id, summary, body, actions, urgency, time, ...icon }) => EventBox({
+    onPrimaryClick: () => Notifications.dismiss(id),
+    properties: [['hovered', false]],
+    onHover: w => {
+        if (w._hovered)
+            return;
 
-Widget.widgets['notifications/popup-list'] = props => createNotificationList('popups', props);
+        timeout(300, () => w._hovered = true);
+    },
+    onHoverLost: w => {
+        if (!w._hovered)
+            return;
 
-Widget.widgets['notifications/popups'] = ({ transition }) => Widget({
-    type: 'box',
-    style: 'padding: 1px;',
-    children: [{
-        type: 'revealer',
-        transition,
-        style: 'border: 1px solid red; padding: 5px;',
-        connections: [[Notifications, revealer => {
-            revealer.reveal_child = Notifications.popups.size > 0;
-        }]],
-        child: {
-            type: 'notifications/popup-list',
-            className: 'notification-popup',
-        },
-    }],
-});
-
-
-Widget.widgets['notifications/header'] = props => Widget({
-    ...props,
-    type: 'box',
-    vexpand: true,
-    children: [
-        { type: 'label', label: 'Notifications', hexpand: true, xalign: 0 },
-        {
-            type: 'notifications/clear-button',
-            child: {
-                type: 'box',
+        w._hovered = false;
+        Notifications.dismiss(id);
+    },
+    vexpand: false,
+    child: Box({
+        className: `notification ${urgency}`,
+        vertical: true,
+        children: [
+            Box({
                 children: [
-                    'Clear ',
-                    {
-                        type: 'dynamic',
-                        items: [
-                            { value: true, widget: { type: 'icon', icon: 'user-trash-full-symbolic' } },
-                            { value: false, widget: { type: 'icon', icon: 'user-trash-symbolic' } },
+                    NotificationIcon(icon),
+                    Box({
+                        hexpand: true,
+                        vertical: true,
+                        children: [
+                            Box({
+                                children: [
+                                    Label({
+                                        className: 'title',
+                                        xalign: 0,
+                                        justification: 'left',
+                                        hexpand: true,
+                                        maxWidthChars: 24,
+                                        ellipsize: 3,
+                                        wrap: true,
+                                        label: summary,
+                                        useMarkup: summary.startsWith('<'),
+                                    }),
+                                    Label({
+                                        className: 'time',
+                                        valign: 'start',
+                                        label: GLib.DateTime.new_from_unix_local(time).format('%H:%M'),
+                                    }),
+                                ],
+                            }),
+                            Label({
+                                className: 'description',
+                                hexpand: true,
+                                useMarkup: true,
+                                xalign: 0,
+                                justification: 'left',
+                                label: body,
+                                wrap: true,
+                            }),
                         ],
-                        connections: [
-                            [Notifications, dynamic => dynamic.update(value => {
-                                return value === Notifications.notifications.size > 0;
-                            })],
-                        ],
-                    },
+                    }),
+                    Button({
+                        className: 'close-button',
+                        valign: 'start',
+                        vexpand: true,
+                        child: Icon('window-close-symbolic'),
+                        onClicked: () => Notifications.close(id),
+                    }),
                 ],
-            },
-        },
-    ],
+            }),
+            Box({
+                className: 'actions',
+                children: actions.map(action => Button({
+                    className: 'action-button',
+                    onClicked: () => Notifications.invoke(id, action.id),
+                    hexpand: true,
+                    child: Label(action.label),
+                })),
+            }),
+        ],
+    }),
 });
 
-Widget.widgets['notifications/popup-content'] = () => Widget({
-    type: 'box',
-    className: 'notifications',
-    vexpand: true,
-    orientation: 'vertical',
-    children: [
-        {
-            type: 'notifications/header',
-            className: 'header',
-        },
-        {
-            type: 'box',
-            vexpand: true,
-            children: [{
-                type: 'notifications/list',
-                className: 'notification-list',
-            }],
-        },
-    ],
-});
-
-Widget.widgets['notifications/indicator'] = props => Widget({
+export const NotificationList = props => Box({
     ...props,
-    type: 'notifications/dnd-indicator',
-    connections: [[Notifications, indicator => {
-        const notified = Notifications.notifications.size > 0;
-        indicator.toggleClassName('notified', notified);
-        indicator.visible = notified || Notifications.dnd;
+    vertical: true,
+    vexpand: true,
+    className: 'notification-list',
+    connections: [[Notifications, box => {
+        box.children = Array.from(Notifications.notifications.values()).reverse()
+            .map(n => Notification(n));
+
+        box.visible = Notifications.notifications.size > 0;
     }]],
 });
 
-Widget.widgets['notifications/popup-label'] = ({ transition = 'slide_left', ...props }) => Widget({
-    ...props,
-    type: 'box',
-    children: [{
-        type: 'revealer',
-        transition,
-        connections: [[Notifications, revaler => {
-            revaler.reveal_child = Notifications.popups.size > 0;
-        }]],
-        child: {
-            type: 'label',
-            connections: [[Notifications, label => {
-                const lbl = Array.from(Notifications.notifications.values()).pop()?.summary;
-                label.label = lbl || '';
-            }]],
-        },
-    }],
-});
+export const PopupList = ({ transition = 'slide_down' } = {}) => Box({
+    className: 'notifications-popup-list',
+    style: 'padding: 12px',
+    children: [
+        Revealer({
+            transition,
+            child: Box({
+                vertical: true,
+                properties: [
+                    ['map', new Map()],
+                    ['dismiss', (box, id, force = false) => {
+                        if (!id || !box._map.has(id))
+                            return;
 
-Widget.widgets['notifications/popup-indicator'] = ({ direction = 'left', ...props }) => Widget({
-    ...props,
-    type: 'box',
-    children: [{
-        type: 'eventbox',
-        onHover: box => {
-            timeout(200, () => box._revealed = true);
-            box.get_child().get_children()[direction === 'left' ? 0 : 1].get_children()[0].reveal_child = true;
-        },
-        onHoverLost: box => {
-            if (!box._revealed)
-                return;
+                        if (box._map.get(id)._hovered && !force)
+                            return;
 
-            timeout(200, () => box._revealed = false);
-            box.get_child().get_children()[direction === 'left' ? 0 : 1].get_children()[0].reveal_child = false;
-        },
-        child: {
-            type: 'box',
-            children: direction === 'left'
-                ? [
-                    { type: 'notifications/popup-label', transition: 'slide_left' },
-                    { type: 'notifications/indicator' },
-                ]
-                : [
-                    { type: 'notifications/indicator' },
-                    { type: 'notifications/popup-label', transition: 'slide_right' },
+                        if (box._map.size - 1 === 0)
+                            box.get_parent().reveal_child = false;
+
+                        timeout(200, () => {
+                            box._map.get(id)?.destroy();
+                            box._map.delete(id);
+                        });
+                    }],
+                    ['notify', (box, id) => {
+                        if (!id)
+                            return;
+
+                        if (box._map.has(id))
+                            box._map.get(id).destroy();
+
+                        const widget = Notification(Notifications.notifications.get(id));
+                        box._map.set(id, widget);
+                        box.add(widget);
+                        box.show_all();
+
+                        timeout(10, () => {
+                            box.get_parent().reveal_child = true;
+                        });
+                    }],
                 ],
-        },
-    }],
+                connections: [
+                    [Notifications, (box, id) => box._notify(box, id), 'notified'],
+                    [Notifications, (box, id) => box._dismiss(box, id), 'dismissed'],
+                    [Notifications, (box, id) => box._dismiss(box, id, true), 'closed'],
+                ],
+            }),
+        }),
+    ],
 });
 
-
-Widget.widgets['notifications/notification-list'] = props => createNotificationList('notifications', props);
-
-Widget.widgets['notifications/placeholder'] = props => Widget({
+export const Placeholder = props => Box({
+    className: 'placeholder',
+    vertical: true,
+    valign: 'center',
+    vexpand: true,
+    halign: 'center',
+    hexpand: true,
     ...props,
-    type: 'box',
+    children: [
+        Label({ label: '󰂛', className: 'icon' }),
+        Label('Your inbox is empty'),
+    ],
     connections: [
         [Notifications, box => box.visible = Notifications.notifications.size === 0],
     ],
 });
 
-Widget.widgets['notifications/clear-button'] = props => Widget({
+export const ClearButton = props => Button({
     ...props,
-    type: 'button',
-    onClick: Notifications.clear,
+    onClicked: Notifications.clear,
+    connections: [[Notifications, button => button.sensitive = Notifications.notifications.size > 0]],
+    child: Box({
+        children: [
+            Label('Clear '),
+            Stack({
+                items: [
+                    ['true', Icon('user-trash-full-symbolic')],
+                    ['false', Icon('user-trash-symbolic')],
+                ],
+                connections: [[Notifications, stack => {
+                    stack.shown = `${Notifications.notifications.size > 0}`;
+                }]],
+            }),
+        ],
+    }),
 });
 
-Widget.widgets['notifications/dnd-indicator'] = ({
-    silent = Widget({ type: 'icon', icon: 'notifications-disabled-symbolic' }),
-    noisy = Widget({ type: 'icon', icon: 'preferences-system-notifications-symbolic' }),
-    ...rest
-}) => Widget({
-    ...rest,
-    type: 'dynamic',
+export const DNDIndicator = ({
+    silent = Icon('notifications-disabled-symbolic'),
+    noisy = Icon('preferences-system-notifications-symbolic'),
+} = {}) => Stack({
     items: [
-        { value: true, widget: silent },
-        { value: false, widget: noisy },
+        ['true', silent],
+        ['false', noisy],
     ],
-    connections: [[Notifications, dynamic => {
-        dynamic.update(value => value === Notifications.dnd);
+    connections: [[Notifications, stack => {
+        stack.shown = `${Notifications.dnd}`;
     }]],
 });
 
-Widget.widgets['notifications/dnd-toggle'] = props => Widget({
+export const DNDToggle = props => Button({
     ...props,
-    type: 'button',
-    onClick: () => { Notifications.dnd = !Notifications.dnd; },
+    onClicked: () => { Notifications.dnd = !Notifications.dnd; },
     connections: [[Notifications, button => {
         button.toggleClassName('active', !Notifications.dnd);
     }]],
 });
 
-Widget.widgets['notifications/label'] = props => Widget({
+export const DNDStatus = props => Label({
     ...props,
-    type: 'label',
-    label: 'Notifications',
-});
-
-Widget.widgets['notifications/status-label'] = props => Widget({
-    ...props,
-    type: 'label',
     connections: [[Notifications, label => label.label = (!Notifications.dnd ? 'On' : 'Off')]],
-});
-
-Widget.widgets['notifications/list'] = props => Widget({
-    ...props,
-    hscroll: 'never',
-    vscroll: 'automatic',
-    type: 'scrollable',
-    className: 'notifications-center__list',
-    child: {
-        type: 'box',
-        orientation: 'vertical',
-        vexpand: true,
-        children: [
-            { type: 'notifications/notification-list' },
-            {
-                type: 'notifications/placeholder',
-                className: 'placeholder',
-                orientation: 'vertical',
-                valign: 'center',
-                vexpand: true,
-                children: [
-                    { type: 'label', label: '󰂛', className: 'icon' },
-                    'Your inbox is empty',
-                ],
-            },
-        ],
-    },
-});
-
-Widget.widgets['notifications/notifications-indicator'] = props => Widget({
-    ...props,
-    type: 'box',
-    className: 'notifications-indicator',
-    children: [
-        {
-            type: 'notifications/popup-indicator',
-            className: 'indicator',
-            direction: 'right',
-        },
-    ],
-    connections: [[Notifications, box => {
-        box.visible = Notifications.notifications.size > 0;
-    }]],
 });

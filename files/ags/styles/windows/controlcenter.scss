@@ -1,12 +1,16 @@
-.quicksettings {
-	min-width: 340px;
-}
-
-.quicksettings__container {
-	min-width: 340px;
+.controlcenter__container {
+	min-height: 400px;
 	background-color: transparentize($surface3, 0.4);
 	padding: 20px;
 	border-radius: 40px;
+}
+
+.notifications--list {
+	margin-left: 20px;
+	padding: 20px;
+	border-radius: 30px;
+	min-width: 400px;
+	background-color: $surface2;
 }
 
 .quicksettings__button {
@@ -14,7 +18,7 @@
 	color: $fg_color;
 	padding: 0px;
 	border-radius: 30px;
-	min-width: 225px;
+	min-width: 240px;
 	min-height: 75px;
 	transition: background-color 0.3s ease-in-out;
 	transition: color 0.3s ease-in-out;
@@ -24,14 +28,10 @@
 		color: $onPrimary;
 	}
 
-	.arrow {
-		padding: 18px;
+	image {
+		margin-left: 24px;
+		margin-right: 18px;
 	}
-}
-
-.quicksettings__button_icon {
-	margin-left: 24px;
-	margin-right: 18px;
 }
 
 .submenu {
@@ -76,32 +76,8 @@
 	}
 }
 
-@mixin sliders() {
-	image {
-		color: $onSurface;
-		background-color: $surface1;
-		padding: 0;
-		border-radius: 100px;
-		min-height: 42px;
-		min-width: 42px;
-	}
-
-	scale {
-		margin: 0 8px;
-		@include slider($width: 0.3em, $slider_width: 0.5em);
-	}
-
-	// .percent {
-	//     min-width: 2.8em;
-	// }
-}
-
-.sliders {
-	@include sliders;
-}
-
 .cover-art {
-	margin: 10px 0;
+	margin-top: 8px;
 	min-height: 205px;
 	border-radius: 30px;
 	background-size: cover;
@@ -125,6 +101,44 @@
 
 .shader {
 	padding: 20px;
+}
+
+.volume-box,
+.brightness {
+	image {
+		color: $onSurface;
+		background-color: $surface1;
+		padding: 0;
+		border-radius: 100px;
+		min-height: 42px;
+		min-width: 42px;
+	}
+
+	scale {
+		margin: 0 8px;
+		@include slider;
+	}
+
+	.menu {
+		> * > * {
+			margin-top: 8px;
+		}
+
+		label {
+			margin: 0 8px;
+		}
+	}
+
+	.settings__button {
+		margin-top: 8px;
+		padding: 12px 10px;
+		background: $surface1;
+		border-radius: 100px;
+		transition: all 0.3s ease-in-out;
+		&:hover {
+			background: $surface2;
+		}
+	}
 }
 
 .title-box {
@@ -170,4 +184,32 @@
 			background-color: #fff;
 		}
 	}
+}
+
+.notifications__header {
+	min-height: 0;
+	margin-bottom: 12px;
+}
+
+.notifications__title {
+	margin-left: 4px;
+	font-size: 18px;
+	font-weight: 500;
+}
+.notifications__clear-button {
+	padding: 12px 14px;
+	background-color: $primary;
+	background-color: $onPrimary;
+	border-radius: 100px;
+	image {
+		margin-left: 4px;
+	}
+}
+
+.media {
+	min-height: 213px;
+}
+
+.mediabox {
+	min-height: 213px;
 }
