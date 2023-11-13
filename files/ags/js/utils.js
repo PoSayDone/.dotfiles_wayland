@@ -79,7 +79,6 @@ export async function globalServices() {
 }
 
 export function launchApp(app) {
-    console.log(app.executable);
     Utils.execAsync(`hyprctl dispatch exec "${app.executable}"`);
     app.frequency += 1;
 }

@@ -12,8 +12,8 @@ const NotificationIcon = ({ appEntry, appIcon, image }) => {
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                min-width: 46px;
-                min-height: 46px;
+                min-width:  50px;
+                min-height: 50px;
             `,
         });
     }
@@ -30,11 +30,11 @@ const NotificationIcon = ({ appEntry, appIcon, image }) => {
         hexpand: false,
         class_name: 'icon',
         css: `
-            min-width: 46px;
-            min-height: 46px;
+            min-width: 50px;
+            min-height: 50px;
         `,
         child: Widget.Icon({
-            icon, size: 28,
+            icon, size: 32,
             hpack: 'center', hexpand: true,
             vpack: 'center', vexpand: true,
         }),

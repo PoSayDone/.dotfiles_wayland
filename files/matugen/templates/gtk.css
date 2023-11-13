@@ -21,7 +21,7 @@
 @define-color headerbar_fg_color @window_fg_color;
 @define-color headerbar_border_color @window_bg_color;
 @define-color headerbar_backdrop_color @window_bg_color;
-@define-color headerbar_shade_color @window_bg_color};
+@define-color headerbar_shade_color @window_bg_color;
 @define-color card_bg_color @{color_surface};
 @define-color card_fg_color @{on_surface};
 @define-color card_shade_color rgba(0, 0, 0, 0.07);

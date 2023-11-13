@@ -1,4 +1,4 @@
-import { Widget } from '../../imports.js';
+import { App, Widget } from '../../imports.js';
 import Clock from '../../misc/Clock.js';
 import Separator from '../../misc/Separator.js';
 import * as vars from '../../variables.js';
@@ -24,7 +24,7 @@ export default () => Widget.Box({
         }),
         Widget.Button({
             class_name: 'controlcenter__theme',
-            onPrimaryClickRelease: () => execAsync('pmt /home/posaydone/Pictures/Wallpapers/ -w swww'),
+            onPrimaryClickRelease: () => execAsync(`bash -c ${App.configDir}/bin/randomWallpaper`),
             child: Widget.Icon({ icon: 'applications-graphics-symbolic', size: 16 }),
         }),
         Separator(),

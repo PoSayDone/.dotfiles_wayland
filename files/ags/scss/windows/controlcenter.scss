@@ -34,47 +34,12 @@
 	color: $on_primary_container;
 }
 
-.notifications {
-	margin-left: 20px;
-	border-radius: 30px;
-	min-width: 450px;
-	min-height: 400px;
-}
-
-.notification-list {
-	min-height: 380px;
-}
-
-.notification-scrollable {
-	min-height: 400px;
-	scrollbar,
-	scrollbar * {
-		all: unset;
-	}
-
-	scrollbar.vertical {
-		&:hover {
-			slider {
-				background-color: $primary;
-				min-width: 0.6em;
-			}
-		}
-	}
-
-	scrollbar.vertical slider {
-		background-color: $outline;
-		border-radius: 100px;
-		min-width: 0.4em;
-		min-height: 2em;
-	}
-}
-
 .quicksettings__button {
 	background-color: transparentize(#fff, 0.93);
 	color: $onSurface;
 	padding: 0px;
 	border-radius: 30px;
-	min-width: 240px;
+	min-width: 220px;
 	min-height: 75px;
 	transition:
 		background-color 0.3s ease-in-out,
@@ -155,13 +120,14 @@
 }
 
 .slider__tooltip {
-	color: $onSurface;
-	background-color: $surface_light;
+	color: $on_primary;
+	background-color: $primary;
 	padding: 0;
 	border-radius: 100px;
-	min-width: 46px;
-	min-height: 46px;
+	min-width: 42px;
+	min-height: 42px;
 	margin-right: 8px;
+	font-size: 18px;
 }
 
 .volume__box {
@@ -170,8 +136,8 @@
 		background-color: $surface_light;
 		padding: 0;
 		border-radius: 100px;
-		min-width: 46px;
-		min-height: 46px;
+		min-width: 42px;
+		min-height: 42px;
 		margin-left: 8px;
 	}
 }
@@ -198,8 +164,8 @@
 
 		slider {
 			border-radius: 100px;
-			min-height: 46px;
-			min-width: 46px;
+			min-height: 42px;
+			min-width: 42px;
 			background-color: transparent;
 
 			transition:
@@ -296,32 +262,6 @@
 			min-width: 4px;
 			background-color: #fff;
 		}
-	}
-}
-
-.notifications__header {
-	background: $surface_light;
-	padding: 10px;
-	border-radius: 40px;
-	margin-bottom: 8px;
-}
-
-.notifications__title {
-	margin-left: 12px;
-	font-size: 18px;
-	font-weight: 500;
-}
-
-.notifications__clear-button {
-	padding: 12px 14px;
-	background: $primaryContainer;
-	color: $on_primary_container;
-	border-radius: 100px;
-	transition:
-		background-color 0.3s ease-in-out,
-		color 0.3s ease-in-out;
-	image {
-		margin-left: 4px;
 	}
 }
 

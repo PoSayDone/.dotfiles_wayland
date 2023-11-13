@@ -54,7 +54,6 @@ export default () => Widget.Box({
     class_name: 'notifications',
     vertical: true,
     children: [
-        Header(),
         Widget.Scrollable({
             class_name: 'notification-scrollable',
             hscroll: 'never',

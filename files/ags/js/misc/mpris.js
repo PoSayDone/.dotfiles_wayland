@@ -43,8 +43,6 @@ export const CoverArt = (player, props) => Widget.Box({
 export const MaterialCoverArt = (player, props) => Widget.CenterBox({
     ...props,
     connections: [[MaterialColors, box => {
-        for (const entry of MaterialColors.colors)
-            console.log(entry);
         const bus = player.busName;
         const colors = MaterialColors.colors.get(bus);
         const cover = MaterialColors.cover_paths.get(bus);

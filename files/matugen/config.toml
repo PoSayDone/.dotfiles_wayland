@@ -22,6 +22,12 @@ mode = "Dark" # First letter MUST be upper-case
 reload_apps = true
 set_wallpaper = true
 wallpaper_tool = 'Swww'
+swww_options = [
+	"--transition-step",
+	"10",
+	"--transition-fps",
+	"90"
+]
 prefix = '@'
 run_after = [
     [ "echo", "'hello'" ],

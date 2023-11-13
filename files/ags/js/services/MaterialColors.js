@@ -5,10 +5,7 @@ import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
 class MaterialColors extends Service {
     static {
-        Service.register(this, {}, {
-            'colors': ['jsobject'],
-            'cover-paths': ['jsobject'],
-        });
+        Service.register(this, {});
     }
 
     #colors = new Map();
@@ -27,10 +24,9 @@ class MaterialColors extends Service {
                 return;
 
             const id = player.connect(
-                'notify::track-title',
+                'notify::cover-path',
                 this.#onTrackId.bind(this),
             );
-            player.notify('track-title');
 
             this.#connections.set(player, id);
         });
@@ -50,14 +46,11 @@ class MaterialColors extends Service {
     #onTrackId(player) {
         execAsync(`python ${App.configDir}/bin/getCoverColors ${player.coverPath}`)
             .then(commandString => {
-                console.log(player.coverPath);
                 this.#colors.set(player.busName, JSON.parse(commandString));
-                this.notify('colors');
                 this.#coverPaths.set(player.busName, player.coverPath);
-                this.notify('cover-paths');
                 this.emit('changed');
             })
-            .catch(err => console.error(err.message));
+            .catch(() => {});
     }
 }
 

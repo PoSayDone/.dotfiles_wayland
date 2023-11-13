@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+myfile=$( find "$HOME/Pictures/Wallpapers/" -type f -print0 | shuf -z -n 1 )
+matugen image "$myfile"

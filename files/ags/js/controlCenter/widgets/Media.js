@@ -20,6 +20,7 @@ const Header = player => mpris.FontColoredBox(player, {
 
 const Footer = player => Widget.Box({
     class_name: 'footer-box',
+    vpack: 'end',
     hexpand: true,
     children: [
         mpris.PreviousButton(player),
