@@ -166,7 +166,7 @@ window.popup menu {
 
 window#applauncher .applauncher {
   margin: 8px;
-  background-color: rgba(30, 27, 24, 0.9);
+  background-color: rgba(30, 27, 24, 0.8);
   border-radius: 40px;
   padding: 20px; }
   window#applauncher .applauncher .header {
