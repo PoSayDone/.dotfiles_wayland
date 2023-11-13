@@ -1,0 +1,94 @@
+window#applauncher .applauncher {
+	margin: 8px;
+	background-color: transparentize($color_background, 0.1);
+	border-radius: 40px;
+	padding: 20px;
+
+	.header {
+		background: $primary;
+		padding: 16px;
+		border-radius: 100px;
+		margin-bottom: 5px;
+
+		image,
+		entry {
+			margin-left: 4px;
+			color: $on_primary;
+		}
+
+		entry {
+			padding-left: 14px;
+			font-size: 16px;
+		}
+
+		image {
+			font-size: 16px;
+		}
+	}
+
+	scrolledwindow {
+		min-width: 400px;
+		min-height: 550px;
+	}
+
+	.placeholder {
+		margin-top: 8px;
+		color: $onSurface;
+		font-size: 1.2em;
+	}
+
+	.app-item {
+		all: unset;
+		transition: all 0.2s ease;
+		padding: 12px;
+		border-radius: 100px;
+
+		label {
+			transition: all 0.2s ease;
+
+			&.title {
+				color: $onSurface;
+			}
+
+			&.description {
+				color: transparentize($onSurface, 0.3);
+			}
+		}
+
+		image {
+			transition: all 0.2s ease;
+			margin-left: 2px;
+			margin-right: 10px;
+		}
+
+		&:hover {
+			background: $color_surface_highlight;
+			.title {
+				color: $on_surface;
+			}
+		}
+		&:focus {
+			background: $primary;
+			.title {
+				color: $on_primary;
+			}
+			.description {
+				color: $on_primary;
+			}
+			//
+			// image {
+			// 	-gtk-icon-shadow: 2px 2px $primary;
+			// }
+		}
+
+		&:active {
+			background-color: transparentize($primary, 0.2);
+			border-radius: 100px;
+			box-shadow: inset 0 0 0 1px $primary;
+
+			.title {
+				color: $on_primary;
+			}
+		}
+	}
+}

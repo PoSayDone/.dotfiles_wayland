@@ -1,12 +1,12 @@
 [[color]]
 name="red"
 value="#f38ba8"
-blend=true
+blend=false
 
 [[color]]
 name="orange"
 value="#fab387"
-blend=true
+blend=false
 
 [[color]]
 name="yellow"
@@ -27,12 +27,12 @@ blend=false
 [[color]]
 name="blue"
 value="#89b4fa"
-blend=true
+blend=false
 
 [[color]]
 name="magenta"
 value="#cba6f7"
-blend=true
+blend=false
 
 [[color]]
 name="brown"

@@ -1,0 +1,155 @@
+/* Common Styles */
+.bar {
+	background-color: transparentize($color_background, 0.1);
+	margin: 0;
+	padding: 8px 12px;
+	border-bottom: 1px solid $color_surface;
+}
+
+.workspaces,
+.clock,
+.bar__quicksettings,
+.activeapp,
+.notifications-indicator {
+	@include bar_block(false);
+}
+
+.weather,
+.keyboardlayout,
+.battery {
+	@include bar_block(true);
+}
+
+/* Specific Styles */
+.activeapp,
+.battery,
+.weather {
+	font-weight: 700;
+}
+
+.workspaces,
+.clock,
+.weather,
+.activeapp,
+.battery {
+	padding: 0 14px;
+}
+
+.launcher {
+	background: $primary;
+	padding: 0;
+	margin: 0;
+	min-width: 42px;
+	min-height: 42px;
+	border-radius: 42px;
+	transition: background-color 0.1s ease-in-out;
+
+	.launcher__icon {
+		background-color: $on_primary;
+		min-width: 14px;
+		min-height: 14px;
+		border-radius: 100%;
+	}
+
+	&:hover {
+		background-color: $color_accent_primary;
+	}
+}
+
+.workspaces {
+	min-width: 260px;
+
+	.workspace-indicator {
+		min-width: 14px;
+		min-height: 14px;
+		border-radius: 100px;
+		margin: 0 5px;
+		transition:
+			min-width 0.3s ease,
+			background-color 0.3s ease-out;
+		background-color: $color_surface_highlight;
+
+		&:last-child {
+			margin-right: 0px;
+		}
+
+		&:first-child {
+			margin-left: 0px;
+		}
+
+		&:hover {
+			background-color: transparentize($primary, 0.4);
+		}
+
+		&.active,
+		&:active {
+			min-width: 42px;
+			border-radius: 100px;
+			background-color: $primary;
+		}
+	}
+}
+
+.activeapp {
+	> image {
+		margin-right: 8px;
+	}
+}
+
+.clock {
+	padding: 0 16px;
+}
+
+.keyboardlayout {
+	font-size: 16px;
+	font-weight: 500;
+	padding: 0;
+	margin: 0;
+	min-width: 42px;
+}
+
+.bar__quicksettings {
+	padding: 0 18px;
+	min-width: 0;
+	border-radius: 100px;
+
+	* {
+		.device {
+			margin-right: 8px;
+		}
+	}
+}
+.keyboardlayout {
+	background: $secondary_container;
+	color: $on_secondary_container;
+}
+
+.bar__quicksettings {
+	margin-right: 4px;
+	padding-right: 14px;
+	border-radius: 22px 8px 8px 22px;
+	.tray {
+		margin-left: 8px;
+
+		image {
+			font-size: 17px;
+		}
+	}
+}
+
+.weather {
+	background: $tertiary_container;
+	color: $on_tertiary_container;
+	margin-right: 4px;
+	border-radius: 8px;
+	padding-left: 16px;
+	padding-right: 12px;
+}
+
+.battery {
+	border-radius: 8px 22px 22px 8px;
+	image {
+		margin-right: 4px;
+	}
+	padding-left: 8px;
+}

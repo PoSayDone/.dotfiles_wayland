@@ -1,0 +1,153 @@
+[tab]
+active    = { fg = "#{{onPrimary}}", bg = "#{{primary}}" }
+inactive  = { fg = "#{{onSecondary}}", bg = "#{{secondary}}" }
+max_width = 1
+
+[status]
+primary	  = { normal = "#{{primary}}", select = "#{{secondary}}", unset = "#{{orange}}" }
+secondary = { normal = "#{{onPrimary}}", select = "#{{onPrimary}}", unset = "#{{onPrimary}}" }
+tertiary  = { normal = "#{{tertiary}}", select = "#{{tertiary}}", unset = "#{{tertiary}}" }
+body      = { normal = "#{{surface3}}", select = "#{{surface3}}", unset = "#{{surface3}}" }
+emphasis  = { normal = "#{{surface5}}", select = "#{{surface5}}", unset = "#{{surface5}}" }
+info      = { normal = "#{{teal}}", select = "#{{teal}}", unset = "#{{teal}}" }
+success   = { normal = "#{{green}}", select = "#{{green}}", unset = "#{{green}}" }
+warning   = { normal = "#{{yellow}}", select = "#{{yellow}}", unset = "#F3D398" }
+danger    = { normal = "#{{red}}", select = "#{{red}}", unset = "#{{red}}" }
+separator = { opening = "", closing = "" }
+
+[progress]
+gauge = { fg = "#{{orange}}", bg = "#{{surface3}}" }
+label = { fg = "#{{onSurface}}", bold = true }
+
+[selection]
+hovered = { fg = "#{{surface}}", bg = "#{{primary}}", bold = true }
+
+[marker]
+selecting = { fg = "#{{green}}", bg = "#{{green}}" }
+selected  = { fg = "#{{yellow}}", bg = "#{{yellow}}" }
+
+[preview]
+hovered       = { underline = true }
+syntect_theme = "~/.config/bat/themes/Catppuccin-macchiato.tmTheme"
+
+[filetype]
+
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#{{teal}}" },
+	
+	# Videos
+	{ mime = "video/*", fg = "#{{yellow}}" },
+	{ mime = "audio/*", fg = "#{{yellow}}" },
+	
+	# Archives
+	{ mime = "application/zip", fg = "#{{magenta}}" },
+	{ mime = "application/gzip", fg = "#{{magenta}}" },
+	{ mime = "application/x-tar", fg = "#{{magenta}}" },
+	{ mime = "application/x-bzip", fg = "#{{magenta}}" },
+	{ mime = "application/x-bzip2", fg = "#{{magenta}}" },
+	{ mime = "application/x-7z-compressed", fg = "#{{magenta}}" },
+	{ mime = "application/x-rar", fg = "#{{magenta}}" },
+	
+	# Fallback
+	{ name = "*", fg = "#{{secondary}}", bold = true },
+	{ name = "*/", fg = "#{{primary}}", bold = true }
+]
+
+[icons]
+"Android/"     = ""
+"Desktop/"     = ""
+"Documents/"   = ""
+"Downloads/"   = ""
+"Games/"       = "󰸼"
+"Pictures/"    = ""
+"Programs/"    = "󱄄"
+"Music/"       = ""
+"Movies/"      = ""
+"Videos/"      = ""
+"Public/"      = ""
+"Library/"     = "󱉟"
+"Scripts/"     = "󰯁"
+"Development/" = ""
+".config/"     = ""
+
+# Git
+".git/"          = ""
+".gitignore"     = ""
+".gitmodules"    = ""
+".gitattributes" = ""
+
+# Dotfiles
+".DS_Store"    = ""
+".bashrc"      = ""
+".bashprofile" = ""
+".zshrc"       = ""
+".zshenv"      = ""
+".zprofile"    = ""
+".vimrc"       = ""
+
+# Text
+"*.txt" = ""
+"*.md"  = ""
+
+# Archives
+"*.zip" = ""
+"*.tar" = ""
+"*.gz"  = ""
+"*.7z"  = ""
+
+# Audio
+"*.mp3"  = ""
+"*.flac" = ""
+"*.wav"  = ""
+
+# Movies
+"*.mp4" = ""
+"*.mkv" = ""
+"*.avi" = ""
+"*.mov" = ""
+
+# Images
+"*.jpg"  = ""
+"*.jpeg" = ""
+"*.png"  = ""
+"*.gif"  = ""
+"*.webp" = ""
+"*.avif" = ""
+"*.bmp"  = ""
+"*.ico"  = ""
+"*.svg"  = ""
+
+# Programming
+"*.c"     = ""
+"*.cpp"   = ""
+"*.h"     = ""
+"*.hpp"   = ""
+"*.rs"    = ""
+"*.go"    = ""
+"*.py"    = ""
+"*.js"    = ""
+"*.ts"    = ""
+"*.tsx"   = ""
+"*.jsx"   = ""
+"*.rb"    = ""
+"*.php"   = ""
+"*.java"  = ""
+"*.sh"    = ""
+"*.fish"  = ""
+"*.swift" = ""
+"*.vim"   = ""
+"*.lua"   = ""
+"*.html"  = ""
+"*.css"   = ""
+"*.scss"  = ""
+"*.json"  = ""
+"*.toml"  = ""
+"*.yml"   = ""
+"*.yaml"  = ""
+"*.ini"   = ""
+"*.conf"  = ""
+
+# Default
+"*"  = ""
+"*/" = ""

@@ -1,0 +1,360 @@
+.controlcenter__container {
+	margin-top: 8px;
+	margin-right: 8px;
+	min-height: 400px;
+	background-color: transparentize($color_background, 0.1);
+	padding: 20px;
+	border-radius: 40px;
+	border: 1px solid $color_surface;
+}
+
+.controlcenter__header {
+	* {
+		transition:
+			background-color 0.3s ease-in-out,
+			color 0.3s ease-in-out;
+	}
+}
+
+.controlcenter__clock {
+	font-size: 20px;
+	font-weight: 500;
+	padding: 10px 20px;
+	border-radius: 100px;
+	background: $primaryContainer;
+	color: $on_primary_container;
+}
+
+.controlcenter__uptime {
+	font-size: 16px;
+	font-weight: 400;
+	border-radius: 100px;
+	color: $onSurface;
+	margin-left: 8px;
+}
+
+.controlcenter__theme,
+.controlcenter__power {
+	min-width: 46px;
+	min-height: 46px;
+	border-radius: 100px;
+	background: $primaryContainer;
+	color: $on_primary_container;
+}
+
+.notifications {
+	margin-left: 20px;
+	border-radius: 30px;
+	min-width: 450px;
+	min-height: 400px;
+	// background-color: $surface3;
+}
+
+.notification-list {
+	min-height: 380px;
+}
+
+.notification-scrollable {
+	min-height: 400px;
+	scrollbar,
+	scrollbar * {
+		all: unset;
+	}
+
+	scrollbar.vertical {
+		&:hover {
+			slider {
+				background-color: $primary;
+				min-width: 0.6em;
+			}
+		}
+	}
+
+	scrollbar.vertical slider {
+		background-color: $outline;
+		border-radius: 100px;
+		min-width: 0.4em;
+		min-height: 2em;
+	}
+}
+
+.quicksettings__button {
+	background-color: $surface1;
+	color: $onSurface;
+	padding: 0px;
+	border-radius: 30px;
+	min-width: 240px;
+	min-height: 75px;
+	transition:
+		background-color 0.3s ease-in-out,
+		color 0.3s ease-in-out;
+
+	&.active {
+		background-color: $primary;
+		color: $on_primary;
+		&:hover {
+			background-color: $surface5;
+		}
+	}
+
+	&:hover {
+		background-color: $surface5;
+	}
+
+	image {
+		margin-left: 24px;
+		margin-right: 18px;
+	}
+
+	.title {
+		font-weight: 600;
+	}
+}
+
+.menu {
+	margin-top: 8px;
+	background-color: $surface1;
+	color: $onSurface;
+	padding: 20px 26px;
+	border-radius: 30px;
+
+	.title {
+		padding: 4px 0px;
+		color: $onSurface;
+		border-radius: 100px;
+		margin-bottom: 8px;
+
+		> *:first-child {
+			margin-right: 14px;
+		}
+
+		label {
+			font-weight: bold;
+			font-size: 16px;
+		}
+	}
+
+	.content {
+		> * > * > * {
+			margin: 8px 0;
+		}
+
+		> * > * > *:last-child {
+			margin: 8px 0;
+			margin-bottom: 0px;
+		}
+
+		image {
+			margin-right: 4px;
+		}
+	}
+}
+
+.player {
+	background-color: $surface1;
+	border-radius: 30px;
+	min-height: 213px;
+	margin-top: 8px;
+}
+
+.shader {
+	background: rgba(0, 0, 0, 0.4);
+	border-radius: 30px;
+	padding: 20px;
+}
+
+.slider__tooltip {
+	color: $onSurface;
+	background-color: $surface1;
+	padding: 0;
+	border-radius: 100px;
+	min-width: 46px;
+	min-height: 46px;
+	margin-right: 8px;
+}
+
+.volume__box {
+	.arrow {
+		color: $onSurface;
+		background-color: $surface1;
+		padding: 0;
+		border-radius: 100px;
+		min-width: 46px;
+		min-height: 46px;
+		margin-left: 8px;
+	}
+}
+
+.volume__slider,
+.brightness__slider {
+	trough {
+		transition:
+			background-color 0.3s ease-in-out,
+			color 0.3s ease-in-out;
+		border-radius: 100px;
+		background-color: $surface1;
+		min-height: 42px;
+
+		highlight,
+		progress {
+			border-radius: 100px;
+			background-color: $primary;
+			border-radius: 100px;
+			transition:
+				background-color 0.3s ease-in-out,
+				color 0.3s ease-in-out;
+		}
+
+		slider {
+			border-radius: 100px;
+			min-height: 46px;
+			min-width: 46px;
+			background-color: transparent;
+
+			transition:
+				background-color 0.3s ease-in-out,
+				color 0.3s ease-in-out;
+		}
+	}
+}
+
+.mixer__tooltip {
+	margin-left: 0px;
+	background: $surface5;
+	min-height: 42px;
+	min-width: 42px;
+	border-radius: 100px;
+}
+
+.mixer__slider {
+	trough {
+		border-radius: 100px;
+		background-color: $surface1;
+		min-height: 14px;
+
+		highlight,
+		progress {
+			border-radius: 100px;
+			background-color: $primary;
+			border-radius: 100px;
+		}
+
+		slider {
+			border-radius: 100px;
+			min-height: 14px;
+			min-width: 14px;
+			background-color: transparent;
+		}
+	}
+}
+
+.title-box {
+	.title {
+		font-weight: 600;
+		font-size: 19px;
+		padding-right: 18px;
+	}
+
+	.artist {
+		padding-right: 18px;
+		font-weight: 400;
+		font-size: 17px;
+	}
+}
+
+.play-pause {
+	.playing {
+		min-width: 60px;
+		min-height: 60px;
+		border-radius: 20px;
+		padding: 0;
+		background: $primary;
+		color: $on_primary;
+		transition: all 0.3s;
+	}
+	.paused,
+	.stopped {
+		min-width: 60px;
+		min-height: 60px;
+		border-radius: 100px;
+		padding: 0;
+		background: $primary;
+		color: $on_primary;
+		transition: all 0.3s;
+	}
+}
+
+.position-slider {
+	// margin: 0 18px;
+
+	trough {
+		border-radius: 100px;
+		background-color: transparentize(#fff, 0.5);
+		min-height: 4px;
+
+		highlight,
+		progress {
+			border-radius: 100px;
+			background-color: #fff;
+			border-radius: 100px;
+		}
+
+		slider {
+			border-radius: 100px;
+			min-height: 4px;
+			min-width: 4px;
+			background-color: #fff;
+		}
+	}
+}
+
+.notifications__header {
+	background: $surface1;
+	padding: 10px;
+	border-radius: 40px;
+	margin-bottom: 8px;
+}
+
+.notifications__title {
+	margin-left: 12px;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.notifications__clear-button {
+	padding: 12px 14px;
+	background: $primaryContainer;
+	color: $on_primary_container;
+	border-radius: 100px;
+	transition:
+		background-color 0.3s ease-in-out,
+		color 0.3s ease-in-out;
+	image {
+		margin-left: 4px;
+	}
+}
+
+.cover-art {
+	min-height: 205px;
+	border-radius: 30px;
+	transition: all 0.2s;
+
+	.header-box {
+		color: $primary;
+	}
+
+	.footer-box {
+		.controls {
+		}
+		.previous {
+			font-size: 20px;
+			margin-right: 16px;
+		}
+		.next,
+		.shuffle,
+		.loop {
+			font-size: 20px;
+			margin-left: 16px;
+		}
+	}
+}

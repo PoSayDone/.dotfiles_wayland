@@ -2,4 +2,4 @@
 swayidle -w \
 	timeout 3000 'systemctl suspend' \
 	before-sleep 'playerctl pause' \
-	before-sleep '$HOME/.local/bin/lockscreen & disown'
+	before-sleep 'gtklock -d'

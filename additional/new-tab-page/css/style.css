@@ -51,7 +51,7 @@ h1 {
 	background-color: var(--surface3);
 	color: var(--on-surface);
 	text-decoration: unset;
-	transition: transform 0.3s ease;
+	transition: all 0.3s ease;
 }
 
 .card:hover {
@@ -59,5 +59,7 @@ h1 {
 }
 
 .card:active {
+	background: var(--primary);
+	color: var(--onPrimary);
 	transform: scale(98%);
 }

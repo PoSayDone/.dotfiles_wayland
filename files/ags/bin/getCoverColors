@@ -23,7 +23,7 @@ def cache_and_get_colors(file_path):
             parsed_colors = json.load(f)
     else:
         img = Image.open(file_path)
-        basewidth = 8
+        basewidth = 64
         wpercent = (basewidth/float(img.size[0]))
         hsize = int((float(img.size[1])*float(wpercent)))
         img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)

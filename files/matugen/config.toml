@@ -1,0 +1,28 @@
+[templates.ags]
+input_path = '~/.config/matugen/templates/ags.scss'
+output_path = '~/.config/ags/scss/colors.scss'
+mode = "Dark" # First letter MUST be upper-case
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty.conf'
+output_path = '~/.config/kitty/colors.conf'
+mode = "Dark" # First letter MUST be upper-case
+
+[templates.gtk]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+mode = "Dark" # First letter MUST be upper-case
+
+[config]
+reload_apps = true
+set_wallpaper = true
+wallpaper_tool = 'Swww'
+prefix = '@'
+run_after = [
+    [ "echo", "'hello'" ],
+    [ "echo", "'hello again'" ],
+]
+
+[config.reload_apps_list]
+kitty = true
+gtk_theme = true

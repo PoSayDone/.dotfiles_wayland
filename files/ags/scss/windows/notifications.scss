@@ -1,0 +1,49 @@
+.notifications-popup-list {
+	margin-top: 8px;
+	min-width: 420px;
+}
+
+.notification {
+	> box {
+		color: $on_surface;
+		background-color: $color_surface;
+		border-radius: 22px;
+		padding: 20px;
+		margin-bottom: 8px;
+	}
+
+	.icon {
+		margin-right: 16px;
+		background: $surface4;
+		border-radius: 100px;
+	}
+
+	.title {
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 4px;
+	}
+
+	.time {
+		font-size: 16px;
+		font-weight: 400;
+	}
+
+	.description {
+		font-size: 16px;
+		font-weight: 500;
+	}
+
+	.action-button {
+		margin-top: 14px;
+	}
+
+	.close-button {
+		margin-left: 14px;
+		padding: 4px;
+		border-radius: 100px;
+		background-color: $primary;
+		color: $on_primary;
+	}
+}
+

@@ -1,5 +1,7 @@
 :root {
-	--surface: #111316;
-	--surface3: #1e2022;
-	--on-surface: #e2e2e5;
+	--primary: #ffb863;
+	--on-primary: #492900;
+	--surface: #17120e;
+	--surface3: #241f1a;
+	--on-surface: #ebe1d9;
 }

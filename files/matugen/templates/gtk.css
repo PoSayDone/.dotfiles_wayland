@@ -1,0 +1,41 @@
+@define-color accent_color @{primary};
+@define-color accent_bg_color @{primary_container};
+@define-color accent_fg_color @{on_primary_container};
+@define-color destructive_color @{error};
+@define-color destructive_bg_color @{error_container};
+@define-color destructive_fg_color @{on_error_container};
+@define-color success_color @{secondary};
+@define-color success_bg_color @{secondary_container};
+@define-color success_fg_color @{on_secondary_container};
+@define-color warning_color @{tertiary};
+@define-color warning_bg_color @{tertiary_container};
+@define-color warning_fg_color @{on_tertiary_container};
+@define-color error_color @{error};
+@define-color error_bg_color @{error_container};
+@define-color error_fg_color @{on_error_container};
+@define-color window_bg_color @{surface};
+@define-color window_fg_color @{on_surface};
+@define-color view_bg_color @{surface};
+@define-color view_fg_color @{on_surface};
+@define-color headerbar_bg_color @window_bg_color;
+@define-color headerbar_fg_color @window_fg_color;
+@define-color headerbar_border_color @window_bg_color;
+@define-color headerbar_backdrop_color @window_bg_color;
+@define-color headerbar_shade_color @window_bg_color};
+@define-color card_bg_color @{color_surface};
+@define-color card_fg_color @{on_surface};
+@define-color card_shade_color rgba(0, 0, 0, 0.07);
+@define-color dialog_bg_color @card_bg_color;
+@define-color dialog_fg_color @card_fg_color;
+@define-color popover_bg_color @card_bg_color;
+@define-color popover_fg_color @card_fg_color;
+@define-color shade_color rgba(0, 0, 0, 0.36);
+@define-color scrollbar_outline_color rgba(139, 145, 152, 0.5);
+@define-color sidebar_bg_color @{color_surface};
+@define-color secondary_sidebar_bg_color @sidebar_bg_color;
+@define-color sidebar_backdrop_color @sidebar_bg_color;
+@define-color secondary_sidebar_backdrop_color @sidebar_bg_color;
+
+.navigation-sidebar {
+	background-color: @sidebar_bg_color;
+}
