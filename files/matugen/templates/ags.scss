@@ -42,6 +42,7 @@ $surface: @{surface};
 $on_surface: @{on_surface};
 $surface_variant: @{surface_variant};
 $on_surface_variant: @{on_surface_variant};
+$surface_light: transparentize(@{inverse_surface}, 0.92);
 $outline: @{outline};
 $shadow: @{shadow};
 $scrim: @{scrim};

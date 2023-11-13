@@ -1,6 +1,6 @@
 /* Common Styles */
 .bar {
-	background-color: transparentize($color_background, 0.1);
+	background-color: transparentize($background, 0.2);
 	margin: 0;
 	padding: 8px 12px;
 	border-bottom: 1px solid $color_surface;
@@ -8,16 +8,24 @@
 
 .workspaces,
 .clock,
-.bar__quicksettings,
+.bar__quicksettings_container,
+.weather,
 .activeapp,
 .notifications-indicator {
 	@include bar_block(false);
+	transition:
+		background 0.2s ease-in-out,
+		color 0.2s ease-in-out;
 }
 
-.weather,
 .keyboardlayout,
 .battery {
 	@include bar_block(true);
+}
+
+.active {
+	background: $primary;
+	color: $on_primary;
 }
 
 /* Specific Styles */
@@ -67,7 +75,7 @@
 		transition:
 			min-width 0.3s ease,
 			background-color 0.3s ease-out;
-		background-color: $color_surface_highlight;
+		background-color: transparentize(#fff, 0.83);
 
 		&:last-child {
 			margin-right: 0px;
@@ -106,48 +114,34 @@
 	padding: 0;
 	margin: 0;
 	min-width: 42px;
+	background: $secondary;
+	color: $on_secondary;
 }
 
-.bar__quicksettings {
-	padding: 0 18px;
-	min-width: 0;
-	border-radius: 100px;
-
-	* {
-		.device {
-			margin-right: 8px;
-		}
-	}
-}
-.keyboardlayout {
-	background: $secondary_container;
-	color: $on_secondary_container;
-}
-
-.bar__quicksettings {
-	margin-right: 4px;
+.bar__quicksettings_container {
+	padding-left: 16px;
+	margin-right: 5px;
 	padding-right: 14px;
-	border-radius: 22px 8px 8px 22px;
+	border-radius: 22px 6px 6px 22px;
 	.tray {
-		margin-left: 8px;
-
 		image {
 			font-size: 17px;
+			margin-left: 8px;
 		}
 	}
 }
 
 .weather {
-	background: $tertiary_container;
-	color: $on_tertiary_container;
-	margin-right: 4px;
-	border-radius: 8px;
+	// background: $tertiary_container;
+	// color: $on_tertiary_container;
+	margin-right: 5px;
+	border-radius: 6px;
 	padding-left: 16px;
 	padding-right: 12px;
 }
 
 .battery {
-	border-radius: 8px 22px 22px 8px;
+	border-radius: 6px 22px 22px 6px;
 	image {
 		margin-right: 4px;
 	}

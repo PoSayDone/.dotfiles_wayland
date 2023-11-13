@@ -1,20 +1,15 @@
-.notifications-popup-list {
-	margin-top: 8px;
-	min-width: 420px;
-}
-
 .notification {
 	> box {
-		color: $on_surface;
-		background-color: $color_surface;
 		border-radius: 22px;
 		padding: 20px;
 		margin-bottom: 8px;
+		color: $on_surface;
+		background-color: $surface_light;
 	}
 
 	.icon {
 		margin-right: 16px;
-		background: $surface4;
+		background: $surface_light;
 		border-radius: 100px;
 	}
 
@@ -47,3 +42,13 @@
 	}
 }
 
+.notifications-popup-list {
+	margin-top: 8px;
+	min-width: 420px;
+	.notification {
+		> box {
+			color: $on_surface;
+			background-color: transparentize($background, 0.2);
+		}
+	}
+}

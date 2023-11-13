@@ -14,8 +14,8 @@
   font-weight: 600; }
 
 tooltip > * > * {
-  background-color: #32302e;
-  color: #e7e1de;
+  background-color: #34302c;
+  color: #e9e1dc;
   padding: 20px;
   border-radius: 20px; }
 
@@ -26,14 +26,14 @@ window.popup > * {
 window.popup menu {
   margin-top: 12px;
   border-radius: 18px;
-  background-color: #32302e;
+  background-color: #34302c;
   padding: 12px; }
   window.popup menu menuitem {
     padding: 6px 8px;
     border-radius: 8px;
     transition: background 0.1s ease; }
     window.popup menu menuitem:hover {
-      background: #1d1b19; }
+      background: #1e1b18; }
     window.popup menu menuitem:first-child {
       margin-top: 0; }
     window.popup menu menuitem:last-child {
@@ -41,32 +41,43 @@ window.popup menu {
 
 /* Common Styles */
 .bar {
-  background-color: rgba(29, 27, 25, 0.9);
+  background-color: rgba(30, 27, 24, 0.8);
   margin: 0;
   padding: 8px 12px;
-  border-bottom: 1px solid #32302e; }
+  border-bottom: 1px solid #34302c; }
 
 .workspaces,
 .clock,
-.bar__quicksettings,
+.bar__quicksettings_container,
+.weather,
 .activeapp,
 .notifications-indicator {
   transition: background-color 0.2s ease-in-out;
   border-radius: 100px;
-  color: #e7e1de;
-  background-color: rgba(73, 70, 68, 0.4); }
+  color: #e9e1dc;
+  background-color: rgba(233, 225, 220, 0.08);
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out; }
+  .workspaces:hover,
+  .clock:hover,
+  .bar__quicksettings_container:hover,
+  .weather:hover,
+  .activeapp:hover,
+  .notifications-indicator:hover {
+    background-color: rgba(255, 255, 255, 0.2); }
 
-.weather,
 .keyboardlayout,
 .battery {
   transition: background-color 0.2s ease-in-out;
   border-radius: 100px;
-  color: #fddeb4;
-  background-color: #584324; }
-  .weather:hover,
+  color: #ffddb9;
+  background-color: #643e07; }
   .keyboardlayout:hover,
   .battery:hover {
-    background-color: rgba(223, 194, 153, 0.66); }
+    background-color: rgba(244, 188, 123, 0.66); }
+
+.active {
+  background: #f4bc7b;
+  color: #472a00; }
 
 /* Specific Styles */
 .activeapp,
@@ -82,7 +93,7 @@ window.popup menu {
   padding: 0 14px; }
 
 .launcher {
-  background: #dfc299;
+  background: #f4bc7b;
   padding: 0;
   margin: 0;
   min-width: 42px;
@@ -90,12 +101,12 @@ window.popup menu {
   border-radius: 42px;
   transition: background-color 0.1s ease-in-out; }
   .launcher .launcher__icon {
-    background-color: #3f2d10;
+    background-color: #472a00;
     min-width: 14px;
     min-height: 14px;
     border-radius: 100%; }
   .launcher:hover {
-    background-color: #fddeb4; }
+    background-color: #ffddb9; }
 
 .workspaces {
   min-width: 260px; }
@@ -105,17 +116,17 @@ window.popup menu {
     border-radius: 100px;
     margin: 0 5px;
     transition: min-width 0.3s ease, background-color 0.3s ease-out;
-    background-color: #55524f; }
+    background-color: rgba(255, 255, 255, 0.17); }
     .workspaces .workspace-indicator:last-child {
       margin-right: 0px; }
     .workspaces .workspace-indicator:first-child {
       margin-left: 0px; }
     .workspaces .workspace-indicator:hover {
-      background-color: rgba(223, 194, 153, 0.6); }
+      background-color: rgba(244, 188, 123, 0.6); }
     .workspaces .workspace-indicator.active, .workspaces .workspace-indicator:active {
       min-width: 42px;
       border-radius: 100px;
-      background-color: #dfc299; }
+      background-color: #f4bc7b; }
 
 .activeapp > image {
   margin-right: 8px; }
@@ -128,56 +139,45 @@ window.popup menu {
   font-weight: 500;
   padding: 0;
   margin: 0;
-  min-width: 42px; }
+  min-width: 42px;
+  background: #d8c3ae;
+  color: #3b2e20; }
 
-.bar__quicksettings {
-  padding: 0 18px;
-  min-width: 0;
-  border-radius: 100px; }
-  .bar__quicksettings * .device {
-    margin-right: 8px; }
-
-.keyboardlayout {
-  background: #4d463c;
-  color: #ede1d3; }
-
-.bar__quicksettings {
-  margin-right: 4px;
+.bar__quicksettings_container {
+  padding-left: 16px;
+  margin-right: 5px;
   padding-right: 14px;
-  border-radius: 22px 8px 8px 22px; }
-  .bar__quicksettings .tray {
+  border-radius: 22px 6px 6px 22px; }
+  .bar__quicksettings_container .tray image {
+    font-size: 17px;
     margin-left: 8px; }
-    .bar__quicksettings .tray image {
-      font-size: 17px; }
 
 .weather {
-  background: #42493c;
-  color: #dfe5d4;
-  margin-right: 4px;
-  border-radius: 8px;
+  margin-right: 5px;
+  border-radius: 6px;
   padding-left: 16px;
   padding-right: 12px; }
 
 .battery {
-  border-radius: 8px 22px 22px 8px;
+  border-radius: 6px 22px 22px 6px;
   padding-left: 8px; }
   .battery image {
     margin-right: 4px; }
 
 window#applauncher .applauncher {
   margin: 8px;
-  background-color: rgba(29, 27, 25, 0.9);
+  background-color: rgba(30, 27, 24, 0.9);
   border-radius: 40px;
   padding: 20px; }
   window#applauncher .applauncher .header {
-    background: #dfc299;
+    background: #f4bc7b;
     padding: 16px;
     border-radius: 100px;
     margin-bottom: 5px; }
     window#applauncher .applauncher .header image,
     window#applauncher .applauncher .header entry {
       margin-left: 4px;
-      color: #3f2d10; }
+      color: #472a00; }
     window#applauncher .applauncher .header entry {
       padding-left: 14px;
       font-size: 16px; }
@@ -188,7 +188,7 @@ window#applauncher .applauncher {
     min-height: 550px; }
   window#applauncher .applauncher .placeholder {
     margin-top: 8px;
-    color: #e7e1de;
+    color: #e9e1dc;
     font-size: 1.2em; }
   window#applauncher .applauncher .app-item {
     all: unset;
@@ -198,64 +198,57 @@ window#applauncher .applauncher {
     window#applauncher .applauncher .app-item label {
       transition: all 0.2s ease; }
       window#applauncher .applauncher .app-item label.title {
-        color: #e7e1de; }
+        color: #e9e1dc; }
       window#applauncher .applauncher .app-item label.description {
-        color: rgba(231, 225, 222, 0.7); }
+        color: rgba(233, 225, 220, 0.7); }
     window#applauncher .applauncher .app-item image {
       transition: all 0.2s ease;
       margin-left: 2px;
       margin-right: 10px; }
     window#applauncher .applauncher .app-item:hover {
-      background: #55524f; }
+      background: #56524e; }
       window#applauncher .applauncher .app-item:hover .title {
-        color: #e7e1de; }
+        color: #e9e1dc; }
     window#applauncher .applauncher .app-item:focus {
-      background: #dfc299; }
+      background: #f4bc7b; }
       window#applauncher .applauncher .app-item:focus .title {
-        color: #3f2d10; }
+        color: #472a00; }
       window#applauncher .applauncher .app-item:focus .description {
-        color: #3f2d10; }
+        color: #472a00; }
     window#applauncher .applauncher .app-item:active {
-      background-color: rgba(223, 194, 153, 0.8);
+      background-color: rgba(244, 188, 123, 0.8);
       border-radius: 100px;
-      box-shadow: inset 0 0 0 1px #dfc299; }
+      box-shadow: inset 0 0 0 1px #f4bc7b; }
       window#applauncher .applauncher .app-item:active .title {
-        color: #3f2d10; }
+        color: #472a00; }
 
 .controlcenter__container {
   margin-top: 8px;
   margin-right: 8px;
   min-height: 400px;
-  background-color: rgba(29, 27, 25, 0.9);
+  background-color: rgba(30, 27, 24, 0.8);
   padding: 20px;
   border-radius: 40px;
-  border: 1px solid #32302e; }
+  border: 1px solid rgba(233, 225, 220, 0.08); }
 
 .controlcenter__header * {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
 
-.controlcenter__clock {
-  font-size: 20px;
+.controlcenter__uptime {
+  font-size: 16px;
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 100px;
-  background: #584324;
-  color: #fddeb4; }
-
-.controlcenter__uptime {
-  font-size: 16px;
-  font-weight: 400;
-  border-radius: 100px;
-  color: #e7e1de;
-  margin-left: 8px; }
+  background: #643e07;
+  color: #ffddb9; }
 
 .controlcenter__theme,
 .controlcenter__power {
-  min-width: 46px;
-  min-height: 46px;
+  min-width: 42px;
+  min-height: 42px;
   border-radius: 100px;
-  background: #584324;
-  color: #fddeb4; }
+  background: #643e07;
+  color: #ffddb9; }
 
 .notifications {
   margin-left: 20px;
@@ -272,29 +265,29 @@ window#applauncher .applauncher {
   .notification-scrollable scrollbar * {
     all: unset; }
   .notification-scrollable scrollbar.vertical:hover slider {
-    background-color: #dfc299;
+    background-color: #f4bc7b;
     min-width: 0.6em; }
   .notification-scrollable scrollbar.vertical slider {
-    background-color: #96908a;
+    background-color: #998f86;
     border-radius: 100px;
     min-width: 0.4em;
     min-height: 2em; }
 
 .quicksettings__button {
-  background-color: #32302e;
-  color: #e7e1de;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #e9e1dc;
   padding: 0px;
   border-radius: 30px;
   min-width: 240px;
   min-height: 75px;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
   .quicksettings__button.active {
-    background-color: #dfc299;
-    color: #3f2d10; }
+    background-color: #f4bc7b;
+    color: #472a00; }
     .quicksettings__button.active:hover {
-      background-color: #1d1b19; }
+      background-color: #1e1b18; }
   .quicksettings__button:hover {
-    background-color: #1d1b19; }
+    background-color: #1e1b18; }
   .quicksettings__button image {
     margin-left: 24px;
     margin-right: 18px; }
@@ -303,13 +296,13 @@ window#applauncher .applauncher {
 
 .menu {
   margin-top: 8px;
-  background-color: #32302e;
-  color: #e7e1de;
+  background-color: rgba(233, 225, 220, 0.08);
+  color: #e9e1dc;
   padding: 20px 26px;
   border-radius: 30px; }
   .menu .title {
     padding: 4px 0px;
-    color: #e7e1de;
+    color: #e9e1dc;
     border-radius: 100px;
     margin-bottom: 8px; }
     .menu .title > *:first-child {
@@ -326,7 +319,7 @@ window#applauncher .applauncher {
     margin-right: 4px; }
 
 .player {
-  background-color: #32302e;
+  background-color: rgba(233, 225, 220, 0.08);
   border-radius: 30px;
   min-height: 213px;
   margin-top: 8px; }
@@ -337,8 +330,8 @@ window#applauncher .applauncher {
   padding: 20px; }
 
 .slider__tooltip {
-  color: #e7e1de;
-  background-color: #32302e;
+  color: #e9e1dc;
+  background-color: rgba(233, 225, 220, 0.08);
   padding: 0;
   border-radius: 100px;
   min-width: 46px;
@@ -346,8 +339,8 @@ window#applauncher .applauncher {
   margin-right: 8px; }
 
 .volume__box .arrow {
-  color: #e7e1de;
-  background-color: #32302e;
+  color: #e9e1dc;
+  background-color: rgba(233, 225, 220, 0.08);
   padding: 0;
   border-radius: 100px;
   min-width: 46px;
@@ -358,14 +351,14 @@ window#applauncher .applauncher {
 .brightness__slider trough {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   border-radius: 100px;
-  background-color: #32302e;
+  background-color: rgba(233, 225, 220, 0.08);
   min-height: 42px; }
   .volume__slider trough highlight,
   .volume__slider trough progress,
   .brightness__slider trough highlight,
   .brightness__slider trough progress {
     border-radius: 100px;
-    background-color: #dfc299;
+    background-color: #f4bc7b;
     border-radius: 100px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
   .volume__slider trough slider,
@@ -378,19 +371,19 @@ window#applauncher .applauncher {
 
 .mixer__tooltip {
   margin-left: 0px;
-  background: #1d1b19;
+  background: #1e1b18;
   min-height: 42px;
   min-width: 42px;
   border-radius: 100px; }
 
 .mixer__slider trough {
   border-radius: 100px;
-  background-color: #32302e;
+  background-color: rgba(233, 225, 220, 0.08);
   min-height: 14px; }
   .mixer__slider trough highlight,
   .mixer__slider trough progress {
     border-radius: 100px;
-    background-color: #dfc299;
+    background-color: #f4bc7b;
     border-radius: 100px; }
   .mixer__slider trough slider {
     border-radius: 100px;
@@ -413,8 +406,8 @@ window#applauncher .applauncher {
   min-height: 60px;
   border-radius: 20px;
   padding: 0;
-  background: #dfc299;
-  color: #3f2d10;
+  background: #f4bc7b;
+  color: #472a00;
   transition: all 0.3s; }
 
 .play-pause .paused,
@@ -423,8 +416,8 @@ window#applauncher .applauncher {
   min-height: 60px;
   border-radius: 100px;
   padding: 0;
-  background: #dfc299;
-  color: #3f2d10;
+  background: #f4bc7b;
+  color: #472a00;
   transition: all 0.3s; }
 
 .position-slider trough {
@@ -443,7 +436,7 @@ window#applauncher .applauncher {
     background-color: #fff; }
 
 .notifications__header {
-  background: #32302e;
+  background: rgba(233, 225, 220, 0.08);
   padding: 10px;
   border-radius: 40px;
   margin-bottom: 8px; }
@@ -455,8 +448,8 @@ window#applauncher .applauncher {
 
 .notifications__clear-button {
   padding: 12px 14px;
-  background: #584324;
-  color: #fddeb4;
+  background: #643e07;
+  color: #ffddb9;
   border-radius: 100px;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
   .notifications__clear-button image {
@@ -467,7 +460,7 @@ window#applauncher .applauncher {
   border-radius: 30px;
   transition: all 0.2s; }
   .cover-art .header-box {
-    color: #dfc299; }
+    color: #f4bc7b; }
   .cover-art .footer-box .previous {
     font-size: 20px;
     margin-right: 16px; }
@@ -477,20 +470,16 @@ window#applauncher .applauncher {
     font-size: 20px;
     margin-left: 16px; }
 
-.notifications-popup-list {
-  margin-top: 8px;
-  min-width: 420px; }
-
 .notification > box {
-  color: #e7e1de;
-  background-color: #32302e;
   border-radius: 22px;
   padding: 20px;
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+  color: #e9e1dc;
+  background-color: rgba(233, 225, 220, 0.08); }
 
 .notification .icon {
   margin-right: 16px;
-  background: #1d1b19;
+  background: rgba(233, 225, 220, 0.08);
   border-radius: 100px; }
 
 .notification .title {
@@ -513,19 +502,26 @@ window#applauncher .applauncher {
   margin-left: 14px;
   padding: 4px;
   border-radius: 100px;
-  background-color: #dfc299;
-  color: #3f2d10; }
+  background-color: #f4bc7b;
+  color: #472a00; }
+
+.notifications-popup-list {
+  margin-top: 8px;
+  min-width: 420px; }
+  .notifications-popup-list .notification > box {
+    color: #e9e1dc;
+    background-color: rgba(30, 27, 24, 0.8); }
 
 .indicator .progress {
   padding: 0px;
   border-radius: 100px;
-  background-color: rgba(29, 27, 25, 0.9);
+  background-color: rgba(30, 27, 24, 0.9);
   min-width: 70px;
   margin-left: 24px; }
   .indicator .progress .fill {
     border-radius: 100px;
-    background-color: #dfc299;
-    color: #55524f;
+    background-color: #f4bc7b;
+    color: #56524e;
     min-width: 60px; }
     .indicator .progress .fill image {
       margin-right: 14px;

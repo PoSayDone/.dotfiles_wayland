@@ -2,10 +2,10 @@
 	margin-top: 8px;
 	margin-right: 8px;
 	min-height: 400px;
-	background-color: transparentize($color_background, 0.1);
+	background-color: transparentize($background, 0.2);
 	padding: 20px;
 	border-radius: 40px;
-	border: 1px solid $color_surface;
+	border: 1px solid $surface_light;
 }
 
 .controlcenter__header {
@@ -16,8 +16,8 @@
 	}
 }
 
-.controlcenter__clock {
-	font-size: 20px;
+.controlcenter__uptime {
+	font-size: 16px;
 	font-weight: 500;
 	padding: 10px 20px;
 	border-radius: 100px;
@@ -25,20 +25,12 @@
 	color: $on_primary_container;
 }
 
-.controlcenter__uptime {
-	font-size: 16px;
-	font-weight: 400;
-	border-radius: 100px;
-	color: $onSurface;
-	margin-left: 8px;
-}
-
 .controlcenter__theme,
 .controlcenter__power {
-	min-width: 46px;
-	min-height: 46px;
+	min-width: 42px;
+	min-height: 42px;
 	border-radius: 100px;
-	background: $primaryContainer;
+	background: $primary_container;
 	color: $on_primary_container;
 }
 
@@ -47,7 +39,6 @@
 	border-radius: 30px;
 	min-width: 450px;
 	min-height: 400px;
-	// background-color: $surface3;
 }
 
 .notification-list {
@@ -79,7 +70,7 @@
 }
 
 .quicksettings__button {
-	background-color: $surface1;
+	background-color: transparentize(#fff, 0.93);
 	color: $onSurface;
 	padding: 0px;
 	border-radius: 30px;
@@ -113,7 +104,7 @@
 
 .menu {
 	margin-top: 8px;
-	background-color: $surface1;
+	background-color: $surface_light;
 	color: $onSurface;
 	padding: 20px 26px;
 	border-radius: 30px;
@@ -151,7 +142,7 @@
 }
 
 .player {
-	background-color: $surface1;
+	background-color: $surface_light;
 	border-radius: 30px;
 	min-height: 213px;
 	margin-top: 8px;
@@ -165,7 +156,7 @@
 
 .slider__tooltip {
 	color: $onSurface;
-	background-color: $surface1;
+	background-color: $surface_light;
 	padding: 0;
 	border-radius: 100px;
 	min-width: 46px;
@@ -176,7 +167,7 @@
 .volume__box {
 	.arrow {
 		color: $onSurface;
-		background-color: $surface1;
+		background-color: $surface_light;
 		padding: 0;
 		border-radius: 100px;
 		min-width: 46px;
@@ -192,7 +183,7 @@
 			background-color 0.3s ease-in-out,
 			color 0.3s ease-in-out;
 		border-radius: 100px;
-		background-color: $surface1;
+		background-color: $surface_light;
 		min-height: 42px;
 
 		highlight,
@@ -229,7 +220,7 @@
 .mixer__slider {
 	trough {
 		border-radius: 100px;
-		background-color: $surface1;
+		background-color: $surface_light;
 		min-height: 14px;
 
 		highlight,
@@ -309,7 +300,7 @@
 }
 
 .notifications__header {
-	background: $surface1;
+	background: $surface_light;
 	padding: 10px;
 	border-radius: 40px;
 	margin-bottom: 8px;

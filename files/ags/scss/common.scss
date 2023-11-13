@@ -21,8 +21,10 @@
 
 	@if not($colorful) {
 		color: $on_surface;
-		background-color: transparentize($color_surface_variant, 0.6);
-		// background-color: $color_surface_variant;
+		background-color: $surface_light;
+		&:hover {
+			background-color: transparentize(#fff, 0.8);
+		}
 	}
 }
 

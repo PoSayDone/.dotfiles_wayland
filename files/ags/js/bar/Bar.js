@@ -24,6 +24,7 @@ const Battery = () => Box({
 });
 
 const Quicksettings = () => Widget.Button({
+    class_name: 'bar__quicksettings_container',
     onPrimaryClick: () => App.toggleWindow('controlcenter'),
     child: Box({
         class_name: 'bar__quicksettings',
@@ -36,6 +37,12 @@ const Quicksettings = () => Widget.Button({
             SysTray(),
         ],
     }),
+    connections: [
+        [App, (self, windowName, visible) => {
+            if (windowName === 'controlcenter')
+                self.toggleClassName('active', visible);
+        }, 'window-toggled'],
+    ],
 });
 
 const Launcher = () => Button({

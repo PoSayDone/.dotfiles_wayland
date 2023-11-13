@@ -7,15 +7,15 @@
  */
 
 * {
-    accent:                      #ffb863;
-    accentfg:                    #492900;
+    accent:                      #9fc9ff;
+    accentfg:                    #00325b;
     red:                         #ffb1c6;
     blue:                        #a7c8ff;
-    lightfg:                     #ebe1d9;
-    lightbg:                     #241f1a;
-    foreground:                  #ebe1d9;
-    background:                  rgba ( 46, 41, 36, 60 % );
-    background-color:            rgba ( 36, 31, 26, 0 % );
+    lightfg:                     #e2e2e6;
+    lightbg:                     #1e2023;
+    foreground:                  #e2e2e6;
+    background:                  rgba ( 41, 42, 45, 60 % );
+    background-color:            rgba ( 30, 32, 35, 0 % );
     separatorcolor:              @foreground;
     border-color:                @foreground;
     selected-normal-foreground:  @lightbg;

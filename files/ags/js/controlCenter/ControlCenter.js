@@ -33,8 +33,6 @@ export default () => PopupWindow({
             Widget.Box({
                 vertical: true,
                 children: [
-                    Header(),
-                    Separator(),
                     Row(
                         [NetworkToggle(), Separator(), BluetoothToggle()],
                         [WifiSelection(), BluetoothDevices()],
@@ -59,6 +57,11 @@ export default () => PopupWindow({
                         ],
                     })]),
                     Media(),
+                    Separator(),
+                    Widget.Box({
+                        vexpand: true,
+                    }),
+                    Header(),
                 ],
             }),
             NotificationsColumn(),

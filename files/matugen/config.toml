@@ -13,6 +13,11 @@ input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-4.0/gtk.css'
 mode = "Dark" # First letter MUST be upper-case
 
+[templates.hypr]
+input_path = '~/.config/matugen/templates/hypr.conf'
+output_path = '~/.config/hypr/colors.conf'
+mode = "Dark" # First letter MUST be upper-case
+
 [config]
 reload_apps = true
 set_wallpaper = true

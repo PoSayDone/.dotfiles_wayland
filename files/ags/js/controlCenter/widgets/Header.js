@@ -9,10 +9,10 @@ export default () => Widget.Box({
     children: [
         Widget.Box({
             children: [
-                Clock({
-                    class_name: 'controlcenter__clock',
-                    format: '%H:%M',
-                }),
+                // Clock({
+                //     class_name: 'controlcenter__clock',
+                //     format: '%H:%M',
+                // }),
                 Widget.Label({
                     class_name: 'controlcenter__uptime',
                     binds: [['label', vars.uptime, 'value', t => `uptime ${t}`]],
