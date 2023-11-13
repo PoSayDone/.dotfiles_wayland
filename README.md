@@ -10,7 +10,8 @@
 
 <h2>Used stuff</h2>
 
-<img src="https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/2eccb215-f2a6-462f-90de-17c1fd4e04a7" width=350 align="right">
+<img src="https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/eeb04e2e-6c40-4b03-b505-d6111c2c77c7" width=350 align="right">
+
 
 | task          | name                                                 |
 | ------------- | ---------------------------------------------------- |
@@ -31,5 +32,5 @@ curl -s -L https://raw.githubusercontent.com/PoSayDone/.dotfiles_wayland/main/in
 
 <h2>Screenshots</h2>
 
-![image](https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/2eccb215-f2a6-462f-90de-17c1fd4e04a7)
-![image](https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/8a693298-ab0f-49ca-90d0-3d0c7582c415)
+![image](https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/eeb04e2e-6c40-4b03-b505-d6111c2c77c7)
+![image](https://github.com/PoSayDone/.dotfiles_wayland/assets/29358657/1d8f82aa-4b44-4e16-b293-6deadcb58f97)
