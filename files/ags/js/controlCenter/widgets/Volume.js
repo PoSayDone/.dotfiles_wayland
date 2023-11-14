@@ -3,10 +3,12 @@ import Separator from '../../misc/Separator.js';
 import { getAudioTypeIcon } from '../../utils.js';
 import { Arrow } from '../ToggleButton.js';
 import { Menu } from '../ToggleButton.js';
+import { setupCursorHover } from '../../misc/SetupCursorHover.js';
 import { Audio, Widget, Utils } from '../../imports.js';
 
 const TypeIndicator = () => Widget.Button({
     on_clicked: () => Audio.speaker.isMuted = !Audio.speaker.isMuted,
+    setup: button => setupCursorHover(button),
     class_name: 'slider__tooltip',
     child: Widget.Icon({
         connections: [[Audio, icon => {
@@ -90,6 +92,7 @@ const MixerItem = stream => Widget.Box({
 
 const SinkItem = stream => Widget.Button({
     hexpand: true,
+    setup: button => setupCursorHover(button),
     on_clicked: () => Audio.speaker = stream,
     child: Widget.Box({
         children: [
@@ -111,6 +114,7 @@ const SinkItem = stream => Widget.Button({
 });
 
 const SettingsButton = () => Widget.Button({
+    setup: button => setupCursorHover(button),
     on_clicked: () => Utils.execAsync('pavucontrol'),
     hexpand: true,
     child: Widget.Box({

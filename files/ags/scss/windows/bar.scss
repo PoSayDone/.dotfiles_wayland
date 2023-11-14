@@ -1,6 +1,6 @@
 /* Common Styles */
 .bar {
-	background-color: transparentize($background, 0.2);
+	background-color: transparentize($surface, 0.2);
 	margin: 0;
 	padding: 8px 12px;
 	border-bottom: 1px solid $color_surface;
@@ -124,6 +124,7 @@
 	padding-right: 14px;
 	border-radius: 22px 6px 6px 22px;
 	.tray {
+		margin-left: 2px;
 		image {
 			font-size: 17px;
 			margin-left: 8px;

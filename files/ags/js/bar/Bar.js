@@ -3,6 +3,7 @@ import Workspaces from './widgets/Workspaces.js';
 import Keyboardlayout from './widgets/KeyboardLayout.js';
 import Separator from '../misc/Separator.js';
 import SysTray from './widgets/SysTray.js';
+import { setupCursorHover } from '../misc/SetupCursorHover.js';
 import { App, Widget } from '../imports.js';
 
 import * as battery from '../battery.js';
@@ -43,6 +44,7 @@ const Quicksettings = () => Widget.Button({
                 self.toggleClassName('active', visible);
         }, 'window-toggled'],
     ],
+    setup: button => setupCursorHover(button),
 });
 
 const Launcher = () => Button({
@@ -55,6 +57,7 @@ const Launcher = () => Button({
         hexpand: true,
         vexpand: true,
     }),
+    setup: button => setupCursorHover(button),
 });
 
 const Left = () => Box({
@@ -71,11 +74,11 @@ const Left = () => Box({
     ],
 });
 
-const Center = () => Box({
+const Center = () => Widget.Button({
+    on_primary_click: () => App.toggleWindow('calendar'),
     class_name: 'bar__center',
-    children: [
-        Clock(),
-    ],
+    child: Clock(),
+    setup: button => setupCursorHover(button),
 });
 
 const Right = () => Box({

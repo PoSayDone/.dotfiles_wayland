@@ -1,6 +1,6 @@
 window#applauncher .applauncher {
 	margin: 8px;
-	background-color: transparentize($background, 0.2);
+	background-color: transparentize($surface, 0.2);
 	border-radius: 40px;
 	padding: 20px;
 
@@ -33,7 +33,7 @@ window#applauncher .applauncher {
 
 	.placeholder {
 		margin-top: 8px;
-		color: $onSurface;
+		color: $on_surface;
 		font-size: 1.2em;
 	}
 
@@ -47,11 +47,11 @@ window#applauncher .applauncher {
 			transition: all 0.2s ease;
 
 			&.title {
-				color: $onSurface;
+				color: $on_surface;
 			}
 
 			&.description {
-				color: transparentize($onSurface, 0.3);
+				color: transparentize($on_surface, 0.3);
 			}
 		}
 

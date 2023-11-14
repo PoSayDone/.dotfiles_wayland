@@ -35,7 +35,7 @@ export default () => PopupWindow({
                 children: [
                     Row(
                         [NetworkToggle(), Separator(), BluetoothToggle()],
-                        [WifiSelection(), BluetoothDevices()],
+                        [WifiSelection()],
                     ),
                     Separator(),
                     Row(

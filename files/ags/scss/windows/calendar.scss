@@ -1,0 +1,37 @@
+.calendar {
+	background: $surface_transparent;
+	border-radius: 20px;
+	padding: 20px;
+
+	* {
+		padding: 60px;
+	}
+
+	calendar {
+		&:selected {
+			min-width: 60px;
+			min-height: 60px;
+			background: $primary_container;
+			color: $on_primary_container;
+			border-radius: 100px;
+		}
+
+		&.header {
+			background-color: transparent;
+			border: none;
+			// color: transparentize($fg-color, 0.5);
+		}
+
+		&.highlight {
+			padding: 40px;
+			// color: transparentize($accent, 0.5);
+		}
+
+		&:indeterminate {
+			// color: transparentize($fg-color, 0.9);
+		}
+
+		font-size: 1.1em;
+		padding: 0.2em;
+	}
+}

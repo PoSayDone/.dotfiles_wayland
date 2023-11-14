@@ -18,6 +18,11 @@ input_path = '~/.config/matugen/templates/hypr.conf'
 output_path = '~/.config/hypr/colors.conf'
 mode = "Dark" # First letter MUST be upper-case
 
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi.toml'
+output_path = '~/.config/yazi/theme.toml'
+mode = "Dark" # First letter MUST be upper-case
+
 [config]
 reload_apps = true
 set_wallpaper = true
@@ -29,10 +34,10 @@ swww_options = [
 	"90"
 ]
 prefix = '@'
-run_after = [
-    [ "echo", "'hello'" ],
-    [ "echo", "'hello again'" ],
-]
+# run_after = [
+#     [ "echo", "'hello'" ],
+#     [ "echo", "'hello again'" ],
+# ]
 
 [config.reload_apps_list]
 kitty = true

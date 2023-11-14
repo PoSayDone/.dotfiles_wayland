@@ -2,10 +2,10 @@
 	margin-top: 8px;
 	margin-right: 8px;
 	min-height: 400px;
-	background-color: transparentize($background, 0.2);
+	background-color: transparentize($surface, 0.2);
 	padding: 20px;
 	border-radius: 40px;
-	border: 1px solid $surface_light;
+	border: 1px solid $inverse_surface_transparent;
 }
 
 .controlcenter__header {
@@ -21,7 +21,7 @@
 	font-weight: 500;
 	padding: 10px 20px;
 	border-radius: 100px;
-	background: $primaryContainer;
+	background: $primary_container;
 	color: $on_primary_container;
 }
 
@@ -36,7 +36,7 @@
 
 .quicksettings__button {
 	background-color: transparentize(#fff, 0.93);
-	color: $onSurface;
+	color: $on_surface;
 	padding: 0px;
 	border-radius: 30px;
 	min-width: 220px;
@@ -49,16 +49,16 @@
 		background-color: $primary;
 		color: $on_primary;
 		&:hover {
-			background-color: $surface5;
+			background-color: $surface_container_high;
 		}
 	}
 
 	&:hover {
-		background-color: $surface5;
+		background-color: $surface_container_high;
 	}
 
 	image {
-		margin-left: 24px;
+		margin-left: 22px;
 		margin-right: 18px;
 	}
 
@@ -69,14 +69,14 @@
 
 .menu {
 	margin-top: 8px;
-	background-color: $surface_light;
-	color: $onSurface;
+	background-color: $inverse_surface_transparent;
+	color: $on_surface;
 	padding: 20px 26px;
 	border-radius: 30px;
 
 	.title {
 		padding: 4px 0px;
-		color: $onSurface;
+		color: $on_surface;
 		border-radius: 100px;
 		margin-bottom: 8px;
 
@@ -107,7 +107,7 @@
 }
 
 .player {
-	background-color: $surface_light;
+	background-color: $inverse_surface_transparent;
 	border-radius: 30px;
 	min-height: 213px;
 	margin-top: 8px;
@@ -132,8 +132,8 @@
 
 .volume__box {
 	.arrow {
-		color: $onSurface;
-		background-color: $surface_light;
+		color: $on_surface;
+		background-color: $inverse_surface_transparent;
 		padding: 0;
 		border-radius: 100px;
 		min-width: 42px;
@@ -149,7 +149,7 @@
 			background-color 0.3s ease-in-out,
 			color 0.3s ease-in-out;
 		border-radius: 100px;
-		background-color: $surface_light;
+		background-color: $inverse_surface_transparent;
 		min-height: 42px;
 
 		highlight,
@@ -177,7 +177,7 @@
 
 .mixer__tooltip {
 	margin-left: 0px;
-	background: $surface5;
+	background: $surface_container_high;
 	min-height: 42px;
 	min-width: 42px;
 	border-radius: 100px;
@@ -186,7 +186,7 @@
 .mixer__slider {
 	trough {
 		border-radius: 100px;
-		background-color: $surface_light;
+		background-color: $inverse_surface_transparent;
 		min-height: 14px;
 
 		highlight,

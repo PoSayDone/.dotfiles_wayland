@@ -2,7 +2,7 @@ import * as mpris from '../../misc/mpris.js';
 import { Mpris, Widget } from '../../imports.js';
 import Separator from '../../misc/Separator.js';
 
-const blackList = ['Caprine'];
+const blackList = ['Caprine', 'Telegram A'];
 
 const Header = player => mpris.FontColoredBox(player, {
     class_name: 'header-box',

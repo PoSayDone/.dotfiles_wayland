@@ -1,0 +1,46 @@
+[manager]
+cwd = { fg = "@{secondary}", bold=true}
+
+hovered         = { fg = "@{on_primary_container}", bg = "@{primary_container}" }
+preview_hovered = { underline = true, bold=true }
+
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "@{on_primary_container}", bg = "@{primary_container}" }
+
+# Mode
+mode_normal = { fg = "@{on_primary}",   bg = "@{primary}", bold = true }
+mode_select = { fg = "@{on_secondary}", bg = "@{secondary}", bold = true }
+mode_unset  = { fg = "@{on_tertiary}",  bg = "@{tertiary}", bold = true }
+
+[which]
+mask            = { bg = "@{surface_container}" }
+cand            = { fg = "@{primary}" }
+desc            = { fg = "@{secondary}" }
+separator       = "  "
+separator_style = { fg = "@{tertiary}" }
+
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "@{secondary}" },
+
+	# Videos
+	{ mime = "video/*", fg = "@{tertiary}" },
+	{ mime = "audio/*", fg = "@{tertiary}" },
+
+	# Archives
+	{ mime = "application/zip",             fg = "@{error}" },
+	{ mime = "application/gzip",            fg = "@{error}" },
+	{ mime = "application/x-tar",           fg = "@{error}" },
+	{ mime = "application/x-bzip",          fg = "@{error}" },
+	{ mime = "application/x-bzip2",         fg = "@{error}" },
+	{ mime = "application/x-7z-compressed", fg = "@{error}" },
+	{ mime = "application/x-rar",           fg = "@{error}" },
+
+	# Fallback
+	{ name = "*", fg = "@{primary}", bold=true },
+	{ name = "*/", fg = "@{secondary}", bold=true }
+]

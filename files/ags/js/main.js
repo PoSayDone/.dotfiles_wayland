@@ -7,6 +7,7 @@ import OSD from './osd/OSD.js';
 
 import * as setup from './utils.js';
 import { forMonitors } from './utils.js';
+import Calendar from './calendar/Calendar.js';
 
 setup.warnOnLowBattery();
 setup.reloadCss();
@@ -18,6 +19,7 @@ const windows = () => [
     forMonitors(OSD),
     ControlCenter(),
     Applauncher(),
+    Calendar(),
 ];
 
 export default {

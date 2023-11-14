@@ -15,15 +15,15 @@
 		color: $on_primary_container;
 		background-color: $primary_container;
 		&:hover {
-			background-color: transparentize($primary, 0.34);
+			background-color: $primary_fixed;
 		}
 	}
 
 	@if not($colorful) {
 		color: $on_surface;
-		background-color: $surface_light;
+		background-color: $inverse_surface_transparent;
 		&:hover {
-			background-color: transparentize(#fff, 0.8);
+			background-color: $inverse_surface_transparent_variant;
 		}
 	}
 }
@@ -55,7 +55,7 @@ window.popup {
 	menu {
 		margin-top: 12px;
 		border-radius: 18px;
-		background-color: $surface1;
+		background-color: $surface_container;
 		padding: 12px;
 
 		// separator {
@@ -63,11 +63,12 @@ window.popup {
 		// }
 
 		menuitem {
-			padding: 6px 8px;
+			padding: 8px 10px;
+			color: $on_surface;
 			border-radius: 8px;
 			transition: background 0.1s ease;
 			&:hover {
-				background: $surface5;
+				background: $surface_container_highest;
 			}
 			&:first-child {
 				margin-top: 0;

@@ -3,26 +3,15 @@ import Notification from '../notifications/Notification.js';
 import { Widget, Notifications } from '../imports.js';
 
 const ClearButton = () => Widget.Button({
+    hpack: 'end',
     class_name: 'notifications__clear-button',
     on_clicked: () => Notifications.clear(),
     binds: [['sensitive', Notifications, 'notifications', n => n.length > 0]],
     child: Widget.Box({
         children: [
-            Widget.Label('Clear '),
-            Widget.Icon({
-                binds: [['icon', Notifications, 'notifications', n =>
-                    n.length > 0 ? icons.trash.full : icons.trash.empty]],
-            }),
+            Widget.Label('Clear all'),
         ],
     }),
-});
-
-const Header = () => Widget.Box({
-    class_name: 'notifications__header',
-    children: [
-        Widget.Label({ class_name: 'notifications__title', label: 'Notifications', hexpand: true, xalign: 0 }),
-        ClearButton(),
-    ],
 });
 
 const NotificationList = () => Widget.Box({
@@ -67,5 +56,6 @@ export default () => Widget.Box({
                 ],
             }),
         }),
+        ClearButton(),
     ],
 });

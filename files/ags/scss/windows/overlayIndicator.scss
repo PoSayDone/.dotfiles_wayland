@@ -1,14 +1,14 @@
 .indicator .progress {
 	padding: 0px;
 	border-radius: 100px;
-	background-color: transparentize($background, 0.1);
+	background-color: transparentize($surface, 0.2);
 	min-width: 70px;
 	margin-left: 24px;
 
 	.fill {
 		border-radius: 100px;
 		background-color: $primary;
-		color: $surface3;
+		color: $on_primary;
 		min-width: 60px;
 
 		image {

@@ -1,4 +1,5 @@
 import icons from '../icons.js';
+import { setupCursorHover } from '../misc/SetupCursorHover.js';
 import { Utils, Widget, App, Variable } from '../imports.js';
 
 export const opened = Variable('');
@@ -43,6 +44,7 @@ export const ArrowToggleButton = ({
     }]],
     children: [
         Widget.Button({
+            setup: button => setupCursorHover(button),
             child: Widget.Box({
                 hexpand: true,
                 children: [
@@ -79,6 +81,7 @@ export const SimpleToggleButton = ({
     }]],
     children: [
         Widget.Button({
+            setup: button => setupCursorHover(button),
             child: Widget.Box({
                 hexpand: true,
                 children: [icon, Widget.Box({ hpack: 'start', vpack: 'center', vertical: true, children: [label, status] })],

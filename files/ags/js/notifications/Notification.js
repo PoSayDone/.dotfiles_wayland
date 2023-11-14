@@ -91,7 +91,7 @@ export default notification => {
                                 onHover: hover,
                                 class_name: 'close-button',
                                 vpack: 'start',
-                                child: Widget.Icon('window-close-symbolic'),
+                                child: Widget.Icon({ icon: 'window-close-symbolic', size: 14 }),
                                 on_clicked: () => notification.close(),
                             }),
                         ],
@@ -112,22 +112,14 @@ export default notification => {
         ],
     });
 
-    const actionsbox = Widget.Revealer({
-        transition: 'slide_down',
-        binds: [['revealChild', hovered]],
-        child: Widget.EventBox({
-            onHover: hover,
-            child: Widget.Box({
-                class_name: 'actions',
-                children: notification.actions.map(action => Widget.Button({
-                    onHover: hover,
-                    class_name: 'action-button',
-                    on_clicked: () => notification.invoke(action.id),
-                    hexpand: true,
-                    child: Widget.Label(action.label),
-                })),
-            }),
-        }),
+    const actionsbox = Widget.Box({
+        class_name: 'actions',
+        children: notification.actions.map(action => Widget.Button({
+            class_name: 'action-button',
+            on_clicked: () => notification.invoke(action.id),
+            hexpand: true,
+            child: Widget.Label(action.label),
+        })),
     });
 
     return Widget.EventBox({
