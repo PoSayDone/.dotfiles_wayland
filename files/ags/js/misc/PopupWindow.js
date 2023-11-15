@@ -21,7 +21,7 @@ const PopupRevealer = (windowName, transition, child) => Widget.Box({
 
 const layouts = {
     'center': (windowName, child, expand) => Widget.CenterBox({
-        class_name: 'shader',
+        class_name: 'scrim',
         css: expand ? 'min-width: 5000px; min-height: 3000px;' : '',
         children: [
             Padding(windowName),

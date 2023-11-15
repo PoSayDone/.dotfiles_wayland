@@ -1,3 +1,6 @@
+.scrim {
+  background-color: rgba(0, 0, 0, 0.32); }
+
 * {
   all: unset;
   font-size: 14px;
@@ -14,8 +17,8 @@
   font-weight: 600; }
 
 tooltip > * > * {
-  background-color: #34302c;
-  color: #e9e1dc;
+  background-color: #303031;
+  color: #e4e2e3;
   padding: 20px;
   border-radius: 20px; }
 
@@ -26,15 +29,15 @@ window.popup > * {
 window.popup menu {
   margin-top: 12px;
   border-radius: 18px;
-  background-color: #221f1c;
+  background-color: #1f2021;
   padding: 12px; }
   window.popup menu menuitem {
     padding: 8px 10px;
-    color: #e9e1dc;
+    color: #e4e2e3;
     border-radius: 8px;
     transition: background 0.1s ease; }
     window.popup menu menuitem:hover {
-      background: #383431; }
+      background: #343536; }
     window.popup menu menuitem:first-child {
       margin-top: 0; }
     window.popup menu menuitem:last-child {
@@ -42,43 +45,43 @@ window.popup menu {
 
 /* Common Styles */
 .bar {
-  background-color: rgba(22, 19, 16, 0.8);
+  background-color: rgba(19, 19, 20, 0.8);
   margin: 0;
   padding: 8px 12px;
-  border-bottom: 1px solid #34302c; }
+  border-bottom: 1px solid #303031; }
 
 .workspaces,
 .clock,
-.bar__quicksettings_container,
+.bar__controlcenter_container,
 .weather,
 .activeapp,
 .notifications-indicator {
   transition: background-color 0.2s ease-in-out;
   border-radius: 100px;
-  color: #e9e1dc;
-  background-color: rgba(233, 225, 220, 0.08);
+  color: #e4e2e3;
+  background-color: rgba(228, 226, 227, 0.08);
   transition: background 0.2s ease-in-out, color 0.2s ease-in-out; }
   .workspaces:hover,
   .clock:hover,
-  .bar__quicksettings_container:hover,
+  .bar__controlcenter_container:hover,
   .weather:hover,
   .activeapp:hover,
   .notifications-indicator:hover {
-    background-color: rgba(233, 225, 220, 0.18); }
+    background-color: rgba(228, 226, 227, 0.18); }
 
 .keyboardlayout,
 .battery {
   transition: background-color 0.2s ease-in-out;
   border-radius: 100px;
-  color: #ffddb9;
-  background-color: #643e07; }
+  color: #c8e6ff;
+  background-color: #284a60; }
   .keyboardlayout:hover,
   .battery:hover {
-    background-color: #ffddb9; }
+    background-color: #c8e6ff; }
 
 .active {
-  background: #f4bc7b;
-  color: #472a00; }
+  background: #a9cbe5;
+  color: #0e3448; }
 
 /* Specific Styles */
 .activeapp,
@@ -94,7 +97,7 @@ window.popup menu {
   padding: 0 14px; }
 
 .launcher {
-  background: #f4bc7b;
+  background: #a9cbe5;
   padding: 0;
   margin: 0;
   min-width: 42px;
@@ -102,12 +105,12 @@ window.popup menu {
   border-radius: 42px;
   transition: background-color 0.1s ease-in-out; }
   .launcher .launcher__icon {
-    background-color: #472a00;
+    background-color: #0e3448;
     min-width: 14px;
     min-height: 14px;
     border-radius: 100%; }
   .launcher:hover {
-    background-color: #ffddb9; }
+    background-color: #c8e6ff; }
 
 .workspaces {
   min-width: 260px; }
@@ -123,11 +126,11 @@ window.popup menu {
     .workspaces .workspace-indicator:first-child {
       margin-left: 0px; }
     .workspaces .workspace-indicator:hover {
-      background-color: rgba(244, 188, 123, 0.6); }
+      background-color: rgba(169, 203, 229, 0.6); }
     .workspaces .workspace-indicator.active, .workspaces .workspace-indicator:active {
       min-width: 42px;
       border-radius: 100px;
-      background-color: #f4bc7b; }
+      background-color: #a9cbe5; }
 
 .activeapp > image {
   margin-right: 8px; }
@@ -141,19 +144,24 @@ window.popup menu {
   padding: 0;
   margin: 0;
   min-width: 42px;
-  background: #d8c3ae;
-  color: #3b2e20; }
+  background: #c1c7ce;
+  color: #2a3137; }
 
-.bar__quicksettings_container {
+.bar__controlcenter_container {
   padding-left: 16px;
   margin-right: 5px;
   padding-right: 14px;
   border-radius: 22px 6px 6px 22px; }
-  .bar__quicksettings_container .tray {
-    margin-left: 2px; }
-    .bar__quicksettings_container .tray image {
-      font-size: 17px;
-      margin-left: 8px; }
+  .bar__controlcenter_container image {
+    margin-right: 8px; }
+    .bar__controlcenter_container image:last-child {
+      margin-right: 0px; }
+  .bar__controlcenter_container .tray > * {
+    margin-right: 8px; }
+    .bar__controlcenter_container .tray > *:last-child {
+      margin-right: 0px; }
+  .bar__controlcenter_container .tray image {
+    font-size: 17px; }
 
 .weather {
   margin-right: 5px;
@@ -167,72 +175,72 @@ window.popup menu {
   .battery image {
     margin-right: 4px; }
 
-window#applauncher .applauncher {
+#applauncher .applauncher {
   margin: 8px;
-  background-color: rgba(22, 19, 16, 0.8);
+  background-color: rgba(19, 19, 20, 0.8);
   border-radius: 40px;
   padding: 20px; }
-  window#applauncher .applauncher .header {
-    background: #f4bc7b;
+  #applauncher .applauncher .header {
+    background: #a9cbe5;
     padding: 16px;
     border-radius: 100px;
     margin-bottom: 5px; }
-    window#applauncher .applauncher .header image,
-    window#applauncher .applauncher .header entry {
+    #applauncher .applauncher .header image,
+    #applauncher .applauncher .header entry {
       margin-left: 4px;
-      color: #472a00; }
-    window#applauncher .applauncher .header entry {
+      color: #0e3448; }
+    #applauncher .applauncher .header entry {
       padding-left: 14px;
       font-size: 16px; }
-    window#applauncher .applauncher .header image {
+    #applauncher .applauncher .header image {
       font-size: 16px; }
-  window#applauncher .applauncher scrolledwindow {
+  #applauncher .applauncher scrolledwindow {
     min-width: 400px;
     min-height: 550px; }
-  window#applauncher .applauncher .placeholder {
+  #applauncher .applauncher .placeholder {
     margin-top: 8px;
-    color: #e9e1dc;
+    color: #e4e2e3;
     font-size: 1.2em; }
-  window#applauncher .applauncher .app-item {
+  #applauncher .applauncher .app-item {
     all: unset;
     transition: all 0.2s ease;
     padding: 12px;
     border-radius: 100px; }
-    window#applauncher .applauncher .app-item label {
+    #applauncher .applauncher .app-item label {
       transition: all 0.2s ease; }
-      window#applauncher .applauncher .app-item label.title {
-        color: #e9e1dc; }
-      window#applauncher .applauncher .app-item label.description {
-        color: rgba(233, 225, 220, 0.7); }
-    window#applauncher .applauncher .app-item image {
+      #applauncher .applauncher .app-item label.title {
+        color: #e4e2e3; }
+      #applauncher .applauncher .app-item label.description {
+        color: rgba(228, 226, 227, 0.7); }
+    #applauncher .applauncher .app-item image {
       transition: all 0.2s ease;
       margin-left: 2px;
       margin-right: 10px; }
-    window#applauncher .applauncher .app-item:hover {
-      background: #56524e; }
-      window#applauncher .applauncher .app-item:hover .title {
-        color: #e9e1dc; }
-    window#applauncher .applauncher .app-item:focus {
-      background: #f4bc7b; }
-      window#applauncher .applauncher .app-item:focus .title {
-        color: #472a00; }
-      window#applauncher .applauncher .app-item:focus .description {
-        color: #472a00; }
-    window#applauncher .applauncher .app-item:active {
-      background-color: rgba(244, 188, 123, 0.8);
+    #applauncher .applauncher .app-item:hover {
+      background: #292a2b; }
+      #applauncher .applauncher .app-item:hover .title {
+        color: #e4e2e3; }
+    #applauncher .applauncher .app-item:focus {
+      background: #a9cbe5; }
+      #applauncher .applauncher .app-item:focus .title {
+        color: #0e3448; }
+      #applauncher .applauncher .app-item:focus .description {
+        color: #0e3448; }
+    #applauncher .applauncher .app-item:active {
+      background-color: rgba(169, 203, 229, 0.8);
       border-radius: 100px;
-      box-shadow: inset 0 0 0 1px #f4bc7b; }
-      window#applauncher .applauncher .app-item:active .title {
-        color: #472a00; }
+      box-shadow: inset 0 0 0 1px #a9cbe5; }
+      #applauncher .applauncher .app-item:active .title {
+        color: #0e3448; }
 
 .controlcenter__container {
   margin-top: 8px;
   margin-right: 8px;
   min-height: 400px;
-  background-color: rgba(22, 19, 16, 0.8);
+  background-color: rgba(19, 19, 20, 0.8);
   padding: 20px;
   border-radius: 40px;
-  border: 1px solid rgba(233, 225, 220, 0.08); }
+  border: 1px solid rgba(228, 226, 227, 0.08); }
 
 .controlcenter__header * {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
@@ -242,32 +250,34 @@ window#applauncher .applauncher {
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 100px;
-  background: #643e07;
-  color: #ffddb9; }
+  background: #284a60;
+  color: #c8e6ff; }
 
 .controlcenter__theme,
 .controlcenter__power {
   min-width: 42px;
   min-height: 42px;
   border-radius: 100px;
-  background: #643e07;
-  color: #ffddb9; }
+  background: #284a60;
+  color: #c8e6ff; }
 
 .quicksettings__button {
   background-color: rgba(255, 255, 255, 0.07);
-  color: #e9e1dc;
+  color: #e4e2e3;
   padding: 0px;
   border-radius: 30px;
   min-width: 220px;
   min-height: 75px;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
+  .quicksettings__button > * {
+    border-radius: 30px; }
   .quicksettings__button.active {
-    background-color: #f4bc7b;
-    color: #472a00; }
+    background-color: #a9cbe5;
+    color: #0e3448; }
     .quicksettings__button.active:hover {
-      background-color: #2d2926; }
+      background-color: #292a2b; }
   .quicksettings__button:hover {
-    background-color: #2d2926; }
+    background-color: #292a2b; }
   .quicksettings__button image {
     margin-left: 22px;
     margin-right: 18px; }
@@ -276,13 +286,13 @@ window#applauncher .applauncher {
 
 .menu {
   margin-top: 8px;
-  background-color: rgba(233, 225, 220, 0.08);
-  color: #e9e1dc;
+  background-color: #1f2021;
+  color: #e4e2e3;
   padding: 20px 26px;
-  border-radius: 30px; }
+  border-radius: 30px;
+  min-width: 300px; }
   .menu .title {
     padding: 4px 0px;
-    color: #e9e1dc;
     border-radius: 100px;
     margin-bottom: 8px; }
     .menu .title > *:first-child {
@@ -290,16 +300,16 @@ window#applauncher .applauncher {
     .menu .title label {
       font-weight: bold;
       font-size: 16px; }
-  .menu .content > * > * > * {
-    margin: 8px 0; }
-  .menu .content > * > * > *:last-child {
-    margin: 8px 0;
-    margin-bottom: 0px; }
-  .menu .content image {
+  .menu button {
+    padding: 8px 12px;
+    border-radius: 8px; }
+    .menu button:hover {
+      background-color: #343536; }
+  .menu image {
     margin-right: 4px; }
 
 .player {
-  background-color: rgba(233, 225, 220, 0.08);
+  background-color: rgba(228, 226, 227, 0.08);
   border-radius: 30px;
   min-height: 213px;
   margin-top: 8px; }
@@ -310,8 +320,8 @@ window#applauncher .applauncher {
   padding: 20px; }
 
 .slider__tooltip {
-  color: #472a00;
-  background-color: #f4bc7b;
+  color: #0e3448;
+  background-color: #a9cbe5;
   padding: 0;
   border-radius: 100px;
   min-width: 42px;
@@ -320,8 +330,8 @@ window#applauncher .applauncher {
   font-size: 18px; }
 
 .volume__box .arrow {
-  color: #e9e1dc;
-  background-color: rgba(233, 225, 220, 0.08);
+  color: #e4e2e3;
+  background-color: rgba(228, 226, 227, 0.08);
   padding: 0;
   border-radius: 100px;
   min-width: 42px;
@@ -332,14 +342,14 @@ window#applauncher .applauncher {
 .brightness__slider trough {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   border-radius: 100px;
-  background-color: rgba(233, 225, 220, 0.08);
+  background-color: rgba(228, 226, 227, 0.08);
   min-height: 42px; }
   .volume__slider trough highlight,
   .volume__slider trough progress,
   .brightness__slider trough highlight,
   .brightness__slider trough progress {
     border-radius: 100px;
-    background-color: #f4bc7b;
+    background-color: #a9cbe5;
     border-radius: 100px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
   .volume__slider trough slider,
@@ -352,19 +362,19 @@ window#applauncher .applauncher {
 
 .mixer__tooltip {
   margin-left: 0px;
-  background: #2d2926;
+  background: #292a2b;
   min-height: 42px;
   min-width: 42px;
   border-radius: 100px; }
 
 .mixer__slider trough {
   border-radius: 100px;
-  background-color: rgba(233, 225, 220, 0.08);
+  background-color: rgba(228, 226, 227, 0.08);
   min-height: 14px; }
   .mixer__slider trough highlight,
   .mixer__slider trough progress {
     border-radius: 100px;
-    background-color: #f4bc7b;
+    background-color: #a9cbe5;
     border-radius: 100px; }
   .mixer__slider trough slider {
     border-radius: 100px;
@@ -387,8 +397,8 @@ window#applauncher .applauncher {
   min-height: 60px;
   border-radius: 20px;
   padding: 0;
-  background: #f4bc7b;
-  color: #472a00;
+  background: #a9cbe5;
+  color: #0e3448;
   transition: all 0.3s; }
 
 .play-pause .paused,
@@ -397,8 +407,8 @@ window#applauncher .applauncher {
   min-height: 60px;
   border-radius: 100px;
   padding: 0;
-  background: #f4bc7b;
-  color: #472a00;
+  background: #a9cbe5;
+  color: #0e3448;
   transition: all 0.3s; }
 
 .position-slider trough {
@@ -421,7 +431,7 @@ window#applauncher .applauncher {
   border-radius: 30px;
   transition: all 0.2s; }
   .cover-art .header-box {
-    color: #f4bc7b; }
+    color: #a9cbe5; }
   .cover-art .footer-box .previous {
     font-size: 20px;
     margin-right: 16px; }
@@ -437,8 +447,8 @@ window#applauncher .applauncher {
   min-width: 400px;
   min-height: 400px;
   border-radius: 40px;
-  background: #221f1c;
-  color: #e9e1dc; }
+  background: #1f2021;
+  color: #e4e2e3; }
 
 .placeholder > image {
   font-size: 50px;
@@ -454,10 +464,10 @@ window#applauncher .applauncher {
   .notification-scrollable scrollbar * {
     all: unset; }
   .notification-scrollable scrollbar.vertical:hover slider {
-    background-color: #f4bc7b;
+    background-color: #a9cbe5;
     min-width: 0.6em; }
   .notification-scrollable scrollbar.vertical slider {
-    background-color: #998f86;
+    background-color: #8f9193;
     border-radius: 100px;
     min-width: 0.4em;
     min-height: 2em; }
@@ -468,14 +478,14 @@ window#applauncher .applauncher {
   font-weight: 500; }
 
 .notifications__clear-button {
-  background: #2d2926;
+  background: #292a2b;
   padding: 10px 20px;
   border-radius: 100px;
   margin-bottom: 20px;
   margin-right: 30px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
   .notifications__clear-button:hover {
-    background: #383431; }
+    background: #343536; }
   .notifications__clear-button image {
     margin-left: 4px; }
 
@@ -490,13 +500,13 @@ window#applauncher .applauncher {
 .notification > box {
   padding: 14px 16px 14px 14px;
   margin-bottom: 4px;
-  color: #e9e1dc;
-  background-color: #2d2926;
+  color: #e4e2e3;
+  background-color: #292a2b;
   border-radius: 4px; }
 
 .notification .icon {
   margin-right: 16px;
-  background: rgba(233, 225, 220, 0.08);
+  background: rgba(228, 226, 227, 0.08);
   border-radius: 100px; }
 
 .notification .title {
@@ -511,7 +521,7 @@ window#applauncher .applauncher {
 .notification .description {
   font-size: 15px;
   font-weight: 400;
-  color: #d0c4ba; }
+  color: #c5c6c9; }
 
 .notification .action-button {
   margin-top: 14px; }
@@ -520,30 +530,30 @@ window#applauncher .applauncher {
   margin-left: 14px;
   padding: 4px;
   border-radius: 100px;
-  background-color: #f4bc7b;
-  color: #472a00;
+  background-color: #a9cbe5;
+  color: #0e3448;
   font-size: 20px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
   .notification .close-button:hover {
-    background: #ffddb9; }
+    background: #c8e6ff; }
 
 .notifications-popup-list {
   margin-top: 8px;
   min-width: 400px; }
   .notifications-popup-list .notification > box {
-    color: #e9e1dc;
-    background-color: rgba(22, 19, 16, 0.8); }
+    color: #e4e2e3;
+    background-color: rgba(19, 19, 20, 0.8); }
 
 .indicator .progress {
   padding: 0px;
   border-radius: 100px;
-  background-color: rgba(22, 19, 16, 0.8);
+  background-color: rgba(19, 19, 20, 0.8);
   min-width: 70px;
   margin-left: 24px; }
   .indicator .progress .fill {
     border-radius: 100px;
-    background-color: #f4bc7b;
-    color: #472a00;
+    background-color: #a9cbe5;
+    color: #0e3448;
     min-width: 60px; }
     .indicator .progress .fill image {
       margin-right: 14px;
@@ -553,7 +563,7 @@ window#applauncher .applauncher {
       font-size: 12px; }
 
 .calendar {
-  background: rgba(22, 19, 16, 0.8);
+  background: rgba(19, 19, 20, 0.8);
   border-radius: 20px;
   padding: 20px; }
   .calendar * {
@@ -564,8 +574,8 @@ window#applauncher .applauncher {
     .calendar calendar:selected {
       min-width: 60px;
       min-height: 60px;
-      background: #643e07;
-      color: #ffddb9;
+      background: #284a60;
+      color: #c8e6ff;
       border-radius: 100px; }
     .calendar calendar.header {
       background-color: transparent;

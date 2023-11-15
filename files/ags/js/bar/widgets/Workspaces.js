@@ -1,5 +1,4 @@
 import { Hyprland, Widget, Utils } from '../../imports.js';
-import { setupCursorHover } from '../../misc/SetupCursorHover.js';
 import { range } from '../../utils.js';
 
 const ws = 10;
@@ -7,10 +6,7 @@ const dispatch = arg => () => Utils.execAsync(`hyprctl dispatch workspace ${arg}
 
 const Workspaces = () => Widget.Box({
     children: range(ws || 20).map(i => Widget.Button({
-        setup: btn => {
-            btn.id = i;
-            setupCursorHover(btn);
-        },
+        setup: btn => btn.id = i,
         on_clicked: dispatch(i),
         class_name: 'workspace-indicator',
         vpack: 'center',

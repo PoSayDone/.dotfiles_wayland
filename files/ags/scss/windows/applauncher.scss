@@ -1,4 +1,4 @@
-window#applauncher .applauncher {
+#applauncher .applauncher {
 	margin: 8px;
 	background-color: transparentize($surface, 0.2);
 	border-radius: 40px;
@@ -62,7 +62,7 @@ window#applauncher .applauncher {
 		}
 
 		&:hover {
-			background: $color_surface_highlight;
+			background: $surface_container_high;
 			.title {
 				color: $on_surface;
 			}

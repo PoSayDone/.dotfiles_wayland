@@ -1,3 +1,7 @@
+.scrim {
+	background-color: transparentize($scrim, 0.68);
+}
+
 * {
 	all: unset;
 	font-size: 14px;

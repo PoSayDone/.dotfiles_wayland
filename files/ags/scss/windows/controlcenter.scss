@@ -39,6 +39,9 @@
 	color: $on_surface;
 	padding: 0px;
 	border-radius: 30px;
+	> * {
+		border-radius: 30px;
+	}
 	min-width: 220px;
 	min-height: 75px;
 	transition:
@@ -69,14 +72,14 @@
 
 .menu {
 	margin-top: 8px;
-	background-color: $inverse_surface_transparent;
+	background-color: $surface_container;
 	color: $on_surface;
 	padding: 20px 26px;
 	border-radius: 30px;
+	min-width: 300px;
 
 	.title {
 		padding: 4px 0px;
-		color: $on_surface;
 		border-radius: 100px;
 		margin-bottom: 8px;
 
@@ -90,19 +93,16 @@
 		}
 	}
 
-	.content {
-		> * > * > * {
-			margin: 8px 0;
+	button {
+		padding: 8px 12px;
+		border-radius: 8px;
+		&:hover {
+			background-color: $surface_container_highest;
 		}
+	}
 
-		> * > * > *:last-child {
-			margin: 8px 0;
-			margin-bottom: 0px;
-		}
-
-		image {
-			margin-right: 4px;
-		}
+	image {
+		margin-right: 4px;
 	}
 }
 

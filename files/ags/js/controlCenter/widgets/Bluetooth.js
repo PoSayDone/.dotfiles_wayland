@@ -41,7 +41,7 @@ export const BluetoothDevices = () => Menu({
     name: 'bluetooth',
     icon: Widget.Icon(icons.bluetooth.disabled),
     title: Widget.Label('Bluetooth'),
-    content: [
+    menu_content: [
         Widget.Box({
             hexpand: true,
             vertical: true,

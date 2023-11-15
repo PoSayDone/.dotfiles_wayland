@@ -2,18 +2,14 @@ import Clock from '../misc/Clock.js';
 import Workspaces from './widgets/Workspaces.js';
 import Keyboardlayout from './widgets/KeyboardLayout.js';
 import Separator from '../misc/Separator.js';
-import SysTray from './widgets/SysTray.js';
-import { setupCursorHover } from '../misc/SetupCursorHover.js';
 import { App, Widget } from '../imports.js';
 
 import * as battery from '../battery.js';
-import * as bluetooth from '../bluetooth.js';
-import * as network from '../network.js';
-import * as audio from '../audio.js';
 
 import { Window, CenterBox, Box, Button } from 'resource:///com/github/Aylur/ags/widget.js';
 import { ActiveApp } from './widgets/ActiveApp.js';
 import { Weather } from './widgets/Weather.js';
+import SystemIndicators from './widgets/SystemIndicators.js';
 
 const Battery = () => Box({
     class_name: 'battery',
@@ -24,32 +20,9 @@ const Battery = () => Box({
     ],
 });
 
-const Quicksettings = () => Widget.Button({
-    class_name: 'bar__quicksettings_container',
-    onPrimaryClick: () => App.toggleWindow('controlcenter'),
-    child: Box({
-        class_name: 'bar__quicksettings',
-        children: [
-            network.Indicator(),
-            Separator(),
-            bluetooth.Indicator(),
-            Separator(),
-            audio.SpeakerIndicator(),
-            SysTray(),
-        ],
-    }),
-    connections: [
-        [App, (self, windowName, visible) => {
-            if (windowName === 'controlcenter')
-                self.toggleClassName('active', visible);
-        }, 'window-toggled'],
-    ],
-    setup: button => setupCursorHover(button),
-});
-
 const Launcher = () => Button({
     class_name: 'launcher',
-    onPrimaryClick: () => App.toggleWindow('applauncher'),
+    on_primary_click: () => App.toggleWindow('applauncher'),
     child: Box({
         class_name: 'launcher__icon',
         vpack: 'center',
@@ -57,7 +30,6 @@ const Launcher = () => Button({
         hexpand: true,
         vexpand: true,
     }),
-    setup: button => setupCursorHover(button),
 });
 
 const Left = () => Box({
@@ -78,7 +50,6 @@ const Center = () => Widget.Button({
     on_primary_click: () => App.toggleWindow('calendar'),
     class_name: 'bar__center',
     child: Clock(),
-    setup: button => setupCursorHover(button),
 });
 
 const Right = () => Box({
@@ -88,7 +59,7 @@ const Right = () => Box({
     children: [
         Keyboardlayout(),
         Separator(),
-        Quicksettings(),
+        SystemIndicators(),
         Weather(),
         Battery(),
     ],

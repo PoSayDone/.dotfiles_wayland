@@ -1,5 +1,5 @@
 import icons from '../icons.js';
-import { setupCursorHover } from '../misc/SetupCursorHover.js';
+import PopupWindow from '../misc/PopupWindow.js';
 import { Utils, Widget, App, Variable } from '../imports.js';
 
 export const opened = Variable('');
@@ -8,29 +8,12 @@ App.connect('window-toggled', (_, name, visible) => {
         Utils.timeout(500, () => opened.value = '');
 });
 
-export const Arrow = (name, activate) => Widget.Button({
+export const Arrow = name => Widget.Button({
     class_name: 'arrow',
     child: Widget.Icon({
         icon: icons.ui.arrow.right,
-        properties: [['deg', 0]],
-        connections: [[opened, icon => {
-            if (opened.value === name && !icon._opened || opened.value !== name && icon._opened) {
-                const step = opened.value === name ? 10 : -10;
-                icon._opened = !icon._opened;
-                for (let i = 0; i < 9; ++i) {
-                    Utils.timeout(15 * i, () => {
-                        icon._deg += step;
-                        icon.setCss(`-gtk-icon-transform: rotate(${icon._deg}deg);`);
-                    });
-                }
-            }
-        }]],
     }),
-    on_clicked: () => {
-        opened.value = opened.value === name ? '' : name;
-        if (activate)
-            activate();
-    },
+    on_clicked: () => App.toggleWindow(name),
 });
 
 export const ArrowToggleButton = ({
@@ -44,7 +27,6 @@ export const ArrowToggleButton = ({
     }]],
     children: [
         Widget.Button({
-            setup: button => setupCursorHover(button),
             child: Widget.Box({
                 hexpand: true,
                 children: [
@@ -81,7 +63,6 @@ export const SimpleToggleButton = ({
     }]],
     children: [
         Widget.Button({
-            setup: button => setupCursorHover(button),
             child: Widget.Box({
                 hexpand: true,
                 children: [icon, Widget.Box({ hpack: 'start', vpack: 'center', vertical: true, children: [label, status] })],
@@ -91,23 +72,21 @@ export const SimpleToggleButton = ({
     ],
 });
 
-export const Menu = ({ name, icon, title, content }) => Widget.Revealer({
-    transition: 'slide_down',
-    connections: [[opened, revealer => {
-        revealer.revealChild = opened.value === name;
-    }]],
-    child: Widget.Box({
-        class_name: 'menu',
+export const Menu = ({ name, icon, title, menu_content }) => PopupWindow({
+    name: name,
+    layout: 'center',
+    hexpand: true,
+    vexpand: true,
+    content: Widget.Box({
+        class_names: ['menu', name],
         vertical: true,
         children: [
             Widget.Box({
-                class_name: 'title',
+                class_name: 'title horizontal',
                 children: [icon, title],
             }),
-            Widget.Box({
-                class_name: 'content',
-                children: [content],
-            }),
+            Widget.Separator(),
+            ...menu_content,
         ],
     }),
 });

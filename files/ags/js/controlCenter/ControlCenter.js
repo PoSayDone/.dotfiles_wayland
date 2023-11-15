@@ -8,9 +8,9 @@ import Brightness from './widgets/Brightness.js';
 import Header from './widgets/Header.js';
 
 import { Widget } from '../imports.js';
-import { Volume, SinkSelector, AppMixer } from './widgets/Volume.js';
-import { NetworkToggle, WifiSelection } from './widgets/Network.js';
-import { BluetoothToggle, BluetoothDevices } from './widgets/Bluetooth.js';
+import { Volume } from './widgets/Volume.js';
+import { NetworkToggle } from './widgets/Network.js';
+import { BluetoothToggle } from './widgets/Bluetooth.js';
 
 const Row = (toggles, menus = []) => Widget.Box({
     class_name: 'row',
@@ -26,7 +26,7 @@ const Row = (toggles, menus = []) => Widget.Box({
 export default () => PopupWindow({
     name: 'controlcenter',
     anchor: ['top', 'right'],
-    layout: 'none',
+    layout: 'top',
     content: Widget.Box({
         class_name: 'controlcenter__container',
         children: [
@@ -35,7 +35,6 @@ export default () => PopupWindow({
                 children: [
                     Row(
                         [NetworkToggle(), Separator(), BluetoothToggle()],
-                        [WifiSelection()],
                     ),
                     Separator(),
                     Row(
@@ -48,7 +47,6 @@ export default () => PopupWindow({
                         children: [
                             Row(
                                 [Volume()],
-                                [SinkSelector(), AppMixer()],
                             ),
                             Separator(),
                             Row(

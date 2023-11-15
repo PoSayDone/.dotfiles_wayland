@@ -1,4 +1,5 @@
 import Network from 'resource:///com/github/Aylur/ags/service/network.js';
+import { Utils } from './imports.js';
 import { Label, Icon, Box, Stack, Button } from 'resource:///com/github/Aylur/ags/widget.js';
 
 export const SSIDLabel = props => Label({
@@ -114,7 +115,7 @@ export const WifiSelection = props => Box({
     vertical: true,
     connections: [[Network, box => box.children =
         Network.wifi?.accessPoints.map(ap => Button({
-            on_clicked: Utils.execAsync(`nmcli device wifi connect ${ap.bssid}`),
+            on_clicked: () => Utils.execAsync(`nmcli device wifi connect ${ap.bssid}`),
             child: Box({
                 children: [
                     Icon(icons.find(({ value }) => value <= ap.strength).icon),

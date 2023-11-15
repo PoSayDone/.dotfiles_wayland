@@ -8,7 +8,7 @@
 
 .workspaces,
 .clock,
-.bar__quicksettings_container,
+.bar__controlcenter_container,
 .weather,
 .activeapp,
 .notifications-indicator {
@@ -118,16 +118,26 @@
 	color: $on_secondary;
 }
 
-.bar__quicksettings_container {
+.bar__controlcenter_container {
 	padding-left: 16px;
 	margin-right: 5px;
 	padding-right: 14px;
 	border-radius: 22px 6px 6px 22px;
+	image {
+		margin-right: 8px;
+		&:last-child {
+			margin-right: 0px;
+		}
+	}
 	.tray {
-		margin-left: 2px;
+		> * {
+			margin-right: 8px;
+			&:last-child {
+				margin-right: 0px;
+			}
+		}
 		image {
 			font-size: 17px;
-			margin-left: 8px;
 		}
 	}
 }

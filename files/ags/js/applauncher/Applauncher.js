@@ -72,6 +72,6 @@ const Applauncher = () => {
 export default () => PopupWindow({
     name: WINDOW_NAME,
     anchor: ['top', 'left'],
-    layout: 'none',
+    layout: 'top',
     content: Applauncher(),
 });

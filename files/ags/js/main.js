@@ -8,6 +8,10 @@ import OSD from './osd/OSD.js';
 import * as setup from './utils.js';
 import { forMonitors } from './utils.js';
 import Calendar from './calendar/Calendar.js';
+import { BluetoothDevices } from './controlCenter/widgets/Bluetooth.js';
+import { WifiSelection } from './controlCenter/widgets/Network.js';
+import { AppMixer } from './controlCenter/widgets/Volume.js';
+import { SinkSelector } from './controlCenter/widgets/Volume.js';
 
 setup.warnOnLowBattery();
 setup.reloadCss();
@@ -20,6 +24,10 @@ const windows = () => [
     ControlCenter(),
     Applauncher(),
     Calendar(),
+    BluetoothDevices(),
+    WifiSelection(),
+    AppMixer(),
+    SinkSelector(),
 ];
 
 export default {
