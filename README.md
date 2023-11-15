@@ -3,7 +3,7 @@
 </div>
 <br>
 <div align="center">
-	(Dotfiles are still under the construction, so don't blame me if something not working! I'am doing my best.)
+	(Dotfiles are still under the construction, so don't blame me if something not working! I'm doing my best.)
 </div>
 
 <h2>Used stuff</h2>
