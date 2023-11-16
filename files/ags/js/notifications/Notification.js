@@ -1,5 +1,6 @@
 import { Utils, Widget, Variable } from '../imports.js';
 import GLib from 'gi://GLib';
+import HoverableButton from '../misc/HoverableButton.js';
 
 const NotificationIcon = ({ appEntry, appIcon, image }) => {
     if (image) {
@@ -87,7 +88,7 @@ export default notification => {
                                 vpack: 'start',
                                 label: GLib.DateTime.new_from_unix_local(notification.time).format('%H:%M'),
                             }),
-                            Widget.Button({
+                            HoverableButton({
                                 onHover: hover,
                                 class_name: 'close-button',
                                 vpack: 'start',
@@ -114,7 +115,7 @@ export default notification => {
 
     const actionsbox = Widget.Box({
         class_name: 'actions',
-        children: notification.actions.map(action => Widget.Button({
+        children: notification.actions.map(action => HoverableButton({
             class_name: 'action-button',
             on_clicked: () => notification.invoke(action.id),
             hexpand: true,

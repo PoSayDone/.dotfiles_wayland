@@ -109,7 +109,6 @@
 .player {
 	background-color: $inverse_surface_transparent;
 	border-radius: 30px;
-	min-height: 213px;
 	margin-top: 8px;
 }
 
@@ -266,7 +265,7 @@
 }
 
 .cover-art {
-	min-height: 205px;
+	min-height: 180px;
 	border-radius: 30px;
 	transition: all 0.2s;
 
@@ -275,16 +274,16 @@
 	}
 
 	.footer-box {
-		.controls {
+		> * {
+			font-size: 12px;
 		}
 		.previous {
-			font-size: 20px;
+			// 	font-size: 20px;
 			margin-right: 16px;
 		}
 		.next,
 		.shuffle,
 		.loop {
-			font-size: 20px;
 			margin-left: 16px;
 		}
 	}

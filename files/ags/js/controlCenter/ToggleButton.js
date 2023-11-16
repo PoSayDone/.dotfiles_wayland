@@ -1,6 +1,7 @@
 import icons from '../icons.js';
 import PopupWindow from '../misc/PopupWindow.js';
 import { Utils, Widget, App, Variable } from '../imports.js';
+import HoverableButton from '../misc/HoverableButton.js';
 
 export const opened = Variable('');
 App.connect('window-toggled', (_, name, visible) => {
@@ -8,7 +9,7 @@ App.connect('window-toggled', (_, name, visible) => {
         Utils.timeout(500, () => opened.value = '');
 });
 
-export const Arrow = name => Widget.Button({
+export const Arrow = name => HoverableButton({
     class_name: 'arrow',
     child: Widget.Icon({
         icon: icons.ui.arrow.right,
@@ -26,7 +27,7 @@ export const ArrowToggleButton = ({
         box.toggleClassName('active', condition());
     }]],
     children: [
-        Widget.Button({
+        HoverableButton({
             child: Widget.Box({
                 hexpand: true,
                 children: [
@@ -62,7 +63,7 @@ export const SimpleToggleButton = ({
         box.toggleClassName('active', condition());
     }]],
     children: [
-        Widget.Button({
+        HoverableButton({
             child: Widget.Box({
                 hexpand: true,
                 children: [icon, Widget.Box({ hpack: 'start', vpack: 'center', vertical: true, children: [label, status] })],

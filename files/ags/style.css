@@ -17,8 +17,8 @@
   font-weight: 600; }
 
 tooltip > * > * {
-  background-color: #303031;
-  color: #e4e2e3;
+  background-color: #34302c;
+  color: #e9e1dc;
   padding: 20px;
   border-radius: 20px; }
 
@@ -29,15 +29,15 @@ window.popup > * {
 window.popup menu {
   margin-top: 12px;
   border-radius: 18px;
-  background-color: #1f2021;
+  background-color: #221f1c;
   padding: 12px; }
   window.popup menu menuitem {
     padding: 8px 10px;
-    color: #e4e2e3;
+    color: #e9e1dc;
     border-radius: 8px;
     transition: background 0.1s ease; }
     window.popup menu menuitem:hover {
-      background: #343536; }
+      background: #383431; }
     window.popup menu menuitem:first-child {
       margin-top: 0; }
     window.popup menu menuitem:last-child {
@@ -45,10 +45,10 @@ window.popup menu {
 
 /* Common Styles */
 .bar {
-  background-color: rgba(19, 19, 20, 0.8);
+  background-color: rgba(22, 19, 16, 0.8);
   margin: 0;
   padding: 8px 12px;
-  border-bottom: 1px solid #303031; }
+  border-bottom: 1px solid #34302c; }
 
 .workspaces,
 .clock,
@@ -58,8 +58,8 @@ window.popup menu {
 .notifications-indicator {
   transition: background-color 0.2s ease-in-out;
   border-radius: 100px;
-  color: #e4e2e3;
-  background-color: rgba(228, 226, 227, 0.08);
+  color: #e9e1dc;
+  background-color: rgba(233, 225, 220, 0.08);
   transition: background 0.2s ease-in-out, color 0.2s ease-in-out; }
   .workspaces:hover,
   .clock:hover,
@@ -67,21 +67,21 @@ window.popup menu {
   .weather:hover,
   .activeapp:hover,
   .notifications-indicator:hover {
-    background-color: rgba(228, 226, 227, 0.18); }
+    background-color: rgba(233, 225, 220, 0.18); }
 
 .keyboardlayout,
 .battery {
   transition: background-color 0.2s ease-in-out;
   border-radius: 100px;
-  color: #c8e6ff;
-  background-color: #284a60; }
+  color: #ffddb9;
+  background-color: #643e07; }
   .keyboardlayout:hover,
   .battery:hover {
-    background-color: #c8e6ff; }
+    background-color: #ffddb9; }
 
 .active {
-  background: #a9cbe5;
-  color: #0e3448; }
+  background: #f4bc7b;
+  color: #472a00; }
 
 /* Specific Styles */
 .activeapp,
@@ -97,7 +97,7 @@ window.popup menu {
   padding: 0 14px; }
 
 .launcher {
-  background: #a9cbe5;
+  background: #f4bc7b;
   padding: 0;
   margin: 0;
   min-width: 42px;
@@ -105,12 +105,12 @@ window.popup menu {
   border-radius: 42px;
   transition: background-color 0.1s ease-in-out; }
   .launcher .launcher__icon {
-    background-color: #0e3448;
+    background-color: #472a00;
     min-width: 14px;
     min-height: 14px;
     border-radius: 100%; }
   .launcher:hover {
-    background-color: #c8e6ff; }
+    background-color: #ffddb9; }
 
 .workspaces {
   min-width: 260px; }
@@ -126,11 +126,11 @@ window.popup menu {
     .workspaces .workspace-indicator:first-child {
       margin-left: 0px; }
     .workspaces .workspace-indicator:hover {
-      background-color: rgba(169, 203, 229, 0.6); }
+      background-color: rgba(244, 188, 123, 0.6); }
     .workspaces .workspace-indicator.active, .workspaces .workspace-indicator:active {
       min-width: 42px;
       border-radius: 100px;
-      background-color: #a9cbe5; }
+      background-color: #f4bc7b; }
 
 .activeapp > image {
   margin-right: 8px; }
@@ -144,18 +144,16 @@ window.popup menu {
   padding: 0;
   margin: 0;
   min-width: 42px;
-  background: #c1c7ce;
-  color: #2a3137; }
+  background: #d8c3ae;
+  color: #3b2e20; }
 
 .bar__controlcenter_container {
   padding-left: 16px;
   margin-right: 5px;
-  padding-right: 14px;
+  padding-right: 8px;
   border-radius: 22px 6px 6px 22px; }
   .bar__controlcenter_container image {
     margin-right: 8px; }
-    .bar__controlcenter_container image:last-child {
-      margin-right: 0px; }
   .bar__controlcenter_container .tray > * {
     margin-right: 8px; }
     .bar__controlcenter_container .tray > *:last-child {
@@ -177,18 +175,18 @@ window.popup menu {
 
 #applauncher .applauncher {
   margin: 8px;
-  background-color: rgba(19, 19, 20, 0.8);
+  background-color: rgba(22, 19, 16, 0.8);
   border-radius: 40px;
   padding: 20px; }
   #applauncher .applauncher .header {
-    background: #a9cbe5;
+    background: #f4bc7b;
     padding: 16px;
     border-radius: 100px;
     margin-bottom: 5px; }
     #applauncher .applauncher .header image,
     #applauncher .applauncher .header entry {
       margin-left: 4px;
-      color: #0e3448; }
+      color: #472a00; }
     #applauncher .applauncher .header entry {
       padding-left: 14px;
       font-size: 16px; }
@@ -199,7 +197,7 @@ window.popup menu {
     min-height: 550px; }
   #applauncher .applauncher .placeholder {
     margin-top: 8px;
-    color: #e4e2e3;
+    color: #e9e1dc;
     font-size: 1.2em; }
   #applauncher .applauncher .app-item {
     all: unset;
@@ -209,38 +207,38 @@ window.popup menu {
     #applauncher .applauncher .app-item label {
       transition: all 0.2s ease; }
       #applauncher .applauncher .app-item label.title {
-        color: #e4e2e3; }
+        color: #e9e1dc; }
       #applauncher .applauncher .app-item label.description {
-        color: rgba(228, 226, 227, 0.7); }
+        color: rgba(233, 225, 220, 0.7); }
     #applauncher .applauncher .app-item image {
       transition: all 0.2s ease;
       margin-left: 2px;
       margin-right: 10px; }
     #applauncher .applauncher .app-item:hover {
-      background: #292a2b; }
+      background: #2d2926; }
       #applauncher .applauncher .app-item:hover .title {
-        color: #e4e2e3; }
+        color: #e9e1dc; }
     #applauncher .applauncher .app-item:focus {
-      background: #a9cbe5; }
+      background: #f4bc7b; }
       #applauncher .applauncher .app-item:focus .title {
-        color: #0e3448; }
+        color: #472a00; }
       #applauncher .applauncher .app-item:focus .description {
-        color: #0e3448; }
+        color: #472a00; }
     #applauncher .applauncher .app-item:active {
-      background-color: rgba(169, 203, 229, 0.8);
+      background-color: rgba(244, 188, 123, 0.8);
       border-radius: 100px;
-      box-shadow: inset 0 0 0 1px #a9cbe5; }
+      box-shadow: inset 0 0 0 1px #f4bc7b; }
       #applauncher .applauncher .app-item:active .title {
-        color: #0e3448; }
+        color: #472a00; }
 
 .controlcenter__container {
   margin-top: 8px;
   margin-right: 8px;
   min-height: 400px;
-  background-color: rgba(19, 19, 20, 0.8);
+  background-color: rgba(22, 19, 16, 0.8);
   padding: 20px;
   border-radius: 40px;
-  border: 1px solid rgba(228, 226, 227, 0.08); }
+  border: 1px solid rgba(233, 225, 220, 0.08); }
 
 .controlcenter__header * {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
@@ -250,20 +248,20 @@ window.popup menu {
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 100px;
-  background: #284a60;
-  color: #c8e6ff; }
+  background: #643e07;
+  color: #ffddb9; }
 
 .controlcenter__theme,
 .controlcenter__power {
   min-width: 42px;
   min-height: 42px;
   border-radius: 100px;
-  background: #284a60;
-  color: #c8e6ff; }
+  background: #643e07;
+  color: #ffddb9; }
 
 .quicksettings__button {
   background-color: rgba(255, 255, 255, 0.07);
-  color: #e4e2e3;
+  color: #e9e1dc;
   padding: 0px;
   border-radius: 30px;
   min-width: 220px;
@@ -272,12 +270,12 @@ window.popup menu {
   .quicksettings__button > * {
     border-radius: 30px; }
   .quicksettings__button.active {
-    background-color: #a9cbe5;
-    color: #0e3448; }
+    background-color: #f4bc7b;
+    color: #472a00; }
     .quicksettings__button.active:hover {
-      background-color: #292a2b; }
+      background-color: #2d2926; }
   .quicksettings__button:hover {
-    background-color: #292a2b; }
+    background-color: #2d2926; }
   .quicksettings__button image {
     margin-left: 22px;
     margin-right: 18px; }
@@ -286,8 +284,8 @@ window.popup menu {
 
 .menu {
   margin-top: 8px;
-  background-color: #1f2021;
-  color: #e4e2e3;
+  background-color: #221f1c;
+  color: #e9e1dc;
   padding: 20px 26px;
   border-radius: 30px;
   min-width: 300px; }
@@ -304,14 +302,13 @@ window.popup menu {
     padding: 8px 12px;
     border-radius: 8px; }
     .menu button:hover {
-      background-color: #343536; }
+      background-color: #383431; }
   .menu image {
     margin-right: 4px; }
 
 .player {
-  background-color: rgba(228, 226, 227, 0.08);
+  background-color: rgba(233, 225, 220, 0.08);
   border-radius: 30px;
-  min-height: 213px;
   margin-top: 8px; }
 
 .shader {
@@ -320,8 +317,8 @@ window.popup menu {
   padding: 20px; }
 
 .slider__tooltip {
-  color: #0e3448;
-  background-color: #a9cbe5;
+  color: #472a00;
+  background-color: #f4bc7b;
   padding: 0;
   border-radius: 100px;
   min-width: 42px;
@@ -330,8 +327,8 @@ window.popup menu {
   font-size: 18px; }
 
 .volume__box .arrow {
-  color: #e4e2e3;
-  background-color: rgba(228, 226, 227, 0.08);
+  color: #e9e1dc;
+  background-color: rgba(233, 225, 220, 0.08);
   padding: 0;
   border-radius: 100px;
   min-width: 42px;
@@ -342,14 +339,14 @@ window.popup menu {
 .brightness__slider trough {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   border-radius: 100px;
-  background-color: rgba(228, 226, 227, 0.08);
+  background-color: rgba(233, 225, 220, 0.08);
   min-height: 42px; }
   .volume__slider trough highlight,
   .volume__slider trough progress,
   .brightness__slider trough highlight,
   .brightness__slider trough progress {
     border-radius: 100px;
-    background-color: #a9cbe5;
+    background-color: #f4bc7b;
     border-radius: 100px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
   .volume__slider trough slider,
@@ -362,19 +359,19 @@ window.popup menu {
 
 .mixer__tooltip {
   margin-left: 0px;
-  background: #292a2b;
+  background: #2d2926;
   min-height: 42px;
   min-width: 42px;
   border-radius: 100px; }
 
 .mixer__slider trough {
   border-radius: 100px;
-  background-color: rgba(228, 226, 227, 0.08);
+  background-color: rgba(233, 225, 220, 0.08);
   min-height: 14px; }
   .mixer__slider trough highlight,
   .mixer__slider trough progress {
     border-radius: 100px;
-    background-color: #a9cbe5;
+    background-color: #f4bc7b;
     border-radius: 100px; }
   .mixer__slider trough slider {
     border-radius: 100px;
@@ -397,8 +394,8 @@ window.popup menu {
   min-height: 60px;
   border-radius: 20px;
   padding: 0;
-  background: #a9cbe5;
-  color: #0e3448;
+  background: #f4bc7b;
+  color: #472a00;
   transition: all 0.3s; }
 
 .play-pause .paused,
@@ -407,8 +404,8 @@ window.popup menu {
   min-height: 60px;
   border-radius: 100px;
   padding: 0;
-  background: #a9cbe5;
-  color: #0e3448;
+  background: #f4bc7b;
+  color: #472a00;
   transition: all 0.3s; }
 
 .position-slider trough {
@@ -427,18 +424,18 @@ window.popup menu {
     background-color: #fff; }
 
 .cover-art {
-  min-height: 205px;
+  min-height: 180px;
   border-radius: 30px;
   transition: all 0.2s; }
   .cover-art .header-box {
-    color: #a9cbe5; }
+    color: #f4bc7b; }
+  .cover-art .footer-box > * {
+    font-size: 12px; }
   .cover-art .footer-box .previous {
-    font-size: 20px;
     margin-right: 16px; }
   .cover-art .footer-box .next,
   .cover-art .footer-box .shuffle,
   .cover-art .footer-box .loop {
-    font-size: 20px;
     margin-left: 16px; }
 
 .notifications {
@@ -447,8 +444,8 @@ window.popup menu {
   min-width: 400px;
   min-height: 400px;
   border-radius: 40px;
-  background: #1f2021;
-  color: #e4e2e3; }
+  background: #221f1c;
+  color: #e9e1dc; }
 
 .placeholder > image {
   font-size: 50px;
@@ -464,10 +461,10 @@ window.popup menu {
   .notification-scrollable scrollbar * {
     all: unset; }
   .notification-scrollable scrollbar.vertical:hover slider {
-    background-color: #a9cbe5;
+    background-color: #f4bc7b;
     min-width: 0.6em; }
   .notification-scrollable scrollbar.vertical slider {
-    background-color: #8f9193;
+    background-color: #998f86;
     border-radius: 100px;
     min-width: 0.4em;
     min-height: 2em; }
@@ -478,14 +475,14 @@ window.popup menu {
   font-weight: 500; }
 
 .notifications__clear-button {
-  background: #292a2b;
+  background: #2d2926;
   padding: 10px 20px;
   border-radius: 100px;
   margin-bottom: 20px;
   margin-right: 30px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
   .notifications__clear-button:hover {
-    background: #343536; }
+    background: #383431; }
   .notifications__clear-button image {
     margin-left: 4px; }
 
@@ -500,13 +497,13 @@ window.popup menu {
 .notification > box {
   padding: 14px 16px 14px 14px;
   margin-bottom: 4px;
-  color: #e4e2e3;
-  background-color: #292a2b;
+  color: #e9e1dc;
+  background-color: #2d2926;
   border-radius: 4px; }
 
 .notification .icon {
   margin-right: 16px;
-  background: rgba(228, 226, 227, 0.08);
+  background: rgba(233, 225, 220, 0.08);
   border-radius: 100px; }
 
 .notification .title {
@@ -521,7 +518,7 @@ window.popup menu {
 .notification .description {
   font-size: 15px;
   font-weight: 400;
-  color: #c5c6c9; }
+  color: #d0c4ba; }
 
 .notification .action-button {
   margin-top: 14px; }
@@ -530,30 +527,30 @@ window.popup menu {
   margin-left: 14px;
   padding: 4px;
   border-radius: 100px;
-  background-color: #a9cbe5;
-  color: #0e3448;
+  background-color: #f4bc7b;
+  color: #472a00;
   font-size: 20px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
   .notification .close-button:hover {
-    background: #c8e6ff; }
+    background: #ffddb9; }
 
 .notifications-popup-list {
   margin-top: 8px;
   min-width: 400px; }
   .notifications-popup-list .notification > box {
-    color: #e4e2e3;
-    background-color: rgba(19, 19, 20, 0.8); }
+    color: #e9e1dc;
+    background-color: rgba(22, 19, 16, 0.8); }
 
 .indicator .progress {
   padding: 0px;
   border-radius: 100px;
-  background-color: rgba(19, 19, 20, 0.8);
+  background-color: rgba(22, 19, 16, 0.8);
   min-width: 70px;
   margin-left: 24px; }
   .indicator .progress .fill {
     border-radius: 100px;
-    background-color: #a9cbe5;
-    color: #0e3448;
+    background-color: #f4bc7b;
+    color: #472a00;
     min-width: 60px; }
     .indicator .progress .fill image {
       margin-right: 14px;
@@ -563,7 +560,7 @@ window.popup menu {
       font-size: 12px; }
 
 .calendar {
-  background: rgba(19, 19, 20, 0.8);
+  background: rgba(22, 19, 16, 0.8);
   border-radius: 20px;
   padding: 20px; }
   .calendar * {
@@ -574,8 +571,8 @@ window.popup menu {
     .calendar calendar:selected {
       min-width: 60px;
       min-height: 60px;
-      background: #284a60;
-      color: #c8e6ff;
+      background: #643e07;
+      color: #ffddb9;
       border-radius: 100px; }
     .calendar calendar.header {
       background-color: transparent;

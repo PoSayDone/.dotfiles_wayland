@@ -1,7 +1,8 @@
 import { SystemTray, Widget } from '../../imports.js';
 import Gdk from 'gi://Gdk';
+import HoverableButton from '../../misc/HoverableButton.js';
 
-const SysTrayItem = item => Widget.Button({
+const SysTrayItem = item => HoverableButton({
     binds: [['tooltipMarkup', item, 'tooltip-markup']],
     child: Widget.Icon({ binds: [['icon', item, 'icon']] }),
     setup: btn => {

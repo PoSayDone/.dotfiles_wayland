@@ -121,14 +121,16 @@
 .bar__controlcenter_container {
 	padding-left: 16px;
 	margin-right: 5px;
-	padding-right: 14px;
+	padding-right: 8px;
 	border-radius: 22px 6px 6px 22px;
+
 	image {
 		margin-right: 8px;
-		&:last-child {
-			margin-right: 0px;
-		}
+		// &:last-child {
+		// 	margin-right: 0px;
+		// }
 	}
+
 	.tray {
 		> * {
 			margin-right: 8px;

@@ -1,13 +1,9 @@
-import App from 'resource:///com/github/Aylur/ags/app.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
-import Bluetooth from 'resource:///com/github/Aylur/ags/service/bluetooth.js';
-import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
-import Network from 'resource:///com/github/Aylur/ags/service/network.js';
 import HoverRevealer from '../../misc/HoverRevealer.js';
 import Indicator from '../../services/onScreenIndicator.js';
 import icons from '../../icons.js';
 import SysTray from './SysTray.js';
+import HoverableButton from '../../misc/HoverableButton.js';
+import { Widget, Audio, Network, Bluetooth, App, Notifications } from '../../imports.js';
 
 const MicrophoneIndicator = () => Widget.Icon({
     connections: [[Audio, icon => {
@@ -32,9 +28,11 @@ const DNDIndicator = () => Widget.Icon({
 });
 
 const BluetoothDevicesIndicator = () => Widget.Box({
+    class_name: 'bluetooth__devices',
     connections: [[Bluetooth, box => {
         box.children = Bluetooth.connectedDevices
             .map(({ iconName, name }) => HoverRevealer({
+                class_name: 'bluetooth__device',
                 indicator: Widget.Icon(iconName + '-symbolic'),
                 child: Widget.Label(name),
             }));
@@ -73,7 +71,7 @@ const AudioIndicator = () => Widget.Icon({
     }, 'speaker-changed']],
 });
 
-export default () => Widget.Button({
+export default () => HoverableButton({
     class_name: 'bar__controlcenter_container',
     onClicked: () => App.toggleWindow('controlcenter'),
     onScrollUp: () => {

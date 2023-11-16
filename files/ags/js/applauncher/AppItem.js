@@ -1,6 +1,6 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import App from 'resource:///com/github/Aylur/ags/app.js';
 import { lookUpIcon } from 'resource:///com/github/Aylur/ags/utils.js';
+import HoverableButton from '../misc/HoverableButton.js';
+import { Widget, App } from '../imports.js';
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
 export default app => {
@@ -32,7 +32,7 @@ export default app => {
         children: app.description ? [title, description] : [title],
     });
 
-    return Widget.Button({
+    return HoverableButton({
         class_name: 'app-item',
         setup: self => self.app = app,
         on_clicked: () => {

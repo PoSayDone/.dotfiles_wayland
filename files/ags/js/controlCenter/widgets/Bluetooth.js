@@ -1,6 +1,7 @@
 import icons from '../../icons.js';
 import { Menu, ArrowToggleButton } from '../ToggleButton.js';
 import { Bluetooth, Widget } from '../../imports.js';
+import HoverableButton from '../../misc/HoverableButton.js';
 
 export const BluetoothToggle = () => ArrowToggleButton({
     name: 'bluetooth',
@@ -47,19 +48,22 @@ export const BluetoothDevices = () => Menu({
             vertical: true,
             connections: [[Bluetooth, box => box.children = Bluetooth.devices
                 .filter(d => d.name)
-                .map(device => Widget.Box({
-                    children: [
-                        Widget.Icon(device.iconName + '-symbolic'),
-                        Widget.Label(device.name),
-                        device.batteryPercentage > 0 && Widget.Label(`${device.batteryPercentage}%`),
-                        Widget.Box({ hexpand: true }),
-                        device.connecting ? Widget.Spinner({ active: true }) : Widget.Switch({
-                            active: device.connected,
-                            connections: [['notify::active', ({ active }) => {
-                                device.setConnection(active);
-                            }]],
-                        }),
-                    ],
+                .map(device => HoverableButton({
+                    class_name: 'bluetooth__entry',
+                    on_clicked: () => device.setConnection(!device.connected),
+                    child: Widget.Box({
+                        children: [
+                            Widget.Icon(device.iconName + '-symbolic'),
+                            Widget.Label(device.name),
+                            device.batteryPercentage > 0 && Widget.Label(`${device.batteryPercentage}%`),
+                            Widget.Box({ hexpand: true }),
+                            device.connecting ? Widget.Spinner({ active: true }) : device.connected && Widget.Icon({
+                                icon: icons.tick,
+                                hexpand: true,
+                                hpack: 'end',
+                            }),
+                        ],
+                    }),
                 })),
             ]],
         }),

@@ -1,17 +1,17 @@
-import Clock from '../misc/Clock.js';
+import Clock from './widgets/Clock.js';
 import Workspaces from './widgets/Workspaces.js';
 import Keyboardlayout from './widgets/KeyboardLayout.js';
 import Separator from '../misc/Separator.js';
+import HoverableButton from '../misc/HoverableButton.js';
 import { App, Widget } from '../imports.js';
 
-import * as battery from '../battery.js';
+import * as battery from '../misc/battery.js';
 
-import { Window, CenterBox, Box, Button } from 'resource:///com/github/Aylur/ags/widget.js';
 import { ActiveApp } from './widgets/ActiveApp.js';
 import { Weather } from './widgets/Weather.js';
 import SystemIndicators from './widgets/SystemIndicators.js';
 
-const Battery = () => Box({
+const Battery = () => Widget.Box({
     class_name: 'battery',
     hpack: 'end',
     children: [
@@ -20,10 +20,10 @@ const Battery = () => Box({
     ],
 });
 
-const Launcher = () => Button({
+const Launcher = () => HoverableButton({
     class_name: 'launcher',
     on_primary_click: () => App.toggleWindow('applauncher'),
-    child: Box({
+    child: Widget.Box({
         class_name: 'launcher__icon',
         vpack: 'center',
         hpack: 'center',
@@ -32,7 +32,7 @@ const Launcher = () => Button({
     }),
 });
 
-const Left = () => Box({
+const Left = () => Widget.Box({
     class_name: 'bar__left',
     orientation: 'horizontal',
     hpack: 'start',
@@ -46,13 +46,12 @@ const Left = () => Box({
     ],
 });
 
-const Center = () => Widget.Button({
-    on_primary_click: () => App.toggleWindow('calendar'),
+const Center = () => Widget.Box({
     class_name: 'bar__center',
     child: Clock(),
 });
 
-const Right = () => Box({
+const Right = () => Widget.Box({
     class_name: 'bar__right',
     orientation: 'horizontal',
     hpack: 'end',
@@ -65,13 +64,13 @@ const Right = () => Box({
     ],
 });
 
-export default monitor => Window({
+export default monitor => Widget.Window({
     name: `bar${monitor}`,
     anchor: ['top', 'left', 'right'],
     exclusive: true,
     monitor,
     hexpand: true,
-    child: CenterBox({
+    child: Widget.CenterBox({
         class_name: 'bar',
         startWidget: Left(),
         centerWidget: Center(),

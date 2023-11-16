@@ -1,14 +1,13 @@
-import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import icons from '../../icons.js';
 import FontIcon from '../../misc/FontIcon.js';
 import { getAudioTypeIcon } from '../../utils.js';
 import { Arrow } from '../ToggleButton.js';
 import { Menu } from '../ToggleButton.js';
+import { Audio, Widget, Utils } from '../../imports.js';
+import HoverableButton from '../../misc/HoverableButton.js';
 
 /** @param {'speaker' | 'microphone'=} type */
-const VolumeIndicator = (type = 'speaker') => Widget.Button({
+const VolumeIndicator = (type = 'speaker') => HoverableButton({
     class_name: 'slider__tooltip',
     on_clicked: () => Audio[type].is_muted = !Audio[type].is_muted,
     child: Widget.Icon({
@@ -103,7 +102,7 @@ const MixerItem = stream => Widget.Box({
 });
 
 /** @param {import('types/service/audio').Stream} stream */
-const SinkItem = stream => Widget.Button({
+const SinkItem = stream => HoverableButton({
     hexpand: true,
     on_clicked: () => Audio.speaker = stream,
     child: Widget.Box({
@@ -125,7 +124,7 @@ const SinkItem = stream => Widget.Button({
     }),
 });
 
-const SettingsButton = () => Widget.Button({
+const SettingsButton = () => HoverableButton({
     on_clicked: () => Utils.execAsync('pavucontrol'),
     hexpand: true,
     child: Widget.Box({

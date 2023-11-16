@@ -1,8 +1,9 @@
 import icons from '../icons.js';
 import Notification from '../notifications/Notification.js';
 import { Widget, Notifications } from '../imports.js';
+import HoverableButton from '../misc/HoverableButton.js';
 
-const ClearButton = () => Widget.Button({
+const ClearButton = () => HoverableButton({
     hpack: 'end',
     class_name: 'notifications__clear-button',
     on_clicked: () => Notifications.clear(),

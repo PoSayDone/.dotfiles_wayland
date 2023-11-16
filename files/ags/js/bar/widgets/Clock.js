@@ -1,12 +1,15 @@
 import GLib from 'gi://GLib';
 
-import { Label } from 'resource:///com/github/Aylur/ags/widget.js';
+import { App } from '../../imports.js';
+import HoverableButton from '../../misc/HoverableButton.js';
 
 export default ({
     format = '%a %d %b, %H:%M',
     interval = 1000,
     ...props
-} = {}) => Label({
+} = {}) => HoverableButton({
+    cursor: 'pointer',
+    on_clicked: () => App.toggleWindow('calendar'),
     class_name: 'clock',
     ...props,
     connections: [[interval, label =>

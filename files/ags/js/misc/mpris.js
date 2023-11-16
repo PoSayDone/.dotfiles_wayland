@@ -2,6 +2,7 @@ import icons from '../icons.js';
 import { Utils, Widget } from '../imports.js';
 import GLib from 'gi://GLib';
 import MaterialColors from '../services/MaterialColors.js';
+import HoverableButton from './HoverableButton.js';
 
 const MEDIA_CACHE_PATH = Utils.CACHE_DIR + '/media';
 
@@ -166,7 +167,7 @@ export const Slash = player => Widget.Label({
     }]],
 });
 
-const PlayerButton = ({ player, items, onClick, prop, canProp, cantValue }) => Widget.Button({
+const PlayerButton = ({ player, items, onClick, prop, canProp, cantValue }) => HoverableButton({
     child: Widget.Stack({
         items,
         binds: [['shown', player, prop, p => `${p}`]],

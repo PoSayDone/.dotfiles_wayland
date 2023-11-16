@@ -1,11 +1,12 @@
 import { Hyprland, Widget, Utils } from '../../imports.js';
 import { range } from '../../utils.js';
+import HoverableButton from '../../misc/HoverableButton.js';
 
 const ws = 10;
 const dispatch = arg => () => Utils.execAsync(`hyprctl dispatch workspace ${arg}`);
 
 const Workspaces = () => Widget.Box({
-    children: range(ws || 20).map(i => Widget.Button({
+    children: range(ws || 20).map(i => HoverableButton({
         setup: btn => btn.id = i,
         on_clicked: dispatch(i),
         class_name: 'workspace-indicator',
